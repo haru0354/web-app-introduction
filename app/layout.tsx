@@ -3,6 +3,7 @@ import "./globals.css";
 import { notoSansJp } from "./components/util/Font";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import SideMenu from "./components/SideMenu";
 
 export const metadata: Metadata = {
   title: "Create Next App",
