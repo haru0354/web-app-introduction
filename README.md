@@ -28,7 +28,7 @@
 
 ## 技術スタック
 
-フロント：NEXT.JS
+フロント：TypeScript(Next.JS)
 バックエンド：Laravel
 DB：MongoDB
 状態管理：Redux Toolkit
