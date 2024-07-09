@@ -28,11 +28,11 @@
 
 ## 技術スタック
 
-フロント：TypeScript(Next.JS)
-バックエンド：Laravel
-DB：MongoDB
-状態管理：Redux Toolkit
-css：Tailwind
+- フロント：TypeScript(Next.JS)
+- バックエンド：Laravel
+- DB：MongoDB
+- 状態管理：Redux Toolkit
+- css：Tailwind
 
 今回のアプリはバックエンドを除き、新しい技術の学習でなく、今までに使用した技術を利用して、復習の意味を込めて簡単なアプリを作成。
 

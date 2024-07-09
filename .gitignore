@@ -1,5 +1,6 @@
 # add
 public/not-git-upp
+.env
 
 # dependencies
 /node_modules
