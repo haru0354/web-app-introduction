@@ -1,6 +1,6 @@
 const SideMenu = () => {
   return (
-    <div className="w-full max-w-[300px] px-2">side</div>
+    <div className="w-full max-w-[240px] px-2">side</div>
 )
 }
 
