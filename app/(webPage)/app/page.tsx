@@ -4,7 +4,6 @@ import Link from "next/link";
 
 const page = async () => {
   const appAll = await prisma.appIntroduction.findMany();
-  console.log(appAll);
 
   return (
     <>
@@ -12,7 +11,7 @@ const page = async () => {
       <div className="flex flex-wrap">
         {appAll.map((app) => {
           return (
-            <Link href={app.url} key={app.id}>
+            <Link href={`/app/${app.id}`} key={app.id}>
               <div className="flex flex-col min-w-[200px] min-h-[200px] mx-2 my-6 text-center hover:bg-green-100">
                 <Image
                   src="/test.JPG"
