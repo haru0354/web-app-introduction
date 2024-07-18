@@ -1,0 +1,58 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id                 String    @id @default(auto()) @map("_id") @db.ObjectId
+  name               String?
+  email              String?   @unique
+  emailVerified      DateTime?
+  image              String?
+  accounts           Account[]
+  sessions           Session[]
+  appIntroductions   AppIntroduction[]
+  createdAt          DateTime  @default(now())
+  updatedAt          DateTime  @updatedAt
+}
+
+model Account {
+  id                 String    @id @default(auto()) @map("_id") @db.ObjectId
+  provider           String   
+  providerId         String    @unique
+  userId             String   
+  user               User      @relation(fields: [userId], references: [id])
+  createdAt          DateTime  @default(now())
+  updatedAt          DateTime  @updatedAt
+
+  @@index([provider, providerId], name: "provider_providerId_unique")
+}
+
+model Session {
+  id                 String    @id @default(auto()) @map("_id") @db.ObjectId
+  sessionToken       String    @unique
+  expires            DateTime
+  userId             String    @map("userId") @db.ObjectId
+  user               User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model AppIntroduction {
+  id                 String    @id @default(auto()) @map("_id") @db.ObjectId
+  title              String
+  summary            String
+  url                String
+  imageUrl           String[]  @default([])
+  imageAlt           String[]  @default([])
+  technology         String?
+  overview           String
+  solution           String
+  can                String[]  @default([])
+  userId             String    @map("userId") @db.ObjectId
+  user               User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  createdAt          DateTime  @default(now())
+  updatedAt          DateTime  @updatedAt
+}

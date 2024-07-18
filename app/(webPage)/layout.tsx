@@ -12,8 +12,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <main className="flex flex-col md:flex-row justify-between w-full max-w-[1140px] mx-auto">
-      <div className="w-full max-w-[800px] px-2">{children}</div>
+    <main className="flex flex-col md:flex-row justify-between w-full max-w-[1140px] mx-auto my-12">
+      <div className="w-full max-w-[900px] px-2">{children}</div>
       <SideMenu />
     </main>
   );
