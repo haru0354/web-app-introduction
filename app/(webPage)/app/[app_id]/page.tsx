@@ -1,5 +1,6 @@
 import ImageSlider from "@/app/components/webPage/ImageSlider";
 import prisma from "@/app/lib/prisma";
+import NotFound from "@/app/not-found";
 
 const page = async ({ params }: { params: { app_id: string } }) => {
   const id = params.app_id;
@@ -11,7 +12,7 @@ const page = async ({ params }: { params: { app_id: string } }) => {
   });
 
   if (appData === null) {
-    return <div>404を作成し変更する</div>;
+    return <NotFound />;
   }
 
   return (
