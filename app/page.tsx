@@ -10,16 +10,16 @@ export default function Home() {
         <h2>main</h2>
         <InputText label="テスト" name="TEST" placeholder="テスト" />
         <Textarea label="テスト" name="TEST" placeholder="テスト" />
-        <Button color={"blue"} size={"normal"}>
+        <Button color="blue" size="normal">
           追加
         </Button>
-        <Button color={"red"} size={"normal"}>
+        <Button color="red" size="normal">
           削除
         </Button>
-        <Button color={"gray"} size={"normal"}>
+        <Button color="gray" size="normal">
           キャンセル
         </Button>
-        <Modal>
+        <Modal buttonText="Test000" >
           <div>
             <p>Test</p>
             <p>Test</p>
