@@ -37,7 +37,7 @@ const Modal: React.FC<ModalProps> = ({ buttonColor, buttonText, children }) => {
     <Button color={buttonColor} size="normal" className="block mx-auto" onClick={toggleModalOpen}>{buttonText}</Button>
       {isModalOpen && (
         <div className="fixed flex items-center justify-center inset-0 w-full h-full z-[100] bg-gray-700 bg-opacity-75" onClick={toggleModalClose}>
-          <div className="p-4 border border-gray-700 rounded bg-white">
+          <div className="max-h-[80vh] p-4 border border-gray-700 rounded bg-white overflow-y-auto">
             {children}
             <Button color="gray" size="normal" className="block mx-auto" onClick={toggleModalOpen}>キャンセル</Button>
           </div>
