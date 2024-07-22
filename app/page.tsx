@@ -1,3 +1,4 @@
+import { addAppIntroduction } from "./api/action/ActionAppIntroduction";
 import FormAppIntroduction from "./components/dashboard/FormAppIntroduction";
 import Button from "./components/ui/Button";
 import InputText from "./components/ui/InputText";
@@ -28,7 +29,7 @@ export default function Home() {
           </div>
         </Modal>
         <Modal buttonText="Test000" >
-          <FormAppIntroduction />
+          <FormAppIntroduction formAction={addAppIntroduction}/>
         </Modal>
       </div>
       <div className="w-full max-w-[300px] px-2">side</div>
