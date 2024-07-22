@@ -29,7 +29,7 @@ export default function Home() {
           </div>
         </Modal>
         <Modal buttonText="Test000" >
-          <FormAppIntroduction formAction={addAppIntroduction}/>
+          <FormAppIntroduction formName="追加フォーム" formAction={addAppIntroduction} />
         </Modal>
       </div>
       <div className="w-full max-w-[300px] px-2">side</div>
