@@ -1,3 +1,4 @@
+
 type ButtonProps = {
   children: React.ReactNode;
   color: "red" | "blue" | "gray";
@@ -5,6 +6,7 @@ type ButtonProps = {
   className?: string;
   type?: "submit" | "button";
   onClick?: () => void;
+  disabled?: boolean | undefined;
 };
 
 const Button: React.FC<ButtonProps> = ({
@@ -14,6 +16,7 @@ const Button: React.FC<ButtonProps> = ({
   className,
   onClick,
   type,
+  disabled
 }) => {
   const colors = {
     red: "border-red-900 bg-red-700 hover:bg-red-200",
@@ -35,6 +38,7 @@ const Button: React.FC<ButtonProps> = ({
         `}
         type={type}
         onClick={onClick}
+        disabled={disabled}
       >
         {children}
       </button>
