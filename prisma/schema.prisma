@@ -45,13 +45,12 @@ model AppIntroduction {
   title              String
   summary            String
   url                String
-  imageUrl           String[]  @default([])
-  imageAlt           String[]  @default([])
   technology         String?
   overview           String
   solution           String
   can                String[]  @default([])
-  userId             String    @map("userId") @db.ObjectId
+  images             Json?  
+  userId             String    @db.ObjectId
   user               User      @relation(fields: [userId], references: [id], onDelete: Cascade)
   createdAt          DateTime  @default(now())
   updatedAt          DateTime  @updatedAt
