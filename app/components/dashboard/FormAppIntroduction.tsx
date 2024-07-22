@@ -10,6 +10,7 @@ type FormAppIntroductionProps = {
   formAction: (state: FormState, formData: FormData) => Promise<FormState>;
   formName: string;
   appIntroductionData?: AppIntroduction | null;
+  appId?: string;
 };
 
 type AppIntroduction = {
@@ -39,6 +40,7 @@ const FormAppIntroduction: React.FC<FormAppIntroductionProps> = ({
   formAction,
   formName,
   appIntroductionData,
+  appId,
 }) => {
   const initialState = {
     message: null,
@@ -107,9 +109,10 @@ const FormAppIntroduction: React.FC<FormAppIntroductionProps> = ({
         defaultValue={appIntroductionData?.solution}
       />
       {state.errors && <p className="text-red-500">{state.errors.solution}</p>}
-      <DynamicInputText defaultValue={appIntroductionData?.can}/>
+      <DynamicInputText defaultValue={appIntroductionData?.can} />
       {state.errors && <p className="text-red-500">{state.errors.can}</p>}
       <input type="hidden" name="userId" value="669e16cd03bbe8839f00f345" />
+      {appId && <input type="hidden" name="appId" value={appId} />}
       <Button color="blue" size="normal" className="block mx-auto">
         アプリを追加
       </Button>

@@ -1,6 +1,5 @@
-import { addAppIntroduction } from "@/app/api/action/ActionAppIntroduction";
+import { updateAppIntroduction } from "@/app/action/ActionAppIntroduction";
 import FormAppIntroduction from "@/app/components/dashboard/FormAppIntroduction";
-import Button from "@/app/components/ui/Button";
 import prisma from "@/app/lib/prisma";
 
 const page = async ({ params }: { params: { app_id: string } }) => {
@@ -17,7 +16,8 @@ const page = async ({ params }: { params: { app_id: string } }) => {
         <FormAppIntroduction
           formName="編集フォーム"
           appIntroductionData={appIntroductionData}
-          formAction={addAppIntroduction}
+          formAction={updateAppIntroduction}
+          appId={id}
         />
       </div>
     </>
