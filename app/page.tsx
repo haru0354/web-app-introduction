@@ -1,3 +1,4 @@
+import FormAppIntroduction from "./components/dashboard/FormAppIntroduction";
 import Button from "./components/ui/Button";
 import InputText from "./components/ui/InputText";
 import Modal from "./components/ui/Modal";
@@ -25,6 +26,9 @@ export default function Home() {
             <p>Test</p>
             <p>Test</p>
           </div>
+        </Modal>
+        <Modal buttonText="Test000" >
+          <FormAppIntroduction />
         </Modal>
       </div>
       <div className="w-full max-w-[300px] px-2">side</div>
