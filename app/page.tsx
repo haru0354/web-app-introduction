@@ -21,14 +21,7 @@ export default function Home() {
         <Button color="gray" size="normal">
           キャンセル
         </Button>
-        <Modal buttonText="Test000">
-          <div>
-            <p>Test</p>
-            <p>Test</p>
-            <p>Test</p>
-          </div>
-        </Modal>
-        <Modal buttonText="Test000">
+        <Modal buttonText="Test000" buttonColor="blue" >
           <FormAppIntroduction
             formName="追加フォーム"
             formAction={addAppIntroduction}
