@@ -64,14 +64,16 @@ export const addAppIntroduction = async (
   }
 };
 
-export const updateAppIntroduction = async (state: FormState, formData: FormData) => {
+export const updateAppIntroduction = async (
+  state: FormState,
+  formData: FormData
+) => {
   const title = formData.get("title") as string;
   const summary = formData.get("summary") as string;
   const url = formData.get("url") as string;
   const technology = formData.get("technology") as string;
   const overview = formData.get("overview") as string;
   const solution = formData.get("solution") as string;
-  const userId = formData.get("userId") as string;
   const appId = formData.get("appId") as string;
 
   const canArray = [];
@@ -102,13 +104,29 @@ export const updateAppIntroduction = async (state: FormState, formData: FormData
         overview,
         solution,
         can: canArray,
-        userId,
       },
     });
     console.log("アプリの編集に成功しました。");
   } catch (error) {
     console.error("アプリの編集の際にエラーが発生しました。:", error);
     return { message: "アプリの編集の際にエラーが発生しました。" };
+  }
+  redirect("/dashboard");
+};
+
+export const deleteAppIntroduction = async (formData: FormData) => {
+  const id = formData.get("appId") as string;
+
+  try {
+    await prisma.appIntroduction.delete({
+      where: {
+        id,
+      },
+    });
+    console.log("アプリの削除に成功しました。");
+  } catch (error) {
+    console.error("アプリの削除の際にエラーが発生しました。:", error);
+    return { message: "アプリの削除の際にエラーが発生しました。" };
   }
   redirect("/dashboard");
 };
