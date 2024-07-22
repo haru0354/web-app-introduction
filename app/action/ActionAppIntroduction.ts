@@ -2,6 +2,7 @@
 
 import { redirect } from "next/navigation";
 import prisma from "../lib/prisma";
+import { z } from "zod";
 
 type FormState = {
   message?: string | null;
@@ -15,6 +16,16 @@ type FormState = {
     can?: string[] | undefined;
   };
 };
+
+const appIntroductionSchema = z.object({
+  title: z.string().min(1, { message: "タイトルの入力は必須です" }),
+  summary: z.string().min(1, { message: "アプリの種類の入力は必須です" }),
+  url: z.string().url({ message: "URLを入力してください" }),
+  technology: z.string().optional(),
+  overview: z.string().min(1, { message: "詳細の入力は必須です" }),
+  solution: z.string().min(1, { message: "解決できる課題の入力は必須です" }),
+  can: z.array(z.string().min(1, { message: "最低でも1つ出来ることを記載が必要です" }))
+});
 
 export const addAppIntroduction = async (
   state: FormState,
@@ -43,6 +54,25 @@ export const addAppIntroduction = async (
     canIndex++;
   }
 
+  const validatedFields = appIntroductionSchema.safeParse({
+    title,
+    summary,
+    url,
+    technology,
+    overview,
+    solution,
+    can: canArray,
+  });
+
+  if (!validatedFields.success) {
+    const errors = {
+      errors: validatedFields.error.flatten().fieldErrors,
+      message: "バリデーションエラー",
+    };
+    console.log(errors);
+    return errors;
+  }
+
   try {
     await prisma.appIntroduction.create({
       data: {
@@ -57,11 +87,11 @@ export const addAppIntroduction = async (
       },
     });
     console.log("アプリの追加に成功しました。");
-    return { message: "addSuccess" };
   } catch (error) {
     console.error("アプリの追加の際にエラーが発生しました。:", error);
     return { message: "アプリの追加の際にエラーが発生しました。" };
   }
+  redirect("/dashboard");
 };
 
 export const updateAppIntroduction = async (
@@ -89,6 +119,25 @@ export const updateAppIntroduction = async (
       break;
     canArray.push(value);
     canIndex++;
+  }
+
+  const validatedFields = appIntroductionSchema.safeParse({
+    title,
+    summary,
+    url,
+    technology,
+    overview,
+    solution,
+    can: canArray,
+  });
+
+  if (!validatedFields.success) {
+    const errors = {
+      errors: validatedFields.error.flatten().fieldErrors,
+      message: "バリデーションエラー",
+    };
+    console.log(errors);
+    return errors;
   }
 
   try {

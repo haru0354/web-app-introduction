@@ -71,29 +71,35 @@ const FormAppIntroduction: React.FC<FormAppIntroductionProps> = ({
         placeholder="アプリ名を入力してください。"
         defaultValue={appIntroductionData?.title}
       />
-      {state.errors && <p className="text-red-500">{state.errors.title}</p>}
+      {state.errors && state.errors.title && (
+        <p className="mb-4 text-red-500">{state.errors.title}</p>
+      )}
       <InputText
         label="アプリの種類"
         name="summary"
         placeholder="一言でどんなアプリか入力してください。"
         defaultValue={appIntroductionData?.summary}
       />
-      {state.errors && <p className="text-red-500">{state.errors.summary}</p>}
+      {state.errors && state.errors.summary && (
+        <p className="mb-4 text-red-500">{state.errors.summary}</p>
+      )}
       <InputText
         label="URL"
         name="url"
         placeholder="アプリのURLを入力してください。"
         defaultValue={appIntroductionData?.url}
       />
-      {state.errors && <p className="text-red-500">{state.errors.url}</p>}
+      {state.errors && state.errors.url && (
+        <p className="mb-4 text-red-500">{state.errors.url}</p>
+      )}
       <InputText
         label="使用技術"
         name="technology"
         placeholder="使用技術を入力してください。"
         defaultValue={appIntroductionData?.technology ?? undefined}
       />
-      {state.errors && (
-        <p className="text-red-500">{state.errors.technology}</p>
+      {state.errors && state.errors.technology && (
+        <p className="mb-4 text-red-500">{state.errors.technology}</p>
       )}
       <Textarea
         label="詳細"
@@ -101,16 +107,22 @@ const FormAppIntroduction: React.FC<FormAppIntroductionProps> = ({
         placeholder="アプリの詳細を入力してください。"
         defaultValue={appIntroductionData?.overview}
       />
-      {state.errors && <p className="text-red-500">{state.errors.overview}</p>}{" "}
+      {state.errors && state.errors.overview && (
+        <p className="mb-4 text-red-500">{state.errors.overview}</p>
+      )}
       <InputText
         label="解決できる課題"
         name="solution"
         placeholder="アプリで解決できる課題を入力してください。"
         defaultValue={appIntroductionData?.solution}
       />
-      {state.errors && <p className="text-red-500">{state.errors.solution}</p>}
+      {state.errors && state.errors.solution && (
+        <p className="mb-4 text-red-500">{state.errors.solution}</p>
+      )}
       <DynamicInputText defaultValue={appIntroductionData?.can} />
-      {state.errors && <p className="text-red-500">{state.errors.can}</p>}
+      {state.errors && state.errors.can && (
+        <p className="mb-4 text-red-500">{state.errors.can}</p>
+      )}
       <input type="hidden" name="userId" value="669e16cd03bbe8839f00f345" />
       {appId && <input type="hidden" name="appId" value={appId} />}
       <Button color="blue" size="normal" className="block mx-auto">
