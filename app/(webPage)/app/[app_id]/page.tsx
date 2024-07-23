@@ -18,10 +18,9 @@ const page = async ({ params }: { params: { app_id: string } }) => {
   return (
     <>
       <h1 className="text-2xl font-bold py-2">{appData.title}の詳細</h1>
-      {appData.imageUrl[0] && (
+      {appData.images[0] && (
         <ImageSlider
-          imageUrls={appData.imageUrl}
-          imageAlts={appData.imageAlt}
+          images={appData.images}
         />
       )}      
       <p>アプリの特徴：　{appData.summary}</p>

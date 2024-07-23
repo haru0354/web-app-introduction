@@ -6,11 +6,15 @@ import "slick-carousel/slick/slick-theme.css";
 import Image from "next/image";
 
 type ImageSliderProps = {
-  imageUrls: string[];
-  imageAlts: string[];
+  images: Images[];
 };
 
-const ImageSlider: React.FC<ImageSliderProps> = ({ imageUrls, imageAlts }) => {
+type Images = {
+  imageURL: string;
+  imageALT: string;
+}
+
+const ImageSlider: React.FC<ImageSliderProps> = ({ images }) => {
   const settings = {
     className: "center",
     centerMode: true,
@@ -22,17 +26,17 @@ const ImageSlider: React.FC<ImageSliderProps> = ({ imageUrls, imageAlts }) => {
   return (
     <div className="w-full max-w-[800px] mx-auto">
       <Slider {...settings}>
-        {imageUrls.map((imageUrl, index) => {
+        {images.map((image, index) => {
           return (
             <div key={index} className="min-w-[200px]text-center my-4 mx-8 md:mx-0">
               <Image
-                src={`/${imageUrl}`}
+                src={`/${image.imageURL}`}
                 width={200}
                 height={200}
-                alt={imageAlts[index]}
+                alt={image.imageALT}
                 className="mx-auto"
               />
-              <p>{imageAlts[index]}</p>
+              <p>{image.imageALT}</p>
             </div>
           );
         })}
