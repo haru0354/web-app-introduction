@@ -38,6 +38,10 @@ export const addAppIntroduction = async (
   const overview = formData.get("overview") as string;
   const solution = formData.get("solution") as string;
   const userId = formData.get("userId") as string;
+  const imageURL = formData.get("imageURL") as string;
+  const imageALT = formData.get("imageALT") as string;
+  const imageURL2 = formData.get("imageURL2") as string;
+  const imageALT2 = formData.get("imageALT2") as string;
 
   const canArray = [];
   let canIndex = 0;
@@ -83,9 +87,20 @@ export const addAppIntroduction = async (
         overview,
         solution,
         can: canArray,
+        images: [
+          {
+            imageURL,
+            imageALT,
+          },
+          {
+            imageURL: imageURL2,
+            imageALT: imageALT2,
+          }
+        ],
         userId,
       },
     });
+
     console.log("アプリの追加に成功しました。");
   } catch (error) {
     console.error("アプリの追加の際にエラーが発生しました。:", error);
