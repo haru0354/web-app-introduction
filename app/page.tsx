@@ -1,4 +1,4 @@
-import { addAppIntroduction } from "./api/action/ActionAppIntroduction";
+import { addAppIntroduction } from "./action/ActionAppIntroduction";
 import FormAppIntroduction from "./components/dashboard/FormAppIntroduction";
 import Button from "./components/ui/Button";
 import InputText from "./components/ui/InputText";
@@ -21,15 +21,11 @@ export default function Home() {
         <Button color="gray" size="normal">
           キャンセル
         </Button>
-        <Modal buttonText="Test000" >
-          <div>
-            <p>Test</p>
-            <p>Test</p>
-            <p>Test</p>
-          </div>
-        </Modal>
-        <Modal buttonText="Test000" >
-          <FormAppIntroduction formAction={addAppIntroduction}/>
+        <Modal buttonText="Test000" buttonColor="blue" >
+          <FormAppIntroduction
+            formName="追加フォーム"
+            formAction={addAppIntroduction}
+          />
         </Modal>
       </div>
       <div className="w-full max-w-[300px] px-2">side</div>

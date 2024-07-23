@@ -1,8 +1,16 @@
+"use client"
+
 import { useState } from "react";
 import InputText from "./InputText";
 import Button from "./Button";
 
-const DynamicInputText = () => {
+type DynamicInputTextProps = {
+  defaultValue?: string[];
+};
+
+const DynamicInputText: React.FC<DynamicInputTextProps> = ({
+  defaultValue,
+}) => {
   const initialVisibleCount = 1;
   const maxVisibleCount = 5;
 
@@ -14,12 +22,15 @@ const DynamicInputText = () => {
 
   const renderInputFields = () => {
     const inputs = [];
+    const values = defaultValue ?? [];
+    
     for (let i = 0; i < visibleCount; i++) {
       inputs.push(
         <InputText
           key={i}
           name={`can${i}`}
           placeholder="出来ることをリストで入力してください。"
+          defaultValue={values[i] ?? ""}
         />
       );
     }

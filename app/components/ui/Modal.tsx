@@ -4,11 +4,12 @@ import { useEffect, useState } from "react";
 import Button from "./Button";
 
 type ModalProps = {
+  buttonColor: "red" | "blue" | "gray";
   buttonText: string;
   children: React.ReactNode;
 };
 
-const Modal: React.FC<ModalProps> = ({ buttonText, children }) => {
+const Modal: React.FC<ModalProps> = ({ buttonColor, buttonText, children }) => {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 
   useEffect(() => {
@@ -33,11 +34,12 @@ const Modal: React.FC<ModalProps> = ({ buttonText, children }) => {
 
   return (
     <>
-    <Button color="blue" size="normal" className="block" onClick={toggleModalOpen}>{buttonText}</Button>
+    <Button color={buttonColor} size="normal" className="block mx-auto" onClick={toggleModalOpen}>{buttonText}</Button>
       {isModalOpen && (
         <div className="fixed flex items-center justify-center inset-0 w-full h-full z-[100] bg-gray-700 bg-opacity-75" onClick={toggleModalClose}>
-          <div className="p-4 border border-gray-700 rounded bg-white">
+          <div className="max-h-[80vh] p-4 border border-gray-700 rounded bg-white overflow-y-auto">
             {children}
+            <Button color="gray" size="normal" className="block mx-auto" onClick={toggleModalOpen}>キャンセル</Button>
           </div>
         </div>
       )}
