@@ -12,9 +12,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <main className="flex flex-col md:flex-row justify-between w-full max-w-[1140px] mx-auto">
-      <div className="order-2 w-full max-w-[800px] px-2">{children}</div>
-      <DashboardSideMenu />
+    <main className="w-full max-w-[1140px] my-12 mx-auto">
+      <div className="w-full px-2">{children}</div>
     </main>
   );
 }
