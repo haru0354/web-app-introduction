@@ -15,6 +15,7 @@ model User {
   image              String?
   accounts           Account[]
   sessions           Session[]
+  profiles           Profile
   appIntroductions   AppIntroduction[]
   createdAt          DateTime  @default(now())
   updatedAt          DateTime  @updatedAt
@@ -59,4 +60,13 @@ model AppIntroduction {
 type Image {
   imageURL           String
   imageALT           String
+}
+
+type Profile {
+  selfIntroduction   String
+  occupation         String
+  skill              String
+  portfolio          String
+  gitHub             String
+  x                  String
 }
