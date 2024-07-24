@@ -5,12 +5,14 @@ import InputText from "../ui/InputText";
 import Textarea from "../ui/Textarea";
 import Button from "../ui/Button";
 import DynamicInputText from "../ui/DynamicInputText";
+import Link from "next/link";
 
 type FormAppIntroductionProps = {
   formAction: (state: FormState, formData: FormData) => Promise<FormState>;
   formName: string;
   appIntroductionData?: AppIntroduction | null;
   appId?: string;
+  backButton?: boolean;
 };
 
 type AppIntroduction = {
@@ -41,6 +43,7 @@ const FormAppIntroduction: React.FC<FormAppIntroductionProps> = ({
   formName,
   appIntroductionData,
   appId,
+  backButton = false,
 }) => {
   const initialState = {
     message: null,
@@ -130,8 +133,20 @@ const FormAppIntroduction: React.FC<FormAppIntroductionProps> = ({
       <input type="hidden" name="imageALT2" value="imageALT2" />
       {appId && <input type="hidden" name="appId" value={appId} />}
       <Button color="blue" size="normal" className="block mx-auto">
-        アプリを追加
+        保存
       </Button>
+      {backButton && (
+        <Link href="/dashboard">
+          <Button
+            color="gray"
+            size="normal"
+            className="block mx-auto"
+            type="button"
+          >
+            キャンセル
+          </Button>
+        </Link>
+      )}
     </form>
   );
 };
