@@ -22,7 +22,7 @@ const page = async ({ params }: { params: { app_id: string } }) => {
 
   return (
     <>
-      <h2>アプリの編集</h2>
+      <h2 className="h1">アプリの編集</h2>
       <div className="mx-auto p-4 border border-gray-700 rounded">
         <FormAppIntroduction
           formName="編集フォーム"
@@ -31,7 +31,7 @@ const page = async ({ params }: { params: { app_id: string } }) => {
           appId={id}
         />
       </div>
-      <h2>アプリの削除</h2>
+      <h2 className="h2">アプリの削除</h2>
       <Modal buttonText="削除" buttonColor="red">
         <p className="text-center">
           登録したアプリ「{appIntroductionData?.title}」を削除しますか？
