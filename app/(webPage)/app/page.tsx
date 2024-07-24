@@ -7,7 +7,7 @@ const page = async () => {
 
   return (
     <>
-      <h1 className="text-2xl font-bold py-2 border-b border-dashed border-gray-700">WEBアプリの一覧ページ</h1>
+      <h1 className="h1">WEBアプリの一覧ページ</h1>
       <div className="flex flex-wrap">
         {appAll.map((app) => {
           return (

@@ -17,7 +17,7 @@ const page = async ({ params }: { params: { app_id: string } }) => {
 
   return (
     <>
-      <h1 className="text-2xl font-bold py-2">{appData.title}の詳細</h1>
+      <h1 className="h1">{appData.title}の詳細</h1>
       {appData.images[0] && (
         <ImageSlider
           images={appData.images}
@@ -26,7 +26,7 @@ const page = async ({ params }: { params: { app_id: string } }) => {
       <p>アプリの特徴：　{appData.summary}</p>
       <p>URL：　{appData.url}</p>
       <p>使用技術：　{appData.technology}</p>
-      <h2 className="font-semibold text-xl my-4 py-2 border-b border-dashed border-gray-700">
+      <h2 className="h2">
         「{appData.title}」で出来ること
       </h2>
       <ul className="my-8 mx-12 py-2 px-4 border border-gray-400">
@@ -38,11 +38,11 @@ const page = async ({ params }: { params: { app_id: string } }) => {
           );
         })}
       </ul>
-      <h2 className="font-semibold text-xl my-4 py-2 border-b border-dashed border-gray-700">
+      <h2 className="h2">
         「{appData.title}」の概要
       </h2>
       {appData.overview}
-      <h2 className="font-semibold text-xl my-4 py-2 border-b border-dashed border-gray-700">
+      <h2 className="h2">
         「{appData.title}」がおすすめな人・解決できること
       </h2>
       {appData.solution}
