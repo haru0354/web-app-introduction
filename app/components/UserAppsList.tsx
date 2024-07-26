@@ -4,6 +4,7 @@ import Button from "./ui/Button";
 
 type UserAppsListProps = {
   appIntroductions: AppIntroductions[];
+  editButton?: boolean;
 };
 
 type AppIntroductions = {
@@ -18,7 +19,10 @@ type Image = {
   imageALT: string;
 };
 
-const UserAppsList: React.FC<UserAppsListProps> = ({ appIntroductions }) => {
+const UserAppsList: React.FC<UserAppsListProps> = ({
+  appIntroductions,
+  editButton = false,
+}) => {
   return (
     <div className="flex flex-wrap">
       {appIntroductions.map((appIntroduction) => {
@@ -49,11 +53,13 @@ const UserAppsList: React.FC<UserAppsListProps> = ({ appIntroductions }) => {
                 {appIntroduction.title}
               </h2>
               {appIntroduction.summary}
-              <Link href={`/dashboard/${appIntroduction.id}`}>
-                <Button color="gray" size="normal" className=" ">
-                  編集
-                </Button>
-              </Link>
+              {editButton && (
+                <Link href={`/dashboard/${appIntroduction.id}`}>
+                  <Button color="gray" size="normal" className=" ">
+                    編集
+                  </Button>
+                </Link>
+              )}
             </div>
           </>
         );

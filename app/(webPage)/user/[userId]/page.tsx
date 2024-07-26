@@ -10,8 +10,8 @@ const page = () => {
         userName={user.name}
         profile={user.profile}
       />
-      <h2 className="h2">登録しているアプリの一覧</h2>
-      <UserAppsList appIntroductions={user.appIntroductions} editButton={true}/>
+      <h2 className="h2">登録されてるアプリの一覧</h2>
+      <UserAppsList appIntroductions={user.appIntroductions} />
     </>
   );
 };
