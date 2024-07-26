@@ -46,7 +46,7 @@ const UserAppsList: React.FC<UserAppsListProps> = ({
                       ? appIntroduction.images.imageALT
                       : "test"
                   }
-                  className="border border-gray-400"
+                  className="border border-gray-400 hover:-translate-y-2 transition"
                 />
               </Link>
               <h2 className="text-gray-600 font-semibold">
