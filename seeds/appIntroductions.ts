@@ -1,4 +1,4 @@
-const appIntroductions = [
+export const appIntroductions = [
   {
     id: "669e1fcab7832da90de75e00",
     title: "アプリ名3",
