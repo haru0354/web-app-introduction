@@ -1,27 +1,43 @@
-import { appIntroductions } from "@/seeds/appIntroductions";
 import Image from "next/image";
+import Link from "next/link";
+import prisma from "@/app/lib/prisma";
 
-const NewAppIntroductions = () => {
+const NewAppIntroductions = async () => {
+  const appIntroductions = await prisma.appIntroduction.findMany();
+
   const sortedAppIntroductions = appIntroductions.sort(
     (a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
   );
   const threeIntroductions = sortedAppIntroductions.slice(0, 3);
 
   return (
-    <div>
-      <h2 className="h2">新着のアプリ</h2>
-      {threeIntroductions.map((appIntroduction) => (
-        <div key={appIntroduction.id} className="w-full mx-auto text-center">
-          <Image
-            src={`/${appIntroduction.images[0].imageURL}`}
-            width={250}
-            height={250}
-            alt={appIntroduction.images[0].imageALT}
-          />
-          <h3 className="text-semibold">{appIntroduction.title}</h3>
-          <p>{appIntroduction.summary}</p>
-        </div>
-      ))}
+    <div className="w-full">
+      <h2 className="h2 pl-2">新着のアプリ</h2>
+      {threeIntroductions.map((appIntroduction) => {
+        const imageUrl = appIntroduction.images.length > 0 && appIntroduction.images[0].imageURL
+          ? `/${appIntroduction.images[0].imageURL}`
+          : "/no-image.jpg";
+
+        const imageAlt = appIntroduction.images.length > 0 && appIntroduction.images[0].imageALT
+          ? appIntroduction.images[0].imageALT
+          : "アプリの画像";
+
+        return (
+          <div key={appIntroduction.id} className="w-full text-center my-6 hover:-translate-y-2 transition">
+            <Link href={`/app/${appIntroduction.id}`}>
+                <Image
+                  src={imageUrl}
+                  width={200}
+                  height={200}
+                  alt={imageAlt}
+                  className="mx-auto border border-gray-400 rounded"
+                />
+                <h3 className="font-semibold">{appIntroduction.title}</h3>
+                <p className="text-sm">「{appIntroduction.summary}」</p>
+            </Link>
+          </div>
+        );
+      })}
     </div>
   );
 };
