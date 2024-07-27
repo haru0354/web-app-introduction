@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import SideMenu from "../components/SideMenu";
+import SideMenu from "../components/webPage/sideMenu/SideMenu";
 
 export const metadata: Metadata = {
   title: "Create Next App",

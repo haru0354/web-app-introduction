@@ -15,7 +15,7 @@ body {
 }
 
 .a {
-  @apply text-blue-400;
+  @apply text-sky-600;
 }
 
 .slick-prev {
