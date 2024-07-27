@@ -10,14 +10,24 @@ const page = async () => {
       <h1 className="h1">WEBアプリの一覧ページ</h1>
       <div className="flex flex-wrap">
         {appAll.map((app) => {
+          const imageUrl =
+            app.images.length > 0 && app.images[0].imageURL
+              ? `/${app.images[0].imageURL}`
+              : "/no-image.jpg";
+
+          const imageAlt =
+            app.images.length > 0 && app.images[0].imageALT
+              ? app.images[0].imageALT
+              : "アプリの画像";
+              
           return (
             <div className="flex flex-col min-w-[200px] min-h-[200px] mx-2 my-6 text-center">
               <Link href={`/app/${app.id}`} key={app.id}>
                 <Image
-                  src="/test.JPG"
+                  src={imageUrl}
                   width={200}
                   height={200}
-                  alt="test"
+                  alt={imageAlt}
                   className="border border-gray-400 rounded hover:-translate-y-2 transition"
                 />
               </Link>
