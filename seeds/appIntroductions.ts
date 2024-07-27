@@ -9,8 +9,8 @@ export const appIntroductions = [
     solution: "解決できる課題",
     can: ["出来ることリスト3", "出来ることリスト3"],
     images: [
-      { imageURL: "e.jpg", imageALT: "e" },
-      { imageURL: "f.jpg", imageALT: "f" },
+      { imageURL: "test.JPG", imageALT: "e" },
+      { imageURL: "test.JPG", imageALT: "f" },
     ],
     userId: "669e16cd03bbe8839f00f345",
     createdAt: "2024-07-27T09:00:58.645Z",
@@ -26,8 +26,8 @@ export const appIntroductions = [
     solution: "解決できる課題0",
     can: ["出来ることリスト0", "出来ることリスト0"],
     images: [
-      { imageURL: "c.jpg", imageALT: "c" },
-      { imageURL: "d.jpg", imageALT: "d" },
+      { imageURL: "test.JPG", imageALT: "c" },
+      { imageURL: "test.JPG", imageALT: "d" },
     ],
     userId: "669e16cd03bbe8839f00f345",
     createdAt: "2024-07-30T09:00:58.645Z",
@@ -43,8 +43,8 @@ export const appIntroductions = [
     solution: "解決できる課題2",
     can: ["出来ることリスト2", "出来ることリスト2"],
     images: [
-      { imageURL: "b.jpg", imageALT: "a" },
-      { imageURL: "a.jpg", imageALT: "b" },
+      { imageURL: "test.JPG", imageALT: "a" },
+      { imageURL: "test.JPG", imageALT: "b" },
     ],
     userId: "669e16cd03bbe8839f00f342",
     createdAt: "2024-07-22T09:00:58.645Z",
@@ -60,8 +60,8 @@ export const appIntroductions = [
     solution: "解決できる課題5",
     can: ["出来ることリスト5", "出来ることリスト5"],
     images: [
-      { imageURL: "5.jpg", imageALT: "0" },
-      { imageURL: "4.jpg", imageALT: "1" },
+      { imageURL: "test.JPG", imageALT: "0" },
+      { imageURL: "test.JPG", imageALT: "1" },
     ],
     userId: "669e16cd03bbe8839f00f342",
     createdAt: "2024-07-31T09:00:58.645Z",

@@ -5,6 +5,7 @@ import InputText from "./components/ui/InputText";
 import Modal from "./components/ui/Modal";
 import Textarea from "./components/ui/Textarea";
 import NewAppIntroductions from "./components/webPage/sideMenu/NewAppIntroductions ";
+import SideLink from "./components/webPage/sideMenu/SideLink";
 
 export default function Home() {
   return (
@@ -29,6 +30,7 @@ export default function Home() {
           />
         </Modal>
         <NewAppIntroductions />
+        <SideLink />
       </div>
       <div className="w-full max-w-[300px] px-2">side</div>
     </main>
