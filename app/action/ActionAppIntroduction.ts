@@ -40,9 +40,10 @@ export const addAppIntroduction = async (
   const technology = formData.get("technology") as string;
   const overview = formData.get("overview") as string;
   const solution = formData.get("solution") as string;
-  const userId = formData.get("userId") as string;
   const image = formData.get("imageFile") as File;
   const imageALT = formData.get("imageALT") as string;
+
+  const userId = formData.get("userId") as string;
 
   const canArray = [];
   let canIndex = 0;
@@ -77,8 +78,8 @@ export const addAppIntroduction = async (
     console.log(errors);
     return errors;
   }
-  
-    const imageURL = await FileSaveStorage(image, userId);
+
+  const imageURL = await FileSaveStorage(image, userId);
 
   try {
     await prisma.appIntroduction.create({
@@ -118,7 +119,11 @@ export const updateAppIntroduction = async (
   const technology = formData.get("technology") as string;
   const overview = formData.get("overview") as string;
   const solution = formData.get("solution") as string;
+  const image = formData.get("imageFile") as File;
+  const imageALT = formData.get("imageALT") as string;
+
   const appId = formData.get("appId") as string;
+  const userId = formData.get("userId") as string;
 
   const canArray = [];
   let canIndex = 0;
@@ -145,6 +150,8 @@ export const updateAppIntroduction = async (
     can: canArray,
   });
 
+  const imageURL = await FileSaveStorage(image, userId);
+
   if (!validatedFields.success) {
     const errors = {
       errors: validatedFields.error.flatten().fieldErrors,
@@ -167,6 +174,12 @@ export const updateAppIntroduction = async (
         overview,
         solution,
         can: canArray,
+        images: [
+          {
+            imageURL,
+            imageALT,
+          },
+        ],
       },
     });
     console.log("アプリの編集に成功しました。");
