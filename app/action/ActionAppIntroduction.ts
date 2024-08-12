@@ -3,6 +3,7 @@
 import { redirect } from "next/navigation";
 import prisma from "../lib/prisma";
 import { z } from "zod";
+import { FileSaveStorage } from "../components/lib/FileSaveStorage";
 
 type FormState = {
   message?: string | null;
@@ -24,7 +25,9 @@ const appIntroductionSchema = z.object({
   technology: z.string().optional(),
   overview: z.string().min(1, { message: "詳細の入力は必須です" }),
   solution: z.string().min(1, { message: "解決できる課題の入力は必須です" }),
-  can: z.array(z.string().min(1, { message: "最低でも1つ出来ることを記載が必要です" }))
+  can: z.array(
+    z.string().min(1, { message: "最低でも1つ出来ることを記載が必要です" })
+  ),
 });
 
 export const addAppIntroduction = async (
@@ -38,10 +41,8 @@ export const addAppIntroduction = async (
   const overview = formData.get("overview") as string;
   const solution = formData.get("solution") as string;
   const userId = formData.get("userId") as string;
-  const imageURL = formData.get("imageURL") as string;
+  const image = formData.get("imageFile") as File;
   const imageALT = formData.get("imageALT") as string;
-  const imageURL2 = formData.get("imageURL2") as string;
-  const imageALT2 = formData.get("imageALT2") as string;
 
   const canArray = [];
   let canIndex = 0;
@@ -76,6 +77,8 @@ export const addAppIntroduction = async (
     console.log(errors);
     return errors;
   }
+  
+    const imageURL = await FileSaveStorage(image, userId);
 
   try {
     await prisma.appIntroduction.create({
@@ -92,10 +95,6 @@ export const addAppIntroduction = async (
             imageURL,
             imageALT,
           },
-          {
-            imageURL: imageURL2,
-            imageALT: imageALT2,
-          }
         ],
         userId,
       },
