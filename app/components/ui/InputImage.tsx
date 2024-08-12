@@ -1,7 +1,7 @@
 type InputImageProps = {
   label?: string;
   name: string;
-  placeholder: string;
+  placeholder?: string;
   defaultValue?: string;
 };
 

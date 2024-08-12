@@ -6,6 +6,7 @@ import Textarea from "../ui/Textarea";
 import Button from "../ui/Button";
 import DynamicInputText from "../ui/DynamicInputText";
 import Link from "next/link";
+import InputImage from "../ui/InputImage";
 
 type FormAppIntroductionProps = {
   formAction: (state: FormState, formData: FormData) => Promise<FormState>;
@@ -126,6 +127,7 @@ const FormAppIntroduction: React.FC<FormAppIntroductionProps> = ({
       {state.errors && state.errors.can && (
         <p className="mb-4 text-red-500">{state.errors.can}</p>
       )}
+      <InputImage label="画像のアップロード" name="imageFile" />
       <input type="hidden" name="userId" value="669e16cd03bbe8839f00f345" />
       <input type="hidden" name="imageURL" value="imageURL" />
       <input type="hidden" name="imageALT" value="imageALT" />
