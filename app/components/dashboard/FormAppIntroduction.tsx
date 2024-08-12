@@ -24,6 +24,7 @@ type AppIntroduction = {
   overview: string;
   solution: string;
   can: string[];
+  imageALT?: string | null;
 };
 
 type FormState = {
@@ -36,6 +37,7 @@ type FormState = {
     overview?: string[] | undefined;
     solution?: string[] | undefined;
     can?: string[] | undefined;
+    imageALT?: string[] | undefined;
   };
 };
 
@@ -133,6 +135,9 @@ const FormAppIntroduction: React.FC<FormAppIntroductionProps> = ({
         name="imageALT"
         placeholder="アップロードする画像の簡単な説明"
       />
+      {state.errors && state.errors.imageALT && (
+        <p className="mb-4 text-red-500">{state.errors.imageALT}</p>
+      )}
       <input type="hidden" name="userId" value="669e16cd03bbe8839f00f345" />
       {appId && <input type="hidden" name="appId" value={appId} />}
       <Button color="blue" size="normal" className="block mx-auto">

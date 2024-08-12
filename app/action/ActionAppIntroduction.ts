@@ -15,6 +15,7 @@ type FormState = {
     overview?: string[] | undefined;
     solution?: string[] | undefined;
     can?: string[] | undefined;
+    imageALT?: string[] | undefined;
   };
 };
 
@@ -28,6 +29,12 @@ const appIntroductionSchema = z.object({
   can: z.array(
     z.string().min(1, { message: "最低でも1つ出来ることを記載が必要です" })
   ),
+});
+
+const ImageSchema = z.object({
+  imageALT: z
+    .string()
+    .min(1, { message: "画像の保存時には「画像の説明」の入力は必須です。" }),
 });
 
 export const addAppIntroduction = async (
@@ -74,6 +81,18 @@ export const addAppIntroduction = async (
     const errors = {
       errors: validatedFields.error.flatten().fieldErrors,
       message: "バリデーションエラー",
+    };
+    console.log(errors);
+    return errors;
+  }
+
+  const ImageValidatedFields = ImageSchema.safeParse({
+    imageALT,
+  });
+
+  if (!ImageValidatedFields.success) {
+    const errors = {
+      errors: ImageValidatedFields.error.flatten().fieldErrors,
     };
     console.log(errors);
     return errors;
@@ -150,8 +169,6 @@ export const updateAppIntroduction = async (
     can: canArray,
   });
 
-  const imageURL = await FileSaveStorage(image, userId);
-
   if (!validatedFields.success) {
     const errors = {
       errors: validatedFields.error.flatten().fieldErrors,
@@ -160,6 +177,20 @@ export const updateAppIntroduction = async (
     console.log(errors);
     return errors;
   }
+
+  const ImageValidatedFields = ImageSchema.safeParse({
+    imageALT,
+  });
+
+  if (!ImageValidatedFields.success) {
+    const errors = {
+      errors: ImageValidatedFields.error.flatten().fieldErrors,
+    };
+    console.log(errors);
+    return errors;
+  }
+
+  const imageURL = await FileSaveStorage(image, userId);
 
   try {
     await prisma.appIntroduction.update({
