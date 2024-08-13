@@ -95,7 +95,7 @@ export const addAppIntroduction = async (
       const ImageValidatedFields = ImageSchema.safeParse({
         imageALT,
       });
-    
+
       if (!ImageValidatedFields.success) {
         const errors = {
           errors: ImageValidatedFields.error.flatten().fieldErrors,
@@ -118,7 +118,7 @@ export const addAppIntroduction = async (
         return errors;
       }
 
-      const imageURL = await FileSaveStorage(image, userId);
+      imageURL = await FileSaveStorage(image, userId);
     } catch (error) {
       console.error("画像の追加時にエラーが発生しました", error);
       return { message: "画像の追加時にエラーが発生しました" };
@@ -212,7 +212,7 @@ export const updateAppIntroduction = async (
       const ImageValidatedFields = ImageSchema.safeParse({
         imageALT,
       });
-    
+
       if (!ImageValidatedFields.success) {
         const errors = {
           errors: ImageValidatedFields.error.flatten().fieldErrors,
@@ -235,7 +235,7 @@ export const updateAppIntroduction = async (
         return errors;
       }
 
-      const imageURL = await FileSaveStorage(image, userId);
+      imageURL = await FileSaveStorage(image, userId);
     } catch (error) {
       console.error("画像の追加時にエラーが発生しました", error);
       return { message: "画像の追加時にエラーが発生しました" };
