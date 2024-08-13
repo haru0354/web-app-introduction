@@ -6,6 +6,7 @@ import Textarea from "../ui/Textarea";
 import Button from "../ui/Button";
 import DynamicInputText from "../ui/DynamicInputText";
 import Link from "next/link";
+import InputImage from "../ui/InputImage";
 
 type FormAppIntroductionProps = {
   formAction: (state: FormState, formData: FormData) => Promise<FormState>;
@@ -23,6 +24,7 @@ type AppIntroduction = {
   overview: string;
   solution: string;
   can: string[];
+  imageALT?: string | null;
 };
 
 type FormState = {
@@ -35,6 +37,8 @@ type FormState = {
     overview?: string[] | undefined;
     solution?: string[] | undefined;
     can?: string[] | undefined;
+    image?: string[] | undefined;
+    imageALT?: string[] | undefined;
   };
 };
 
@@ -126,12 +130,20 @@ const FormAppIntroduction: React.FC<FormAppIntroductionProps> = ({
       {state.errors && state.errors.can && (
         <p className="mb-4 text-red-500">{state.errors.can}</p>
       )}
+      <InputImage label="画像のアップロード" name="imageFile" />
+      <InputText
+        label="画像の説明"
+        name="imageALT"
+        placeholder="アップロードする画像の簡単な説明"
+      />
+      {state.errors && state.errors.imageALT && (
+        <p className="mb-4 text-red-500">{state.errors.imageALT}</p>
+      )}
       <input type="hidden" name="userId" value="669e16cd03bbe8839f00f345" />
-      <input type="hidden" name="imageURL" value="imageURL" />
-      <input type="hidden" name="imageALT" value="imageALT" />
-      <input type="hidden" name="imageURL2" value="imageURL2" />
-      <input type="hidden" name="imageALT2" value="imageALT2" />
       {appId && <input type="hidden" name="appId" value={appId} />}
+      {state.errors && state.errors.imageALT && (
+        <p className="mb-4 text-red-500">{state.errors.image}</p>
+      )}
       <Button color="blue" size="normal" className="block mx-auto">
         保存
       </Button>

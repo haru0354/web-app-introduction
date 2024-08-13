@@ -1,6 +1,7 @@
 import { addAppIntroduction } from "./action/ActionAppIntroduction";
 import FormAppIntroduction from "./components/dashboard/FormAppIntroduction";
 import Button from "./components/ui/Button";
+import InputImage from "./components/ui/InputImage";
 import InputText from "./components/ui/InputText";
 import Modal from "./components/ui/Modal";
 import Textarea from "./components/ui/Textarea";
@@ -31,6 +32,7 @@ export default function Home() {
         </Modal>
         <NewAppIntroductions />
         <SideLink />
+        <InputImage name={"a"} placeholder={"a"} />
       </div>
       <div className="w-full max-w-[300px] px-2">side</div>
     </main>

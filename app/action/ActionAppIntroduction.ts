@@ -3,6 +3,8 @@
 import { redirect } from "next/navigation";
 import prisma from "../lib/prisma";
 import { z } from "zod";
+import { FileSaveStorage } from "../lib/FileSaveStorage";
+import { validateMimeTypeAndExtension } from "../lib/validateMimeTypeAndExtension";
 
 type FormState = {
   message?: string | null;
@@ -14,6 +16,8 @@ type FormState = {
     overview?: string[] | undefined;
     solution?: string[] | undefined;
     can?: string[] | undefined;
+    image?: string[] | undefined;
+    imageALT?: string[] | undefined;
   };
 };
 
@@ -24,7 +28,15 @@ const appIntroductionSchema = z.object({
   technology: z.string().optional(),
   overview: z.string().min(1, { message: "詳細の入力は必須です" }),
   solution: z.string().min(1, { message: "解決できる課題の入力は必須です" }),
-  can: z.array(z.string().min(1, { message: "最低でも1つ出来ることを記載が必要です" }))
+  can: z.array(
+    z.string().min(1, { message: "最低でも1つ出来ることを記載が必要です" })
+  ),
+});
+
+const ImageSchema = z.object({
+  imageALT: z
+    .string()
+    .min(1, { message: "画像の保存時には「画像の説明」の入力は必須です。" }),
 });
 
 export const addAppIntroduction = async (
@@ -37,11 +49,10 @@ export const addAppIntroduction = async (
   const technology = formData.get("technology") as string;
   const overview = formData.get("overview") as string;
   const solution = formData.get("solution") as string;
-  const userId = formData.get("userId") as string;
-  const imageURL = formData.get("imageURL") as string;
+  const image = formData.get("imageFile") as File;
   const imageALT = formData.get("imageALT") as string;
-  const imageURL2 = formData.get("imageURL2") as string;
-  const imageALT2 = formData.get("imageALT2") as string;
+
+  const userId = formData.get("userId") as string;
 
   const canArray = [];
   let canIndex = 0;
@@ -77,6 +88,43 @@ export const addAppIntroduction = async (
     return errors;
   }
 
+  let imageURL;
+
+  if (image && image.size > 0) {
+    try {
+      const ImageValidatedFields = ImageSchema.safeParse({
+        imageALT,
+      });
+
+      if (!ImageValidatedFields.success) {
+        const errors = {
+          errors: ImageValidatedFields.error.flatten().fieldErrors,
+        };
+        console.log(errors);
+        return errors;
+      }
+
+      const isValidFile = await validateMimeTypeAndExtension(image);
+
+      if (!isValidFile) {
+        const errors = {
+          errors: {
+            image: [
+              "画像ファイルが無効です。有効な画像ファイルを選択してください。",
+            ],
+          },
+        };
+        console.log(errors);
+        return errors;
+      }
+
+      imageURL = await FileSaveStorage(image, userId);
+    } catch (error) {
+      console.error("画像の追加時にエラーが発生しました", error);
+      return { message: "画像の追加時にエラーが発生しました" };
+    }
+  }
+
   try {
     await prisma.appIntroduction.create({
       data: {
@@ -87,16 +135,14 @@ export const addAppIntroduction = async (
         overview,
         solution,
         can: canArray,
-        images: [
-          {
-            imageURL,
-            imageALT,
-          },
-          {
-            imageURL: imageURL2,
-            imageALT: imageALT2,
-          }
-        ],
+        images: imageURL
+          ? [
+              {
+                imageURL,
+                imageALT,
+              },
+            ]
+          : [],
         userId,
       },
     });
@@ -119,7 +165,11 @@ export const updateAppIntroduction = async (
   const technology = formData.get("technology") as string;
   const overview = formData.get("overview") as string;
   const solution = formData.get("solution") as string;
+  const image = formData.get("imageFile") as File;
+  const imageALT = formData.get("imageALT") as string;
+
   const appId = formData.get("appId") as string;
+  const userId = formData.get("userId") as string;
 
   const canArray = [];
   let canIndex = 0;
@@ -155,6 +205,43 @@ export const updateAppIntroduction = async (
     return errors;
   }
 
+  let imageURL;
+
+  if (image && image.size > 0) {
+    try {
+      const ImageValidatedFields = ImageSchema.safeParse({
+        imageALT,
+      });
+
+      if (!ImageValidatedFields.success) {
+        const errors = {
+          errors: ImageValidatedFields.error.flatten().fieldErrors,
+        };
+        console.log(errors);
+        return errors;
+      }
+
+      const isValidFile = await validateMimeTypeAndExtension(image);
+
+      if (!isValidFile) {
+        const errors = {
+          errors: {
+            image: [
+              "画像ファイルが無効です。有効な画像ファイルを選択してください。",
+            ],
+          },
+        };
+        console.log(errors);
+        return errors;
+      }
+
+      imageURL = await FileSaveStorage(image, userId);
+    } catch (error) {
+      console.error("画像の追加時にエラーが発生しました", error);
+      return { message: "画像の追加時にエラーが発生しました" };
+    }
+  }
+
   try {
     await prisma.appIntroduction.update({
       where: {
@@ -168,6 +255,14 @@ export const updateAppIntroduction = async (
         overview,
         solution,
         can: canArray,
+        images: imageURL
+          ? [
+              {
+                imageURL,
+                imageALT,
+              },
+            ]
+          : [],
       },
     });
     console.log("アプリの編集に成功しました。");
