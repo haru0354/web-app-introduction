@@ -1,6 +1,6 @@
 "use server";
 
-import { supabase } from "../util/Supabase";
+import { supabase } from "../components/util/Supabase";
 
 export const FileSaveStorage = async (image: File, userId: string) => {
   try {

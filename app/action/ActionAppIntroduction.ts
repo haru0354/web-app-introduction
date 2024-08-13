@@ -3,7 +3,7 @@
 import { redirect } from "next/navigation";
 import prisma from "../lib/prisma";
 import { z } from "zod";
-import { FileSaveStorage } from "../components/lib/FileSaveStorage";
+import { FileSaveStorage } from "../lib/FileSaveStorage";
 
 type FormState = {
   message?: string | null;
