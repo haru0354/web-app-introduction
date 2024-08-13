@@ -88,22 +88,22 @@ export const addAppIntroduction = async (
     return errors;
   }
 
-  const ImageValidatedFields = ImageSchema.safeParse({
-    imageALT,
-  });
-
-  if (!ImageValidatedFields.success) {
-    const errors = {
-      errors: ImageValidatedFields.error.flatten().fieldErrors,
-    };
-    console.log(errors);
-    return errors;
-  }
-
   let imageURL;
 
   if (image && image.size > 0) {
     try {
+      const ImageValidatedFields = ImageSchema.safeParse({
+        imageALT,
+      });
+    
+      if (!ImageValidatedFields.success) {
+        const errors = {
+          errors: ImageValidatedFields.error.flatten().fieldErrors,
+        };
+        console.log(errors);
+        return errors;
+      }
+
       const isValidFile = await validateMimeTypeAndExtension(image);
 
       if (!isValidFile) {
@@ -205,19 +205,42 @@ export const updateAppIntroduction = async (
     return errors;
   }
 
-  const ImageValidatedFields = ImageSchema.safeParse({
-    imageALT,
-  });
+  let imageURL;
 
-  if (!ImageValidatedFields.success) {
-    const errors = {
-      errors: ImageValidatedFields.error.flatten().fieldErrors,
-    };
-    console.log(errors);
-    return errors;
+  if (image && image.size > 0) {
+    try {
+      const ImageValidatedFields = ImageSchema.safeParse({
+        imageALT,
+      });
+    
+      if (!ImageValidatedFields.success) {
+        const errors = {
+          errors: ImageValidatedFields.error.flatten().fieldErrors,
+        };
+        console.log(errors);
+        return errors;
+      }
+
+      const isValidFile = await validateMimeTypeAndExtension(image);
+
+      if (!isValidFile) {
+        const errors = {
+          errors: {
+            image: [
+              "画像ファイルが無効です。有効な画像ファイルを選択してください。",
+            ],
+          },
+        };
+        console.log(errors);
+        return errors;
+      }
+
+      const imageURL = await FileSaveStorage(image, userId);
+    } catch (error) {
+      console.error("画像の追加時にエラーが発生しました", error);
+      return { message: "画像の追加時にエラーが発生しました" };
+    }
   }
-
-  const imageURL = await FileSaveStorage(image, userId);
 
   try {
     await prisma.appIntroduction.update({
@@ -232,12 +255,14 @@ export const updateAppIntroduction = async (
         overview,
         solution,
         can: canArray,
-        images: [
-          {
-            imageURL,
-            imageALT,
-          },
-        ],
+        images: imageURL
+          ? [
+              {
+                imageURL,
+                imageALT,
+              },
+            ]
+          : [],
       },
     });
     console.log("アプリの編集に成功しました。");
