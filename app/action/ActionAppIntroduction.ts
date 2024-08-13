@@ -4,6 +4,7 @@ import { redirect } from "next/navigation";
 import prisma from "../lib/prisma";
 import { z } from "zod";
 import { FileSaveStorage } from "../lib/FileSaveStorage";
+import { validateMimeTypeAndExtension } from "../lib/validateMimeTypeAndExtension";
 
 type FormState = {
   message?: string | null;
@@ -15,6 +16,7 @@ type FormState = {
     overview?: string[] | undefined;
     solution?: string[] | undefined;
     can?: string[] | undefined;
+    image?: string[] | undefined;
     imageALT?: string[] | undefined;
   };
 };
@@ -98,7 +100,30 @@ export const addAppIntroduction = async (
     return errors;
   }
 
-  const imageURL = await FileSaveStorage(image, userId);
+  let imageURL;
+
+  if (image && image.size > 0) {
+    try {
+      const isValidFile = await validateMimeTypeAndExtension(image);
+
+      if (!isValidFile) {
+        const errors = {
+          errors: {
+            image: [
+              "画像ファイルが無効です。有効な画像ファイルを選択してください。",
+            ],
+          },
+        };
+        console.log(errors);
+        return errors;
+      }
+
+      const imageURL = await FileSaveStorage(image, userId);
+    } catch (error) {
+      console.error("画像の追加時にエラーが発生しました", error);
+      return { message: "画像の追加時にエラーが発生しました" };
+    }
+  }
 
   try {
     await prisma.appIntroduction.create({
@@ -110,12 +135,14 @@ export const addAppIntroduction = async (
         overview,
         solution,
         can: canArray,
-        images: [
-          {
-            imageURL,
-            imageALT,
-          },
-        ],
+        images: imageURL
+          ? [
+              {
+                imageURL,
+                imageALT,
+              },
+            ]
+          : [],
         userId,
       },
     });
