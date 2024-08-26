@@ -1,4 +1,6 @@
 import { addAppIntroduction } from "./action/ActionAppIntroduction";
+import { signUp } from "./action/ActionAuth";
+import FormAuth from "./components/auth/FormAuth";
 import FormAppIntroduction from "./components/dashboard/FormAppIntroduction";
 import Button from "./components/ui/Button";
 import InputImage from "./components/ui/InputImage";
@@ -30,6 +32,15 @@ export default function Home() {
             formAction={addAppIntroduction}
           />
         </Modal>
+        <Modal buttonText="登録" buttonColor="blue" >
+          <FormAuth
+            formName="アカウント登録"
+            formAction={signUp}
+          />
+        </Modal>
+
+
+
         <NewAppIntroductions />
         <SideLink />
         <InputImage name={"a"} placeholder={"a"} />
