@@ -1,4 +1,5 @@
-import { redirect } from "next/navigation";
+"use server"
+
 import prisma from "../lib/prisma";
 import { z } from "zod";
 
@@ -18,9 +19,9 @@ const profileSchema = z.object({
   selfIntroduction: z.string().optional(),
   occupation: z.string().optional(),
   skill: z.string().optional(),
-  portfolio: z.string().optional(),
-  gitHub: z.string().optional(),
-  x: z.string().optional(),
+  portfolio: z.string().url({ message: "URL を入力してください" }).optional(),
+  gitHub: z.string().url({ message: "URL を入力してください" }).optional(),
+  x: z.string().url({ message: "URL を入力してください" }).optional(),
 });
 
 export const editProfile = async (
