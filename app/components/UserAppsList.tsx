@@ -11,7 +11,7 @@ type AppIntroductions = {
   id: string;
   title: string;
   summary: string;
-  images: Image;
+  images: Image[];
 };
 
 type Image = {
@@ -23,9 +23,15 @@ const UserAppsList: React.FC<UserAppsListProps> = ({
   appIntroductions,
   editButton = false,
 }) => {
+  if (!appIntroductions) {
+    return null;
+  }
+
   return (
     <div className="flex flex-wrap">
       {appIntroductions.map((appIntroduction) => {
+        const firstImage = appIntroduction.images[0];
+
         return (
           <>
             <div
@@ -34,18 +40,10 @@ const UserAppsList: React.FC<UserAppsListProps> = ({
             >
               <Link href={`/app/${appIntroduction.id}`}>
                 <Image
-                  src={
-                    appIntroduction.images.imageURL
-                      ? appIntroduction.images.imageURL
-                      : "/test.JPG"
-                  }
+                  src={firstImage?.imageURL || "/test.JPG"}
                   width={200}
                   height={200}
-                  alt={
-                    appIntroduction.images.imageALT
-                      ? appIntroduction.images.imageALT
-                      : "test"
-                  }
+                  alt={firstImage?.imageALT || "test"}
                   className="border border-gray-400 hover:-translate-y-2 transition"
                 />
               </Link>
@@ -55,7 +53,7 @@ const UserAppsList: React.FC<UserAppsListProps> = ({
               {appIntroduction.summary}
               {editButton && (
                 <Link href={`/dashboard/${appIntroduction.id}`}>
-                  <Button color="gray" size="normal" className=" ">
+                  <Button color="gray" size="normal">
                     編集
                   </Button>
                 </Link>

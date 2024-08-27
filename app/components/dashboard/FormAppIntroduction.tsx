@@ -11,6 +11,7 @@ import InputImage from "../ui/InputImage";
 type FormAppIntroductionProps = {
   formAction: (state: FormState, formData: FormData) => Promise<FormState>;
   formName: string;
+  userId: string;
   appIntroductionData?: AppIntroduction | null;
   appId?: string;
   backButton?: boolean;
@@ -45,6 +46,7 @@ type FormState = {
 const FormAppIntroduction: React.FC<FormAppIntroductionProps> = ({
   formAction,
   formName,
+  userId,
   appIntroductionData,
   appId,
   backButton = false,
@@ -139,7 +141,7 @@ const FormAppIntroduction: React.FC<FormAppIntroductionProps> = ({
       {state.errors && state.errors.imageALT && (
         <p className="mb-4 text-red-500">{state.errors.imageALT}</p>
       )}
-      <input type="hidden" name="userId" value="669e16cd03bbe8839f00f345" />
+      <input type="hidden" name="userId" value={userId} />
       {appId && <input type="hidden" name="appId" value={appId} />}
       {state.errors && state.errors.imageALT && (
         <p className="mb-4 text-red-500">{state.errors.image}</p>
