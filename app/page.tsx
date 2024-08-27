@@ -34,7 +34,6 @@ export default function Home() {
         </Modal>
         <Modal buttonText="登録" buttonColor="blue" buttonSize="small" >
           <FormAuth
-            formName="アカウント登録"
             formAction={signUp}
           />
         </Modal>

@@ -14,7 +14,10 @@ type FormAuthState = {
 
 const accountSchema = z.object({
   email: z.string().email("メールアドレスを入力してください"),
-  password: z.string().min(8, { message: "8文字以上で入力してください。" }).max(12, { message: "12文字以下で入力してください。" }),
+  password: z
+    .string()
+    .min(8, { message: "8文字以上で入力してください。" })
+    .max(12, { message: "12文字以下で入力してください。" }),
 });
 
 export const signUp = async (state: FormAuthState, formData: FormData) => {
@@ -32,7 +35,7 @@ export const signUp = async (state: FormAuthState, formData: FormData) => {
         errors: validatedFields.error.flatten().fieldErrors,
         message: "正しい形式でフォームを入力してください。",
       };
-      console.log("バリデーションエラー：",errors);
+      console.log("バリデーションエラー：", errors);
       return errors;
     }
 

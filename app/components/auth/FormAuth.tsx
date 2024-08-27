@@ -9,7 +9,6 @@ type FormAuthProps = {
     state: FormAuthState,
     formData: FormData
   ) => Promise<FormAuthState>;
-  formName: string;
 };
 
 type FormAuthState = {
@@ -20,7 +19,7 @@ type FormAuthState = {
   };
 };
 
-const FormAuth: React.FC<FormAuthProps> = ({ formAction, formName }) => {
+const FormAuth: React.FC<FormAuthProps> = ({ formAction }) => {
   const initialState = {
     message: null,
     errors: {
@@ -37,7 +36,7 @@ const FormAuth: React.FC<FormAuthProps> = ({ formAction, formName }) => {
   return (
     <form action={dispatch} className="max-w-[700px] w-[80vw] mx-auto">
       <p className="text-center font-semibold pb-2  mb-6 border-b border-dashed border-gray-700">
-        {formName}
+        登録
       </p>
       <InputText
         label="email"
