@@ -1,11 +1,14 @@
-"use client"
+"use client";
 
 import { useFormState } from "react-dom";
 import InputText from "../ui/InputText";
 import Button from "../ui/Button";
 
 type FormAuthProps = {
-  formAction: (state: FormAuthState, formData: FormData) => Promise<FormAuthState>;
+  formAction: (
+    state: FormAuthState,
+    formData: FormData
+  ) => Promise<FormAuthState>;
   formName: string;
 };
 
@@ -52,6 +55,7 @@ const FormAuth: React.FC<FormAuthProps> = ({ formAction, formName }) => {
       {state.errors && state.errors.password && (
         <p className="mb-4 text-red-500">{state.errors.password}</p>
       )}
+      {state.message && <p className="mb-4 text-red-500">{state.message}</p>}
       <Button color="blue" size="normal" className="block mx-auto">
         登録
       </Button>
