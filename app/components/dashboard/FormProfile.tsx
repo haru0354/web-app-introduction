@@ -110,7 +110,6 @@ const FormProfile: React.FC<FormProfileProps> = ({ profile, userId }) => {
       {state.errors && state.errors.x && (
         <p className="mb-4 text-red-500">{state.errors.x}</p>
       )}
-      {state.message && <p className="mb-4 text-center text-red-500">{state.message}</p>}
       <input type="hidden" name="userId" value={userId} />
       <Button color="blue" size="normal" className="block mx-auto">
         編集
