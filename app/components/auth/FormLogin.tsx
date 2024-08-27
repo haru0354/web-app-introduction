@@ -15,7 +15,7 @@ const FormLogin = () => {
       const result = await signIn("appIntroduction", {
         email,
         password,
-        redirect: false,
+        callbackUrl: "/dashboard",
       });
 
       if (result?.error) {

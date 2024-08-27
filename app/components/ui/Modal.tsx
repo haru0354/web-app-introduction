@@ -6,7 +6,7 @@ import Button from "./Button";
 type ModalProps = {
   buttonColor: "red" | "blue" | "gray" | "white";
   buttonText: string;
-  buttonSize: "normal" | "small";
+  buttonSize?: "normal" | "small";
   children: React.ReactNode;
 };
 

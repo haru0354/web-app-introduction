@@ -34,7 +34,7 @@ export const user = {
       overview: "詳細\r\n",
       solution: "解決できる課題",
       can: ["出来ることリスト2", "出来ることリスト2"],
-      images: { imageURL: "/a", imageALT: "a" },
+      images: { imageURL: "", imageALT: "" },
       userId: "669e16cd03bbe8839f00f342",
       createdAt: "2024-07-22T09:00:58.645Z",
       updatedAt: "2024-07-22T13:16:28.214Z",
