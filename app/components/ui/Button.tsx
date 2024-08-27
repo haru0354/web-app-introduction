@@ -2,7 +2,7 @@
 type ButtonProps = {
   children: React.ReactNode;
   color: "red" | "blue" | "gray";
-  size: "normal";
+  size: "normal" | "small";
   className?: string;
   type?: "submit" | "button";
   onClick?: () => void;
@@ -25,6 +25,7 @@ const Button: React.FC<ButtonProps> = ({
   };
 
   const sizes = {
+    small: "min-w-[80px] p-1",
     normal: "min-w-[170px] p-2",
   };
 

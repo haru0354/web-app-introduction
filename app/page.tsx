@@ -17,8 +17,8 @@ export default function Home() {
         <h2>main</h2>
         <InputText label="テスト" name="TEST" placeholder="テスト" />
         <Textarea label="テスト" name="TEST" placeholder="テスト" />
-        <Button color="blue" size="normal">
-          追加
+        <Button color="blue" size="small">
+          登録
         </Button>
         <Button color="red" size="normal">
           削除
@@ -26,13 +26,13 @@ export default function Home() {
         <Button color="gray" size="normal">
           キャンセル
         </Button>
-        <Modal buttonText="Test000" buttonColor="blue" >
+        <Modal buttonText="Test000" buttonColor="gray" buttonSize="normal" >
           <FormAppIntroduction
             formName="追加フォーム"
             formAction={addAppIntroduction}
           />
         </Modal>
-        <Modal buttonText="登録" buttonColor="blue" >
+        <Modal buttonText="登録" buttonColor="blue" buttonSize="small" >
           <FormAuth
             formName="アカウント登録"
             formAction={signUp}
