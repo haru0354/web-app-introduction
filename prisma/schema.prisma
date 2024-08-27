@@ -12,10 +12,11 @@ model User {
   name               String?
   email              String?   @unique
   emailVerified      DateTime?
+  hashedPassword     String? 
   image              String?
   accounts           Account[]
   sessions           Session[]
-  profiles           Profile
+  profile            Profile?
   appIntroductions   AppIntroduction[]
   createdAt          DateTime  @default(now())
   updatedAt          DateTime  @updatedAt
@@ -63,10 +64,10 @@ type Image {
 }
 
 type Profile {
-  selfIntroduction   String
-  occupation         String
-  skill              String
-  portfolio          String
-  gitHub             String
-  x                  String
+  selfIntroduction   String?
+  occupation         String?
+  skill              String?
+  portfolio          String?
+  gitHub             String?
+  x                  String?
 }

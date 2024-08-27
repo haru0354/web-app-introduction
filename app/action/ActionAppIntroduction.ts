@@ -82,9 +82,9 @@ export const addAppIntroduction = async (
   if (!validatedFields.success) {
     const errors = {
       errors: validatedFields.error.flatten().fieldErrors,
-      message: "バリデーションエラー",
+      message: "正しい形式でフォームを入力してください。",
     };
-    console.log(errors);
+    console.log("バリデーションエラー：",errors);
     return errors;
   }
 
