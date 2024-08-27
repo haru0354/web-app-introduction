@@ -37,9 +37,6 @@ export default function Home() {
             formAction={signUp}
           />
         </Modal>
-
-
-
         <NewAppIntroductions />
         <SideLink />
         <InputImage name={"a"} placeholder={"a"} />
