@@ -4,7 +4,7 @@ import bcrypt from "bcrypt";
 import prisma from "../lib/prisma";
 import { z } from "zod";
 
-type FormAuthState = {
+type FormSignUpState = {
   message?: string | null;
   errors?: {
     email?: string[] | undefined;
@@ -20,7 +20,7 @@ const accountSchema = z.object({
     .max(12, { message: "12文字以下で入力してください。" }),
 });
 
-export const signUp = async (state: FormAuthState, formData: FormData) => {
+export const signUp = async (state: FormSignUpState, formData: FormData) => {
   try {
     const email = formData.get("email") as string;
     const password = formData.get("password") as string;

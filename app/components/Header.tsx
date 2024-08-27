@@ -2,10 +2,10 @@ import Image from "next/image";
 import { authOptions } from "../api/auth/[...nextauth]/route";
 import { getServerSession } from "next-auth";
 import { signUp } from "../action/ActionAuth";
-import FormAuth from "./auth/FormAuth";
 import FormLogin from "./auth/FormLogin";
 import LogoutButton from "./auth/LogoutButton";
 import Modal from "./ui/Modal";
+import FormSignUp from "./auth/FormSignUp";
 
 const Header = async () => {
   const session = await getServerSession(authOptions);
@@ -25,7 +25,7 @@ const Header = async () => {
         </li>
         <li className="px-4 py-2">
           <Modal buttonText="登録" buttonColor="blue" buttonSize="small">
-            <FormAuth formAction={signUp} />
+            <FormSignUp formAction={signUp} />
           </Modal>
         </li>
       </ul>

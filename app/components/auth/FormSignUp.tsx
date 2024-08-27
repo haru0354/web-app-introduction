@@ -4,14 +4,14 @@ import { useFormState } from "react-dom";
 import InputText from "../ui/InputText";
 import Button from "../ui/Button";
 
-type FormAuthProps = {
+type FormSignUpProps = {
   formAction: (
-    state: FormAuthState,
+    state: FormSignUpState,
     formData: FormData
-  ) => Promise<FormAuthState>;
+  ) => Promise<FormSignUpState>;
 };
 
-type FormAuthState = {
+type FormSignUpState = {
   message?: string | null;
   errors?: {
     email?: string[] | undefined;
@@ -19,7 +19,7 @@ type FormAuthState = {
   };
 };
 
-const FormAuth: React.FC<FormAuthProps> = ({ formAction }) => {
+const FormSignUp: React.FC<FormSignUpProps> = ({ formAction }) => {
   const initialState = {
     message: null,
     errors: {
@@ -28,7 +28,7 @@ const FormAuth: React.FC<FormAuthProps> = ({ formAction }) => {
     },
   };
 
-  const [state, dispatch] = useFormState<FormAuthState, FormData>(
+  const [state, dispatch] = useFormState<FormSignUpState, FormData>(
     formAction,
     initialState
   );
@@ -62,4 +62,4 @@ const FormAuth: React.FC<FormAuthProps> = ({ formAction }) => {
   );
 };
 
-export default FormAuth;
+export default FormSignUp;

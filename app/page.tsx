@@ -1,6 +1,6 @@
 import { addAppIntroduction } from "./action/ActionAppIntroduction";
 import { signUp } from "./action/ActionAuth";
-import FormAuth from "./components/auth/FormAuth";
+import FormSignUp from "./components/auth/FormSignUp";
 import FormAppIntroduction from "./components/dashboard/FormAppIntroduction";
 import Button from "./components/ui/Button";
 import InputImage from "./components/ui/InputImage";
@@ -33,7 +33,7 @@ export default function Home() {
           />
         </Modal>
         <Modal buttonText="登録" buttonColor="blue" buttonSize="small" >
-          <FormAuth
+          <FormSignUp
             formAction={signUp}
           />
         </Modal>
