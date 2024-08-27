@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import Button from "./Button";
 
 type ModalProps = {
-  buttonColor: "red" | "blue" | "gray";
+  buttonColor: "red" | "blue" | "gray" | "white";
   buttonText: string;
   buttonSize: "normal" | "small";
   children: React.ReactNode;
