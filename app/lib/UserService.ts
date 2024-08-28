@@ -44,7 +44,7 @@ export const getUser = async (userId: string) => {
       appIntroductions: user.appIntroductions,
     };
   } catch (error) {
-    console.error("全てのユーザーデータ取得中にエラーが発生しました。:", error);
+    console.error("ユーザーデータ取得中にエラーが発生しました。:", error);
     return;
   }
 };

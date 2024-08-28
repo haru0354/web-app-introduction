@@ -14,23 +14,20 @@ export const getUserData = async () => {
       where: {
         email: session.user.email,
       },
+      include: {
+        appIntroductions: true,
+      }
     });
 
     if (!user) {
       return null;
     }
 
-    const appIntroductions = await prisma.appIntroduction.findMany({
-      where: {
-        userId: user.id,
-      },
-    });
-
     return {
       id: user.id,
       name: user.name,
       profile: user.profile,
-      appIntroductions,
+      appIntroductions: user.appIntroductions,
     };
   } catch (error) {
     console.error(
