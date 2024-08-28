@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { authOptions } from "../api/auth/[...nextauth]/route";
 import { getServerSession } from "next-auth";
-import { signUp } from "../action/ActionAuth";
+import { signUp } from "../action/ActionUser";
 import FormLogin from "./auth/FormLogin";
 import LogoutButton from "./auth/LogoutButton";
 import Modal from "./ui/Modal";
