@@ -21,3 +21,30 @@ export const getAllUser = async () => {
     return;
   }
 };
+
+export const getUser = async (userId: string) => {
+  try {
+    const user = await prisma.user.findUnique({
+      where: {
+        id: userId,
+      },
+      include: {
+        appIntroductions: true,
+      }
+    });
+
+    if (!user) {
+      return null;
+    }
+
+    return {
+      id: user.id,
+      name: user.name,
+      profile: user.profile,
+      appIntroductions: user.appIntroductions,
+    };
+  } catch (error) {
+    console.error("全てのユーザーデータ取得中にエラーが発生しました。:", error);
+    return;
+  }
+};
