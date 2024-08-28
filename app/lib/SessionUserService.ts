@@ -2,7 +2,7 @@ import { getServerSession } from "next-auth";
 import { authOptions } from "../api/auth/[...nextauth]/route";
 import prisma from "../lib/prisma";
 
-export const getUserData = async () => {
+export const getSessionUser = async () => {
   try {
     const session = await getServerSession(authOptions);
 
@@ -38,7 +38,7 @@ export const getUserData = async () => {
   }
 };
 
-export const getUserProfile = async () => {
+export const getSessionUserProfile = async () => {
   try {
     const session = await getServerSession(authOptions);
 
