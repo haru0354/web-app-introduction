@@ -1,5 +1,6 @@
 "use server"
 
+import { revalidatePath } from "next/cache";
 import prisma from "../lib/prisma";
 import { z } from "zod";
 
@@ -72,9 +73,10 @@ export const editProfile = async (
         },
       },
     });
-    return { message: "success" };
   } catch (error) {
     console.error("プロフィールの追加の際にエラーが発生しました。:", error);
     return { message: "プロフィールの追加の際にエラーが発生しました。" };
   }
+  revalidatePath("/dashboard")
+  return { message: "success" };
 };
