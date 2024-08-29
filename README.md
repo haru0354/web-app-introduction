@@ -50,8 +50,7 @@ TOP・・・新着アプリ8件・サイトの紹介・
 
 ## 作成する内容
 
-- ダッシュボードで使うsessionUserServiceとwebPageで使うparamsを使用したuserServiceに分ける
-- seedから取得していたのをDBの取得に変更
 - header画像
 - metaタグ
-
+- topPage
+- headerMenuのログイン時の表記の切り替え
