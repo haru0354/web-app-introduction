@@ -1,34 +1,50 @@
-import ImageSlider from "@/app/components/webPage/ImageSlider";
-import prisma from "@/app/lib/prisma";
-import NotFound from "@/app/not-found";
 import Link from "next/link";
+import { getAppIntroduction } from "@/app/lib/AppIntroductionService";
+import ImageSlider from "@/app/components/webPage/ImageSlider";
+import NotFound from "@/app/not-found";
 
 const page = async ({ params }: { params: { app_id: string } }) => {
-  const id = params.app_id;
+  const appId = params.app_id;
+  const appIntroduction = await getAppIntroduction(appId);
 
-  const appData = await prisma.appIntroduction.findUnique({
-    where: {
-      id,
-    },
-  });
-
-  if (appData === null) {
+  if (!appIntroduction) {
     return <NotFound />;
   }
 
   return (
     <>
-      <h1 className="h1">{appData.title}の詳細</h1>
-      {appData.images[0] && <ImageSlider images={appData.images} />}
-      <p>アプリの特徴：{appData.summary}</p>
-      <p>URL：{appData.url}</p>
-      <p>使用技術：{appData.technology}</p>
-      <Link href="/user/appData.userId" className="a">
-        アプリの製作者ページへ
-      </Link>
-      <h2 className="h2">「{appData.title}」で出来ること</h2>
+      <h1 className="h1">{appIntroduction.title}の詳細</h1>
+      {appIntroduction.images[0] && (
+        <ImageSlider images={appIntroduction.images} />
+      )}
+      <ul>
+        <li className="pb-2 mb-2 border-b border-dashed border-gray-700">
+          アプリの特徴：{appIntroduction.summary}
+        </li>
+        <li className="pb-2 mb-2 border-b border-dashed border-gray-700">
+          URL：{appIntroduction.url}
+        </li>
+        <li className="pb-2 mb-2 border-b border-dashed border-gray-700">
+          使用技術：{appIntroduction.technology}
+        </li>
+        {appIntroduction.userName ? (
+          <li className="pb-2 mb-2 border-b border-dashed border-gray-700">
+            アプリ製作者のページ：
+            <Link href={`/user/${appIntroduction.userId}`} className="a">
+              {appIntroduction.userName}
+            </Link>
+          </li>
+        ) : (
+          <li className="pb-2 mb-2 border-b border-dashed border-gray-700">
+            <Link href={`/user/${appIntroduction.userId}`} className="a">
+              アプリ製作者のページ
+            </Link>
+          </li>
+        )}
+      </ul>
+      <h2 className="h2">「{appIntroduction.title}」で出来ること</h2>
       <ul className="my-8 mx-12 py-2 px-4 border border-gray-400">
-        {appData.can.map((can, index) => {
+        {appIntroduction.can.map((can, index) => {
           return (
             <li className="my-2" key={index}>
               {can}
@@ -36,10 +52,12 @@ const page = async ({ params }: { params: { app_id: string } }) => {
           );
         })}
       </ul>
-      <h2 className="h2">「{appData.title}」の概要</h2>
-      {appData.overview}
-      <h2 className="h2">「{appData.title}」がおすすめな人・解決できること</h2>
-      {appData.solution}
+      <h2 className="h2">「{appIntroduction.title}」の概要</h2>
+      {appIntroduction.overview}
+      <h2 className="h2">
+        「{appIntroduction.title}」がおすすめな人・解決できること
+      </h2>
+      {appIntroduction.solution}
     </>
   );
 };

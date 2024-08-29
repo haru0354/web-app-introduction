@@ -1,56 +1,36 @@
-import { getServerSession } from "next-auth";
-import { authOptions } from "../api/auth/[...nextauth]/route";
 import prisma from "../lib/prisma";
 
-export const getUserData = async () => {
+export const getAllUser = async () => {
   try {
-    const session = await getServerSession(authOptions);
+    const allUser = await prisma.user.findMany();
 
-    if (!session?.user?.email) {
+    if (!allUser) {
       return null;
     }
 
-    const user = await prisma.user.findUnique({
-      where: {
-        email: session.user.email,
-      },
-    });
-
-
-    if (!user) {
-      return null;
-    }
-
-    const appIntroductions = await prisma.appIntroduction.findMany({
-      where: {
-        userId: user.id,
-      },
-    });
-
-    return {
+    const allUserData = allUser.map((user) => ({
       id: user.id,
-      name:  user.name,
+      name: user.name,
+      image: user.image,
       profile: user.profile,
-      appIntroductions,
-    };
+    }));
+
+    return allUserData;
   } catch (error) {
-    console.error("プロフィールの取得中にエラーが発生しました:", error);
-    return 
+    console.error("全てのユーザーデータ取得中にエラーが発生しました。:", error);
+    return;
   }
 };
 
-export const getUserProfile = async () => {
+export const getUser = async (userId: string) => {
   try {
-    const session = await getServerSession(authOptions);
-
-    if (!session?.user?.email) {
-      return null;
-    }
-
     const user = await prisma.user.findUnique({
       where: {
-        email: session.user.email,
+        id: userId,
       },
+      include: {
+        appIntroductions: true,
+      }
     });
 
     if (!user) {
@@ -59,10 +39,12 @@ export const getUserProfile = async () => {
 
     return {
       id: user.id,
+      name: user.name,
       profile: user.profile,
+      appIntroductions: user.appIntroductions,
     };
   } catch (error) {
-    console.error("プロフィールの取得中にエラーが発生しました:", error);
-    return 
+    console.error("ユーザーデータ取得中にエラーが発生しました。:", error);
+    return;
   }
 };

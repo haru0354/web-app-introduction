@@ -4,10 +4,11 @@ import FormProfile from "@/app/components/dashboard/FormProfile";
 import Profile from "@/app/components/Profile";
 import Modal from "@/app/components/ui/Modal";
 import UserAppsList from "@/app/components/UserAppsList";
-import { getUserData } from "@/app/lib/UserService";
+import { getSessionUser } from "@/app/lib/SessionUserService";
+
 
 const page = async () => {
-  const userData = await getUserData();
+  const userData = await getSessionUser();
 
   if (!userData || !userData.profile) {
     return null;
