@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import DashboardSideMenu from "../components/dashboard/DashboardSideMenu";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -12,8 +11,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <main className="w-full max-w-[1140px] my-12 mx-auto">
-      <div className="w-full px-2">{children}</div>
+    <main className="w-full max-w-[1140px] mx-auto my-12 px-2">
+      {children}
     </main>
   );
 }
