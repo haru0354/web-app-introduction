@@ -11,7 +11,7 @@ export default async function Home() {
   }
 
   return (
-    <main className="w-full max-w-[1140px] mx-auto my-12 px-2">
+    <main className="flex flex-col items-center justify-center w-full mx-auto mt-12">
       <NewAppsList appIntroductions={appIntroductions} />
       <CTASection
         title="アプリを登録する"
