@@ -2,9 +2,8 @@ import Link from "next/link";
 import NewAppsList from "./components/topPage/NewAppsList";
 import { getAllAppIntroductions } from "./lib/AppIntroductionService";
 import CTASection from "./components/topPage/CTASection";
-import OneColumn from "./components/layouts/OneColumn";
-import One from "./components/parts/One";
-import TwoColumnImageAndText from "./components/parts/TwoColumnImageAndText";
+import OneColumn from "./components/layouts/with-children/OneColumn";
+import TwoColumnImageAndText from "./components/layouts/TwoColumnImageAndText";
 
 export default async function Home() {
   const appIntroductions = await getAllAppIntroductions();
@@ -17,7 +16,6 @@ export default async function Home() {
     <OneColumn>
       <NewAppsList appIntroductions={appIntroductions} />
       <TwoColumnImageAndText
-        title={"title"}
         contents={["aaa", "bbb", "ccc"]}
         src={"/test.jpg"}
         alt={"fff"}
