@@ -1,16 +1,45 @@
 import Link from "next/link";
+import NewAppsList from "./components/topPage/NewAppsList";
+import { getAllAppIntroductions } from "./lib/AppIntroductionService";
+import CTASection from "./components/topPage/CTASection";
+import OneColumn from "./components/layouts/with-children/OneColumn";
+import TwoColumnImageAndText from "./components/layouts/TwoColumnImageAndText";
 
-export default function Home() {
+export default async function Home() {
+  const appIntroductions = await getAllAppIntroductions();
+
+  if (!appIntroductions) {
+    return null;
+  }
+
   return (
-    <main className="flex flex-col md:flex-row justify-between w-full max-w-[1140px] mx-auto">
-      <div className="w-full max-w-[800px] px-2">
-        <ul>
-          <li><Link href="/dashboard">ダッシュボード</Link></li>
-          <li><Link href="/user">登録しているユーザー一覧</Link></li>
-          <li><Link href="/app">登録されてるアプリ一覧</Link></li>
-        </ul>
-      </div>
-      <div className="w-full max-w-[300px] px-2">side</div>
-    </main>
+    <OneColumn>
+      <NewAppsList appIntroductions={appIntroductions} />
+      <TwoColumnImageAndText
+        contents={["aaa", "bbb", "ccc"]}
+        src={"/test.jpg"}
+        alt={"fff"}
+      />
+      <CTASection
+        title="アプリを登録する"
+        texts={[
+          "メモブックは「完全無料で利用できるwebアプリ」です。",
+          "PC・スマホ・タブレット」の、「android・iphone」などの、どの端末でもインターネットに接続できれば利用が可能となっています。",
+          "登録は「emailアドレス」「パスワード」の2つを入力しアカウントを作成すれば、利用ができます。",
+        ]}
+        buttonText="登録"
+      />
+      <ul>
+        <li>
+          <Link href="/dashboard">ダッシュボード</Link>
+        </li>
+        <li>
+          <Link href="/user">登録しているユーザー一覧</Link>
+        </li>
+        <li>
+          <Link href="/app">登録されてるアプリ一覧</Link>
+        </li>
+      </ul>
+    </OneColumn>
   );
 }

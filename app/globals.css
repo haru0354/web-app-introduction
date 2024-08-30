@@ -6,12 +6,20 @@ body {
   color: rgb(75 85 99);
 }
 
+p {
+  line-height: 2rem;
+}
+
 .h1 {
   @apply text-2xl font-bold py-2 my-8;
 }
 
 .h2 {
-  @apply text-xl font-semibold my-8 py-2 border-b border-dashed border-gray-700;
+  @apply w-full text-xl font-semibold my-8 py-2 border-b border-dashed border-gray-700;
+}
+
+.h3 {
+  @apply w-full text-lg font-semibold my-4 py-2 border-b border-dashed border-gray-700;
 }
 
 .a {

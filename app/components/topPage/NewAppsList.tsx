@@ -1,10 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
-import Button from "./ui/Button";
+import TopPageSection from "../layouts/with-children/TopPageSection";
 
-type UserAppsListProps = {
+type NewAppsListProps = {
   appIntroductions: AppIntroductions[];
-  editButton?: boolean;
 };
 
 type AppIntroductions = {
@@ -12,6 +11,7 @@ type AppIntroductions = {
   title: string;
   summary: string;
   images: Image[];
+  createdAt: Date;
 };
 
 type Image = {
@@ -19,21 +19,19 @@ type Image = {
   imageALT: string;
 };
 
-const UserAppsList: React.FC<UserAppsListProps> = ({
-  appIntroductions,
-  editButton = false,
-}) => {
-  if (!appIntroductions) {
-    return null;
-  }
+const NewAppsList: React.FC<NewAppsListProps> = ({ appIntroductions }) => {
+  const sortedIntroductions = appIntroductions.sort(
+    (a, b) => b.createdAt.getTime() - a.createdAt.getTime()
+  );
+  const latestSixAppIntroductions = sortedIntroductions.slice(0, 10);
 
   return (
-    <div className="flex flex-wrap w-full max-w-[1140px]">
-      <h2 className="h2">登録しているアプリの一覧</h2>
-      {appIntroductions.map((appIntroduction) => {
-        const firstImage = appIntroduction.images[0];
-        return (
-          <>
+    <TopPageSection>
+      <h2 className="h2 text-center">新着のアプリ</h2>
+      <div className="flex flex-wrap">
+        {latestSixAppIntroductions.map((appIntroduction) => {
+          const firstImage = appIntroduction.images[0];
+          return (
             <div
               key={appIntroduction.id}
               className="flex flex-col items-center justify-center min-w-[200px] min-h-[200px] mx-2 my-6 text-center"
@@ -51,19 +49,12 @@ const UserAppsList: React.FC<UserAppsListProps> = ({
                 {appIntroduction.title}
               </h2>
               {appIntroduction.summary}
-              {editButton && (
-                <Link href={`/dashboard/${appIntroduction.id}`}>
-                  <Button color="gray" size="normal">
-                    編集
-                  </Button>
-                </Link>
-              )}
             </div>
-          </>
-        );
-      })}
-    </div>
+          );
+        })}
+      </div>
+    </TopPageSection>
   );
 };
 
-export default UserAppsList;
+export default NewAppsList;

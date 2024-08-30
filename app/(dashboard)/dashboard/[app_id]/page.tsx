@@ -4,7 +4,7 @@ import {
 } from "@/app/action/ActionAppIntroduction";
 import FormAppIntroduction from "@/app/components/dashboard/FormAppIntroduction";
 import Button from "@/app/components/ui/Button";
-import Modal from "@/app/components/ui/Modal";
+import Modal from "@/app/components/layouts/with-children/Modal";
 import prisma from "@/app/lib/prisma";
 import NotFound from "@/app/not-found";
 

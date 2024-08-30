@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import DashboardSideMenu from "../components/dashboard/DashboardSideMenu";
+import OneColumn from "../components/layouts/with-children/OneColumn";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -11,9 +11,5 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  return (
-    <main className="w-full max-w-[1140px] my-12 mx-auto">
-      <div className="w-full px-2">{children}</div>
-    </main>
-  );
+  return <OneColumn>{children}</OneColumn>;
 }

@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import Button from "./Button";
+import Button from "../../ui/Button";
 
 type ModalProps = {
   buttonColor: "red" | "blue" | "gray" | "white";

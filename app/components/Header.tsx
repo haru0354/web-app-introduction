@@ -4,7 +4,7 @@ import { getServerSession } from "next-auth";
 import { signUp } from "../action/ActionUser";
 import FormLogin from "./auth/FormLogin";
 import LogoutButton from "./auth/LogoutButton";
-import Modal from "./ui/Modal";
+import Modal from "./layouts/with-children/Modal";
 import FormSignUp from "./auth/FormSignUp";
 
 const Header = async () => {

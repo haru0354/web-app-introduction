@@ -15,7 +15,8 @@ type Profile = {
 const Profile: React.FC<ProfileProps> = ({ userName, profile }) => {
   return (
     <>
-      <div className="m-4 p-6 border border-gray-700 rounded">
+      <h1 className="h1">プロフィール</h1>
+      <div className="w-full max-w-[1140px] p-6 border border-gray-700 rounded">
         <ul>
           <li className="pb-2 mb-2 border-b border-dashed border-gray-700">
             名前(ニックネーム)：「{userName ? userName : "未登録"}」
@@ -37,7 +38,7 @@ const Profile: React.FC<ProfileProps> = ({ userName, profile }) => {
           </li>
         </ul>
       </div>
-      <div className="m-4 p-4 border border-gray-700 rounded">
+      <div className="w-full max-w-[1140px] p-6 my-4 border border-gray-700 rounded">
         <p className="text-center pb-2 mb-4 border-b border-gray-500 border-dashed">
           自己紹介
         </p>
