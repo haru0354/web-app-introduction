@@ -3,6 +3,7 @@ import NewAppsList from "./components/topPage/NewAppsList";
 import { getAllAppIntroductions } from "./lib/AppIntroductionService";
 import CTASection from "./components/topPage/CTASection";
 import OneColumn from "./components/layout/OneColumn";
+import TwoColumnImageAndText from "./components/parts/TwoColumnImageAndText";
 
 export default async function Home() {
   const appIntroductions = await getAllAppIntroductions();
@@ -14,6 +15,7 @@ export default async function Home() {
   return (
     <OneColumn>
       <NewAppsList appIntroductions={appIntroductions} />
+      <TwoColumnImageAndText title={"title"} contents={["aaa", "bbb", "ccc"]} src={"/test.jpg"} alt={"fff"} />
       <CTASection
         title="アプリを登録する"
         texts={[
