@@ -11,7 +11,7 @@ body {
 }
 
 .h2 {
-  @apply text-xl font-semibold my-8 py-2 border-b border-dashed border-gray-700;
+  @apply w-full text-xl font-semibold my-8 py-2 border-b border-dashed border-gray-700;
 }
 
 .a {

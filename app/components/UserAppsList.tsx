@@ -28,10 +28,10 @@ const UserAppsList: React.FC<UserAppsListProps> = ({
   }
 
   return (
-    <div className="flex flex-wrap">
+    <div className="flex flex-wrap w-full max-w-[1140px]">
+      <h2 className="h2">登録しているアプリの一覧</h2>
       {appIntroductions.map((appIntroduction) => {
         const firstImage = appIntroduction.images[0];
-
         return (
           <>
             <div

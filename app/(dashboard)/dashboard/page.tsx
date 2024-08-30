@@ -16,12 +16,10 @@ const page = async () => {
 
   return (
     <>
-      <h1 className="h1">プロフィール</h1>
       <Profile userName={userData.name} profile={userData.profile} />
       <Modal buttonColor="blue" buttonText="プロフィールの変更">
         <FormProfile userId={userData.id} profile={userData.profile} />
       </Modal>
-      <h2 className="h2">登録しているアプリの一覧</h2>
       <UserAppsList
         appIntroductions={userData.appIntroductions}
         editButton={true}

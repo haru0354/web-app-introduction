@@ -2,6 +2,7 @@ import Link from "next/link";
 import NewAppsList from "./components/topPage/NewAppsList";
 import { getAllAppIntroductions } from "./lib/AppIntroductionService";
 import CTASection from "./components/topPage/CTASection";
+import OneColumn from "./components/layout/OneColumn";
 
 export default async function Home() {
   const appIntroductions = await getAllAppIntroductions();
@@ -11,7 +12,7 @@ export default async function Home() {
   }
 
   return (
-    <main className="flex flex-col items-center justify-center w-full mx-auto mt-12">
+    <OneColumn>
       <NewAppsList appIntroductions={appIntroductions} />
       <CTASection
         title="アプリを登録する"
@@ -33,6 +34,6 @@ export default async function Home() {
           <Link href="/app">登録されてるアプリ一覧</Link>
         </li>
       </ul>
-    </main>
+    </OneColumn>
   );
 }

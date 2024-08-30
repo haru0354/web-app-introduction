@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import OneColumn from "../components/layout/OneColumn";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -11,8 +12,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <main className="w-full max-w-[1140px] mx-auto my-12 px-2">
+    <OneColumn>
       {children}
-    </main>
+    </OneColumn>
   );
 }
