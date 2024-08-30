@@ -64,3 +64,10 @@ TOP・・・新着アプリ8件・サイトの紹介・
 - metaタグ
 - topPage
 - headerMenuのログイン時の表記の切り替え
+- userの状態管理
+
+
+layoutフォルダをlayoutsにして修正
+childrenが必要なのは「with-children」を作成して入れる
+partsコンポーネントの中をlayoutsフォルダの中に入れる
+TwoColumnImageAndTextをlayoutsフォルダに入れる

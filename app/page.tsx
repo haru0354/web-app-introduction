@@ -3,6 +3,7 @@ import NewAppsList from "./components/topPage/NewAppsList";
 import { getAllAppIntroductions } from "./lib/AppIntroductionService";
 import CTASection from "./components/topPage/CTASection";
 import OneColumn from "./components/layout/OneColumn";
+import One from "./components/parts/One";
 import TwoColumnImageAndText from "./components/parts/TwoColumnImageAndText";
 
 export default async function Home() {
