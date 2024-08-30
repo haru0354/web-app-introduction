@@ -1,10 +1,10 @@
 import Link from "next/link";
-import NewAppsList from "./components/topPage/NewAppsList";
+import NewAppsList from "./components/top-page/NewAppsList";
 import { getAllAppIntroductions } from "./lib/AppIntroductionService";
-import CTASection from "./components/topPage/CTASection";
+import CTASection from "./components/top-page/CTASection";
 import OneColumn from "./components/layouts/with-children/OneColumn";
 import TwoColumnImageAndText from "./components/layouts/TwoColumnImageAndText";
-import TwoFlexBox from "./components/layouts/TwoFlexBox";
+import AboutSection from "./components/top-page/AboutSection";
 
 export default async function Home() {
   const appIntroductions = await getAllAppIntroductions();
@@ -16,12 +16,13 @@ export default async function Home() {
   return (
     <OneColumn>
       <NewAppsList appIntroductions={appIntroductions} />
+
+      <AboutSection />
       <TwoColumnImageAndText
         contents={["aaa", "bbb", "ccc"]}
         src={"/test.jpg"}
         alt={"fff"}
       />
-      <TwoFlexBox leftTitle={"leftTitle"} leftContents={["leftContents", "leftContents"]} rightTitle={"rightTitle"} rightContents={["rightContents", "rightContents"]} />
       <CTASection
         title="アプリを登録する"
         texts={[
