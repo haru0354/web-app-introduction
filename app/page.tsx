@@ -5,6 +5,8 @@ import CTASection from "./components/top-page/CTASection";
 import OneColumn from "./components/layouts/with-children/OneColumn";
 import TwoColumnImageAndText from "./components/layouts/TwoColumnImageAndText";
 import AboutSection from "./components/top-page/AboutSection";
+import TopPageSection from "./components/layouts/with-children/TopPageSection";
+import InfoCard from "./components/InfoCard";
 
 export default async function Home() {
   const appIntroductions = await getAllAppIntroductions();
@@ -16,13 +18,26 @@ export default async function Home() {
   return (
     <OneColumn>
       <NewAppsList appIntroductions={appIntroductions} />
-
+      <TopPageSection>
+        <InfoCard title={"title"} content={"content"} src={"/test.JPG"} alt={"a"} />
+      </TopPageSection>
       <AboutSection />
-      <TwoColumnImageAndText
-        contents={["aaa", "bbb", "ccc"]}
-        src={"/test.jpg"}
-        alt={"fff"}
-      />
+      <TopPageSection>
+        <h2 className="h2">webサイトのBLOG記事</h2>
+        <TwoColumnImageAndText
+          contents={["aaa", "bbb", "ccc"]}
+          src={"/test.jpg"}
+          alt={"fff"}
+        />
+      </TopPageSection>
+      <TopPageSection>
+        <h2 className="h2">webサイトのカテゴリ</h2>
+        <TwoColumnImageAndText
+          contents={["aaa", "bbb", "ccc"]}
+          src={"/test.jpg"}
+          alt={"fff"}
+        />
+      </TopPageSection>
       <CTASection
         title="アプリを登録する"
         texts={[
