@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import TwoColumn from "../components/layout/TwoColumn";
+import TwoColumn from "../components/layouts/with-children/TwoColumn";
 
 export const metadata: Metadata = {
   title: "Create Next App",

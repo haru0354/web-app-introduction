@@ -1,7 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import Button from "../ui/Button";
-import TopPageSection from "../layout/TopPageSection";
+import TopPageSection from "../layouts/with-children/TopPageSection";
 
 type NewAppsListProps = {
   appIntroductions: AppIntroductions[];
@@ -28,32 +27,32 @@ const NewAppsList: React.FC<NewAppsListProps> = ({ appIntroductions }) => {
 
   return (
     <TopPageSection>
-        <h2 className="h2 text-center">新着のアプリ</h2>
-        <div className="flex flex-wrap">
-          {latestSixAppIntroductions.map((appIntroduction) => {
-            const firstImage = appIntroduction.images[0];
-            return (
-              <div
-                key={appIntroduction.id}
-                className="flex flex-col items-center justify-center min-w-[200px] min-h-[200px] mx-2 my-6 text-center"
-              >
-                <Link href={`/app/${appIntroduction.id}`}>
-                  <Image
-                    src={firstImage?.imageURL || "/test.JPG"}
-                    width={200}
-                    height={200}
-                    alt={firstImage?.imageALT || "test"}
-                    className="border border-gray-400 hover:-translate-y-2 transition"
-                  />
-                </Link>
-                <h2 className="text-gray-600 font-semibold">
-                  {appIntroduction.title}
-                </h2>
-                {appIntroduction.summary}
-              </div>
-            );
-          })}
-        </div>
+      <h2 className="h2 text-center">新着のアプリ</h2>
+      <div className="flex flex-wrap">
+        {latestSixAppIntroductions.map((appIntroduction) => {
+          const firstImage = appIntroduction.images[0];
+          return (
+            <div
+              key={appIntroduction.id}
+              className="flex flex-col items-center justify-center min-w-[200px] min-h-[200px] mx-2 my-6 text-center"
+            >
+              <Link href={`/app/${appIntroduction.id}`}>
+                <Image
+                  src={firstImage?.imageURL || "/test.JPG"}
+                  width={200}
+                  height={200}
+                  alt={firstImage?.imageALT || "test"}
+                  className="border border-gray-400 hover:-translate-y-2 transition"
+                />
+              </Link>
+              <h2 className="text-gray-600 font-semibold">
+                {appIntroduction.title}
+              </h2>
+              {appIntroduction.summary}
+            </div>
+          );
+        })}
+      </div>
     </TopPageSection>
   );
 };

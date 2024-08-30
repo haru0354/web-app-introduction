@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import OneColumn from "../components/layout/OneColumn";
+import OneColumn from "../components/layouts/with-children/OneColumn";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -11,9 +11,5 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  return (
-    <OneColumn>
-      {children}
-    </OneColumn>
-  );
+  return <OneColumn>{children}</OneColumn>;
 }

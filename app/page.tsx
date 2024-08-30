@@ -2,7 +2,7 @@ import Link from "next/link";
 import NewAppsList from "./components/topPage/NewAppsList";
 import { getAllAppIntroductions } from "./lib/AppIntroductionService";
 import CTASection from "./components/topPage/CTASection";
-import OneColumn from "./components/layout/OneColumn";
+import OneColumn from "./components/layouts/OneColumn";
 import One from "./components/parts/One";
 import TwoColumnImageAndText from "./components/parts/TwoColumnImageAndText";
 
@@ -16,7 +16,12 @@ export default async function Home() {
   return (
     <OneColumn>
       <NewAppsList appIntroductions={appIntroductions} />
-      <TwoColumnImageAndText title={"title"} contents={["aaa", "bbb", "ccc"]} src={"/test.jpg"} alt={"fff"} />
+      <TwoColumnImageAndText
+        title={"title"}
+        contents={["aaa", "bbb", "ccc"]}
+        src={"/test.jpg"}
+        alt={"fff"}
+      />
       <CTASection
         title="アプリを登録する"
         texts={[
