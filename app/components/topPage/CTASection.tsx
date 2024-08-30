@@ -1,6 +1,6 @@
 import { signUp } from "@/app/action/ActionUser";
 import FormSignUp from "../auth/FormSignUp";
-import Modal from "../ui/Modal";
+import Modal from "../layouts/with-children/Modal";
 import TopPageSection from "../layouts/with-children/TopPageSection";
 
 type CTASectionProps = {
