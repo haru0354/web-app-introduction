@@ -7,6 +7,7 @@ import TwoColumnImageAndText from "./components/layouts/TwoColumnImageAndText";
 import AboutSection from "./components/top-page/AboutSection";
 import TopPageSection from "./components/layouts/with-children/TopPageSection";
 import InfoCard from "./components/InfoCard";
+import NewAppsListInfo from "./components/top-page/NewAppsListInfo";
 
 export default async function Home() {
   const appIntroductions = await getAllAppIntroductions();
@@ -17,9 +18,15 @@ export default async function Home() {
 
   return (
     <OneColumn>
+      <NewAppsListInfo appIntroductions={appIntroductions} />
       <NewAppsList appIntroductions={appIntroductions} />
       <TopPageSection>
-        <InfoCard title={"title"} content={"content"} src={"/test.JPG"} alt={"a"} />
+        <InfoCard
+          title={"title"}
+          content={"content"}
+          src={"/test.JPG"}
+          alt={"a"}
+        />
       </TopPageSection>
       <AboutSection />
       <TopPageSection>
