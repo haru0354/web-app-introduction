@@ -8,6 +8,7 @@ import AboutSection from "./components/top-page/AboutSection";
 import TopPageSection from "./components/layouts/with-children/TopPageSection";
 import InfoCard from "./components/InfoCard";
 import NewAppsListInfo from "./components/top-page/NewAppsListInfo";
+import TwoFlexBox from "./components/layouts/TwoFlexBox";
 
 export default async function Home() {
   const appIntroductions = await getAllAppIntroductions();
@@ -19,7 +20,6 @@ export default async function Home() {
   return (
     <OneColumn>
       <NewAppsListInfo appIntroductions={appIntroductions} />
-      <NewAppsList appIntroductions={appIntroductions} />
       <TopPageSection>
         <InfoCard
           title={"title"}
