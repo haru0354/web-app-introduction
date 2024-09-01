@@ -29,17 +29,21 @@ const NewAppsListInfo: React.FC<NewAppsListInfoProps> = ({
 
   return (
     <TopPageSection>
-      <h2 className="h2 text-center text-2xl ">新着のアプリ</h2>
+      <h2 className="text-center text-3xl font-bold my-8">新着アプリ</h2>
       <div className="flex flex-col">
-        {latestSixAppIntroductions.map((appIntroduction) => {
+        {latestSixAppIntroductions.map((appIntroduction, index) => {
           const firstImage = appIntroduction.images[0];
           const overview =
-            appIntroduction.overview.length > 130
-              ? appIntroduction.overview.substring(0, 127) + "..."
+            appIntroduction.overview.length > 120
+              ? appIntroduction.overview.substring(0, 117) + "..."
               : appIntroduction.overview;
           return (
             <Link href={`/app/${appIntroduction.id}`} key={appIntroduction.id}>
-              <div className="flex w-full py-1 border-b border-dashed border-gray-700 hover:bg-blue-100">
+              <div
+                className={`flex flex-col md:flex-row items-center justify-center w-full pt-8 md:py-1 border-b border-dashed border-gray-700 hover:bg-blue-100 ${
+                  index === 0 && "border-t border-dashed border-gray-700"
+                }`}
+              >
                 <div className="min-w-[200px] mx-2">
                   <Image
                     src={firstImage?.imageURL || "/test.JPG"}
@@ -50,7 +54,7 @@ const NewAppsListInfo: React.FC<NewAppsListInfoProps> = ({
                   />
                 </div>
                 <div className="w-full p-8">
-                  <h2 className="text-xl font-semibold text-gray-600 mb-8">
+                  <h2 className="text-xl font-semibold text-gray-600 mb-4 md:mb-8">
                     {appIntroduction.title}
                   </h2>
                   {overview}
