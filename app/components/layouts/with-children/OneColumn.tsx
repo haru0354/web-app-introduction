@@ -4,8 +4,10 @@ type OneColumnProps = {
 
 const OneColumn: React.FC<OneColumnProps> = ({ children }) => {
   return (
-    <main className="flex flex-col items-center justify-center w-full mx-auto mt-12">
-      {children}
+    <main className="flex-grow w-full my-12">
+      <div className="w-full max-w-[1140px] mx-auto px-2">
+        {children}
+      </div>
     </main>
   );
 };
