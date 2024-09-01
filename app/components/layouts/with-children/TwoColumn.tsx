@@ -1,4 +1,4 @@
-import SideMenu from "../webPage/sideMenu/SideMenu";
+import SideMenu from "../../webPage/sideMenu/SideMenu";
 
 type TwoColumnProps = {
   children: React.ReactNode;
