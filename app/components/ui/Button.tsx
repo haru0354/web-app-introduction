@@ -1,8 +1,7 @@
-
 type ButtonProps = {
   children: React.ReactNode;
   color: "red" | "blue" | "gray" | "white";
-  size?: "normal" | "small";
+  size?: "normal" | "small" | "big";
   className?: string;
   type?: "submit" | "button";
   onClick?: () => void;
@@ -16,7 +15,7 @@ const Button: React.FC<ButtonProps> = ({
   className,
   onClick,
   type,
-  disabled
+  disabled,
 }) => {
   const colors = {
     red: "text-white hover:text-gray-700 border border-red-900 bg-red-700 hover:bg-red-200",
@@ -28,6 +27,7 @@ const Button: React.FC<ButtonProps> = ({
   const sizes = {
     small: "min-w-[80px] p-1",
     normal: "min-w-[170px] p-2",
+    big: "min-w-[240px] p-3",
   };
 
   return (

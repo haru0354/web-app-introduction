@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import TopPageSection from "../layouts/with-children/TopPageSection";
+import Button from "../ui/Button";
 
 type NewAppsListInfoProps = {
   appIntroductions: AppIntroductions[];
@@ -64,6 +65,11 @@ const NewAppsListInfo: React.FC<NewAppsListInfoProps> = ({
           );
         })}
       </div>
+      <Link href="/app">
+        <Button color="gray" size="big" className="block mx-auto mt-8 rounded">
+          アプリの一覧へ
+        </Button>
+      </Link>
     </TopPageSection>
   );
 };
