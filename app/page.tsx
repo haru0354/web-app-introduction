@@ -1,15 +1,13 @@
 import Link from "next/link";
-import NewAppsList from "./components/top-page/NewAppsList";
 import { getAllAppIntroductions } from "./lib/AppIntroductionService";
-import CTASection from "./components/top-page/CTASection";
-import OneColumn from "./components/layouts/with-children/OneColumn";
-import TwoColumnImageAndText from "./components/layouts/TwoColumnImageAndText";
-import AboutSection from "./components/top-page/AboutSection";
+import { shuffleArray } from "./lib/ShuffleArray";
 import TopPageSection from "./components/layouts/with-children/TopPageSection";
 import InfoCard from "./components/InfoCard";
-import NewAppsListInfo from "./components/top-page/NewAppsListInfo";
-import TwoFlexBox from "./components/layouts/TwoFlexBox";
+import TwoColumnImageAndText from "./components/layouts/TwoColumnImageAndText";
 import Hero from "./components/top-page/Hero";
+import CTASection from "./components/top-page/CTASection";
+import AboutSection from "./components/top-page/AboutSection";
+import NewAppsListInfo from "./components/top-page/NewAppsListInfo";
 
 export default async function Home() {
   const appIntroductions = await getAllAppIntroductions();
@@ -18,18 +16,20 @@ export default async function Home() {
     return null;
   }
 
+  const randomAppIntroductions = shuffleArray(appIntroductions).slice(0, 2);
+
   return (
     <main className="flex flex-col items-center justify-center w-full">
       <Hero title={""} texts={[]} buttonText={""} />
-      <NewAppsListInfo appIntroductions={appIntroductions} />
       <TopPageSection>
         <InfoCard
-          title={"title"}
-          content={"content"}
-          src={"/test.JPG"}
-          alt={"a"}
+          title={randomAppIntroductions[0].title}
+          content={randomAppIntroductions[0].title}
+          src={randomAppIntroductions[0].images[0]?.imageURL}
+          alt={randomAppIntroductions[0].images[0]?.imageALT}
         />
       </TopPageSection>
+      <NewAppsListInfo appIntroductions={appIntroductions} />
       <AboutSection />
       <TopPageSection>
         <h2 className="h2">webサイトのBLOG記事</h2>
@@ -45,6 +45,14 @@ export default async function Home() {
           contents={["aaa", "bbb", "ccc"]}
           src={"/test.jpg"}
           alt={"fff"}
+        />
+      </TopPageSection>
+      <TopPageSection>
+        <InfoCard
+          title={randomAppIntroductions[1].title}
+          content={randomAppIntroductions[1].title}
+          src={randomAppIntroductions[1].images[0]?.imageURL}
+          alt={randomAppIntroductions[1].images[0]?.imageALT}
         />
       </TopPageSection>
       <CTASection
