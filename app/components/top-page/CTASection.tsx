@@ -2,6 +2,8 @@ import { signUp } from "@/app/action/ActionUser";
 import FormSignUp from "../auth/FormSignUp";
 import Modal from "../layouts/with-children/Modal";
 import TopPageSection from "../layouts/with-children/TopPageSection";
+import Button from "../ui/Button";
+import Link from "next/link";
 
 type CTASectionProps = {
   title: string;
@@ -28,9 +30,9 @@ const CTASection: React.FC<CTASectionProps> = ({
           </p>
         );
       })}
-      <Modal buttonText={buttonText} buttonColor="blue" buttonSize="normal">
-        <FormSignUp formAction={signUp} />
-      </Modal>
+      <Link href="/signup">
+        <Button color="blue" className="block mx-auto">登録</Button>
+      </Link>
     </TopPageSection>
   );
 };

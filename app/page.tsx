@@ -19,7 +19,7 @@ export default async function Home() {
   }
 
   return (
-    <OneColumn>
+    <main className="flex flex-col items-center justify-center w-full">
       <Hero title={""} texts={[]} buttonText={""} />
       <NewAppsListInfo appIntroductions={appIntroductions} />
       <TopPageSection>
@@ -67,6 +67,6 @@ export default async function Home() {
           <Link href="/app">登録されてるアプリ一覧</Link>
         </li>
       </ul>
-    </OneColumn>
+    </main>
   );
 }

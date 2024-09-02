@@ -7,14 +7,16 @@ type ModalProps = {
   buttonColor: "red" | "blue" | "gray" | "white";
   buttonText: string;
   buttonSize?: "normal" | "small";
+  width?: string;
   children: React.ReactNode;
 };
 
 const Modal: React.FC<ModalProps> = ({
   buttonColor,
   buttonText,
-  children,
   buttonSize,
+  width,
+  children,
 }) => {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 
@@ -53,7 +55,11 @@ const Modal: React.FC<ModalProps> = ({
           className="fixed flex items-center justify-center inset-0 w-full h-full z-[100] bg-gray-700 bg-opacity-75"
           onClick={toggleModalClose}
         >
-          <div className="max-h-[80vh] p-4 border border-gray-700 rounded bg-white overflow-y-auto">
+          <div
+            className={`max-h-[80vh] w-full ${
+              width ? `max-w-[${width}px]` : ""
+            } p-4 border border-gray-700 rounded bg-white overflow-y-auto`}
+          >
             {children}
             <Button
               color="gray"
