@@ -8,13 +8,15 @@ import Link from "next/link";
 type CTASectionProps = {
   title: string;
   texts: string[];
-  buttonText: string;
+  buttonText?: string;
+  linkURL?: string;
 };
 
 const CTASection: React.FC<CTASectionProps> = ({
   title,
   texts,
   buttonText,
+  linkURL,
 }) => {
   return (
     <TopPageSection
@@ -30,9 +32,13 @@ const CTASection: React.FC<CTASectionProps> = ({
           </p>
         );
       })}
-      <Link href="/signup">
-        <Button color="blue" className="block mx-auto">登録</Button>
-      </Link>
+      {buttonText && linkURL && (
+        <Link href={`${linkURL}`}>
+          <Button color="blue" className="block mx-auto rounded mt-8">
+            {buttonText}
+          </Button>
+        </Link>
+      )}
     </TopPageSection>
   );
 };

@@ -42,7 +42,7 @@ const NewAppsList: React.FC<NewAppsListProps> = ({ appIntroductions }) => {
                   width={200}
                   height={200}
                   alt={firstImage?.imageALT || "test"}
-                  className="border border-gray-400 hover:-translate-y-2 transition"
+                  className="border border-gray-400 "
                 />
               </Link>
               <h2 className="text-gray-600 font-semibold">

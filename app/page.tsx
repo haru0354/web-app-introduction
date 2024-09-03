@@ -1,15 +1,14 @@
 import Link from "next/link";
-import NewAppsList from "./components/top-page/NewAppsList";
 import { getAllAppIntroductions } from "./lib/AppIntroductionService";
-import CTASection from "./components/top-page/CTASection";
-import OneColumn from "./components/layouts/with-children/OneColumn";
-import TwoColumnImageAndText from "./components/layouts/TwoColumnImageAndText";
-import AboutSection from "./components/top-page/AboutSection";
+import { shuffleArray } from "./lib/ShuffleArray";
 import TopPageSection from "./components/layouts/with-children/TopPageSection";
 import InfoCard from "./components/InfoCard";
-import NewAppsListInfo from "./components/top-page/NewAppsListInfo";
-import TwoFlexBox from "./components/layouts/TwoFlexBox";
+import TwoColumnImageAndText from "./components/layouts/TwoColumnImageAndText";
 import Hero from "./components/top-page/Hero";
+import CTASection from "./components/top-page/CTASection";
+import AboutSection from "./components/top-page/AboutSection";
+import NewAppsVerticalSection from "./components/top-page/NewAppsVerticalSection";
+import ContentsListSection from "./components/top-page/ContentsListSection";
 
 export default async function Home() {
   const appIntroductions = await getAllAppIntroductions();
@@ -18,55 +17,80 @@ export default async function Home() {
     return null;
   }
 
+  const randomAppIntroductions = shuffleArray(appIntroductions).slice(0, 2);
+
+  const articles = [
+    {
+      title: "テスト",
+      url: "/",
+      imageSrc: "/blog-test.webp",
+      imageAlt: "test",
+    },
+  ];
+
+  const categories = [
+    {
+      title: "テスト",
+      url: "/",
+      imageSrc: "/blog-test.webp",
+      imageAlt: "test",
+    },
+  ];
+
   return (
     <main className="flex flex-col items-center justify-center w-full">
-      <Hero title={""} texts={[]} buttonText={""} />
-      <NewAppsListInfo appIntroductions={appIntroductions} />
+      <Hero />
       <TopPageSection>
         <InfoCard
-          title={"title"}
-          content={"content"}
-          src={"/test.JPG"}
-          alt={"a"}
+          title={randomAppIntroductions[0].title}
+          content={randomAppIntroductions[0].title}
+          linkURL={`/app/${randomAppIntroductions[0].id}`}
+          src={randomAppIntroductions[0].images[0]?.imageURL}
+          alt={randomAppIntroductions[0].images[0]?.imageALT}
         />
       </TopPageSection>
-      <AboutSection />
+      <NewAppsVerticalSection
+        appIntroductions={appIntroductions}
+        title="新着アプリ"
+      />
+      <AboutSection
+        title="当サイトについて"
+        leftTitle="WEB閲覧者側"
+        leftContents={[
+          "WEBアプリと言ってもどんなのがあるか分からない・・・",
+          "●●では様々なアプリが掲載されています。",
+          "また、どんなアプリか一目で分かるようになっています",
+        ]}
+        rightTitle="アプリ製作者側"
+        rightContents={[
+          "無料で自作アプリの掲載をすることができます。",
+          "必要なのは簡単な登録作業のみ。",
+          "下記ボタンよりご利用ください。",
+        ]}
+        buttonText="登録"
+        buttonLinkURL="/signup"
+      />
+      <ContentsListSection listTitle="新着記事" contents={articles} />
+      <ContentsListSection listTitle="新着カテゴリ" contents={categories} />
       <TopPageSection>
-        <h2 className="h2">webサイトのBLOG記事</h2>
-        <TwoColumnImageAndText
-          contents={["aaa", "bbb", "ccc"]}
-          src={"/test.jpg"}
-          alt={"fff"}
-        />
-      </TopPageSection>
-      <TopPageSection>
-        <h2 className="h2">webサイトのカテゴリ</h2>
-        <TwoColumnImageAndText
-          contents={["aaa", "bbb", "ccc"]}
-          src={"/test.jpg"}
-          alt={"fff"}
+        <InfoCard
+          title={randomAppIntroductions[1].title}
+          content={randomAppIntroductions[1].title}
+          linkURL={`/app/${randomAppIntroductions[1].id}`}
+          src={randomAppIntroductions[1].images[0]?.imageURL}
+          alt={randomAppIntroductions[1].images[0]?.imageALT}
         />
       </TopPageSection>
       <CTASection
         title="アプリを登録する"
         texts={[
-          "メモブックは「完全無料で利用できるwebアプリ」です。",
-          "PC・スマホ・タブレット」の、「android・iphone」などの、どの端末でもインターネットに接続できれば利用が可能となっています。",
-          "登録は「emailアドレス」「パスワード」の2つを入力しアカウントを作成すれば、利用ができます。",
+          "アカウント作成して簡単に自作したWEBアプリの登録をすることができます。",
+          "完全無料で使用することができ、自作アプリの宣言の場としての使用が可能です",
+          "アプリの登録は下記ボタンよりアカウントの作成をしてください。",
         ]}
         buttonText="登録"
+        linkURL="/signup"
       />
-      <ul>
-        <li>
-          <Link href="/dashboard">ダッシュボード</Link>
-        </li>
-        <li>
-          <Link href="/user">登録しているユーザー一覧</Link>
-        </li>
-        <li>
-          <Link href="/app">登録されてるアプリ一覧</Link>
-        </li>
-      </ul>
     </main>
   );
 }
