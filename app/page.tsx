@@ -30,7 +30,23 @@ export default async function Home() {
         />
       </TopPageSection>
       <NewAppsListInfo appIntroductions={appIntroductions} />
-      <AboutSection />
+      <AboutSection
+        title="当サイトについて"
+        leftTitle="WEB閲覧者側"
+        leftContents={[
+          "WEBアプリと言ってもどんなのがあるか分からない・・・",
+          "●●では様々なアプリが掲載されています。",
+          "また、どんなアプリか一目で分かるようになっています",
+        ]}
+        rightTitle="アプリ製作者側"
+        rightContents={[
+          "無料で自作アプリの掲載をすることができます。",
+          "必要なのは簡単な登録作業のみ。",
+          "下記ボタンよりご利用ください。",
+        ]}
+        buttonText="登録"
+        buttonLinkURL="/signup"
+      />
       <TopPageSection>
         <h2 className="h2">webサイトのBLOG記事</h2>
         <TwoColumnImageAndText
