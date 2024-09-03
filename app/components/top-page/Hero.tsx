@@ -1,13 +1,7 @@
 import Image from "next/image";
 import TopPageSection from "../layouts/with-children/TopPageSection";
 
-type HeroProps = {
-  title: string;
-  texts: string[];
-  buttonText: string;
-};
-
-const Hero: React.FC<HeroProps> = () => {
+const Hero = () => {
   return (
     <TopPageSection backgroundImage="/test.JPG">
       <div className="flex flex-col md:flex-row justify-between px-2 md:mt-10 md:mb-16">

@@ -39,7 +39,7 @@ export default async function Home() {
 
   return (
     <main className="flex flex-col items-center justify-center w-full">
-      <Hero title={""} texts={[]} buttonText={""} />
+      <Hero />
       <TopPageSection>
         <InfoCard
           title={randomAppIntroductions[0].title}
