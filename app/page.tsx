@@ -89,17 +89,6 @@ export default async function Home() {
         buttonText="登録"
         linkURL="/signup"
       />
-      <ul>
-        <li>
-          <Link href="/dashboard">ダッシュボード</Link>
-        </li>
-        <li>
-          <Link href="/user">登録しているユーザー一覧</Link>
-        </li>
-        <li>
-          <Link href="/app">登録されてるアプリ一覧</Link>
-        </li>
-      </ul>
     </main>
   );
 }
