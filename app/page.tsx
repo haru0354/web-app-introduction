@@ -79,6 +79,7 @@ export default async function Home() {
           "アプリの登録は下記ボタンよりアカウントの作成をしてください。",
         ]}
         buttonText="登録"
+        linkURL="/signup"
       />
       <ul>
         <li>
