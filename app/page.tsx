@@ -44,6 +44,7 @@ export default async function Home() {
         <InfoCard
           title={randomAppIntroductions[0].title}
           content={randomAppIntroductions[0].title}
+          linkURL={`/app/${randomAppIntroductions[0].id}`}
           src={randomAppIntroductions[0].images[0]?.imageURL}
           alt={randomAppIntroductions[0].images[0]?.imageALT}
         />
@@ -75,6 +76,7 @@ export default async function Home() {
         <InfoCard
           title={randomAppIntroductions[1].title}
           content={randomAppIntroductions[1].title}
+          linkURL={`/app/${randomAppIntroductions[1].id}`}
           src={randomAppIntroductions[1].images[0]?.imageURL}
           alt={randomAppIntroductions[1].images[0]?.imageALT}
         />
