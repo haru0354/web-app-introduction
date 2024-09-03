@@ -3,7 +3,8 @@ import Link from "next/link";
 import TopPageSection from "../layouts/with-children/TopPageSection";
 import Button from "../ui/Button";
 
-type NewAppsListInfoProps = {
+type NewAppsVerticalSectionProps = {
+  title: string;
   appIntroductions: AppIntroductions[];
 };
 
@@ -20,7 +21,8 @@ type Image = {
   imageALT: string;
 };
 
-const NewAppsListInfo: React.FC<NewAppsListInfoProps> = ({
+const NewAppsVerticalSection: React.FC<NewAppsVerticalSectionProps> = ({
+  title,
   appIntroductions,
 }) => {
   const sortedIntroductions = appIntroductions.sort(
@@ -30,7 +32,7 @@ const NewAppsListInfo: React.FC<NewAppsListInfoProps> = ({
 
   return (
     <TopPageSection>
-      <h2 className="text-center text-3xl font-bold my-8">新着アプリ</h2>
+      <h2 className="text-center text-3xl font-bold my-8">{title}</h2>
       <div className="flex flex-col">
         {latestSixAppIntroductions.map((appIntroduction, index) => {
           const firstImage = appIntroduction.images[0];
@@ -65,13 +67,20 @@ const NewAppsListInfo: React.FC<NewAppsListInfoProps> = ({
           );
         })}
       </div>
-      <Link href="/app">
-        <Button color="gray" size="big" className="block mx-auto mt-8 rounded">
-          アプリの一覧へ
-        </Button>
-      </Link>
+      <div className="flex flex-col md:flex-row items-center justify-center">
+        <Link href="/app">
+          <Button color="gray" size="big" className="mx-4 mt-8 rounded">
+            アプリの一覧へ
+          </Button>
+        </Link>
+        <Link href="/user">
+          <Button color="gray" size="big" className="mx-4 md:mt-8 rounded">
+            製作者の一覧へ
+          </Button>
+        </Link>
+      </div>
     </TopPageSection>
   );
 };
 
-export default NewAppsListInfo;
+export default NewAppsVerticalSection;

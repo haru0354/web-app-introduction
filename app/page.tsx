@@ -7,7 +7,7 @@ import TwoColumnImageAndText from "./components/layouts/TwoColumnImageAndText";
 import Hero from "./components/top-page/Hero";
 import CTASection from "./components/top-page/CTASection";
 import AboutSection from "./components/top-page/AboutSection";
-import NewAppsListInfo from "./components/top-page/NewAppsListInfo";
+import NewAppsVerticalSection from "./components/top-page/NewAppsVerticalSection";
 
 export default async function Home() {
   const appIntroductions = await getAllAppIntroductions();
@@ -29,7 +29,10 @@ export default async function Home() {
           alt={randomAppIntroductions[0].images[0]?.imageALT}
         />
       </TopPageSection>
-      <NewAppsListInfo appIntroductions={appIntroductions} />
+      <NewAppsVerticalSection
+        appIntroductions={appIntroductions}
+        title="新着アプリ"
+      />
       <AboutSection
         title="当サイトについて"
         leftTitle="WEB閲覧者側"
