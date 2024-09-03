@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
-import "./globals.css";
+import { Provider } from "react-redux";
+import store from "./redux/store";
 import { notoSansJp } from "./components/util/Font";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import "./globals.css";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -17,9 +19,11 @@ export default function RootLayout({
   return (
     <html lang="ja">
       <body className={`${notoSansJp.className} flex flex-col min-h-screen`}>
-        <Header />
-        {children}
-        <Footer />
+        <Provider store={store}>
+          <Header />
+          {children}
+          <Footer />
+        </Provider>
       </body>
     </html>
   );
