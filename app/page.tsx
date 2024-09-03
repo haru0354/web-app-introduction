@@ -8,7 +8,7 @@ import Hero from "./components/top-page/Hero";
 import CTASection from "./components/top-page/CTASection";
 import AboutSection from "./components/top-page/AboutSection";
 import NewAppsVerticalSection from "./components/top-page/NewAppsVerticalSection";
-import ArticlesListSection from "./components/top-page/ArticlesListSection";
+import ContentsListSection from "./components/top-page/ContentsListSection";
 
 export default async function Home() {
   const appIntroductions = await getAllAppIntroductions();
@@ -21,13 +21,21 @@ export default async function Home() {
 
   const articles = [
     {
-      title: "",
-      url: "",
-      imageSrc: "",
-      imageAlt: "",
+      title: "テスト",
+      url: "/",
+      imageSrc: "/blog-test.webp",
+      imageAlt: "test",
     },
   ];
 
+  const categories = [
+    {
+      title: "テスト",
+      url: "/",
+      imageSrc: "/blog-test.webp",
+      imageAlt: "test",
+    },
+  ];
 
   return (
     <main className="flex flex-col items-center justify-center w-full">
@@ -61,23 +69,8 @@ export default async function Home() {
         buttonText="登録"
         buttonLinkURL="/signup"
       />
-      <ArticlesListSection articlesListTitle="新着記事" articles={articles} />
-      <TopPageSection>
-        <h2 className="h2">webサイトのBLOG記事</h2>
-        <TwoColumnImageAndText
-          contents={["aaa", "bbb", "ccc"]}
-          src={"/test.jpg"}
-          alt={"fff"}
-        />
-      </TopPageSection>
-      <TopPageSection>
-        <h2 className="h2">webサイトのカテゴリ</h2>
-        <TwoColumnImageAndText
-          contents={["aaa", "bbb", "ccc"]}
-          src={"/test.jpg"}
-          alt={"fff"}
-        />
-      </TopPageSection>
+      <ContentsListSection listTitle="新着記事" contents={articles} />
+      <ContentsListSection listTitle="新着カテゴリ" contents={categories} />
       <TopPageSection>
         <InfoCard
           title={randomAppIntroductions[1].title}
