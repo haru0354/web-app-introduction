@@ -31,7 +31,7 @@ const CTASection: React.FC<CTASectionProps> = ({
         );
       })}
       <Link href="/signup">
-        <Button color="blue" className="block mx-auto">登録</Button>
+        <Button color="blue" className="block mx-auto">{buttonText}</Button>
       </Link>
     </TopPageSection>
   );
