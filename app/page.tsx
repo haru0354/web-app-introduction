@@ -8,6 +8,7 @@ import Hero from "./components/top-page/Hero";
 import CTASection from "./components/top-page/CTASection";
 import AboutSection from "./components/top-page/AboutSection";
 import NewAppsVerticalSection from "./components/top-page/NewAppsVerticalSection";
+import ArticlesListSection from "./components/top-page/ArticlesListSection";
 
 export default async function Home() {
   const appIntroductions = await getAllAppIntroductions();
@@ -17,6 +18,16 @@ export default async function Home() {
   }
 
   const randomAppIntroductions = shuffleArray(appIntroductions).slice(0, 2);
+
+  const articles = [
+    {
+      title: "",
+      url: "",
+      imageSrc: "",
+      imageAlt: "",
+    },
+  ];
+
 
   return (
     <main className="flex flex-col items-center justify-center w-full">
@@ -50,6 +61,7 @@ export default async function Home() {
         buttonText="登録"
         buttonLinkURL="/signup"
       />
+      <ArticlesListSection articlesListTitle="新着記事" articles={articles} />
       <TopPageSection>
         <h2 className="h2">webサイトのBLOG記事</h2>
         <TwoColumnImageAndText
