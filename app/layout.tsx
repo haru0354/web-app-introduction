@@ -3,7 +3,6 @@ import { notoSansJp } from "./components/util/Font";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import "./globals.css";
-import StoreProvider from "./components/StoreProvider";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -18,11 +17,9 @@ export default function RootLayout({
   return (
     <html lang="ja">
       <body className={`${notoSansJp.className} flex flex-col min-h-screen`}>
-        <StoreProvider>
           <Header />
           {children}
           <Footer />
-        </StoreProvider>
       </body>
     </html>
   );
