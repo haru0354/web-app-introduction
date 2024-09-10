@@ -1,42 +1,37 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import Button from "../../ui/Button";
+import useToggleModal from "../../hooks/useToggleModal";
 
-type ModalProps = {
-  buttonColor: "red" | "blue" | "gray" | "white";
+type ModalLayoutProps = {
   buttonText: string;
+  buttonColor?: "red" | "blue" | "gray" | "white";
   buttonSize?: "normal" | "small";
   width?: string;
   children: React.ReactNode;
 };
 
-const Modal: React.FC<ModalProps> = ({
-  buttonColor,
+const ModalLayout: React.FC<ModalLayoutProps> = ({
   buttonText,
-  buttonSize,
+  buttonColor = "blue",
+  buttonSize = "normal",
   width,
   children,
 }) => {
-  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+  const { openModal, closeModal, isModalOpen } = useToggleModal();
 
   useEffect(() => {
-    if (typeof document !== "undefined") {
-      if (isModalOpen) {
-        document.body.classList.add("overflow-hidden");
-      } else {
-        document.body.classList.remove("overflow-hidden");
-      }
+    if (isModalOpen) {
+      document.body.classList.add("overflow-hidden");
+    } else {
+      document.body.classList.remove("overflow-hidden");
     }
   }, [isModalOpen]);
 
-  const toggleModalOpen = () => {
-    setIsModalOpen((prev) => !prev);
-  };
-
-  const toggleModalClose = (e: React.MouseEvent<HTMLInputElement>) => {
+  const handleClose = (e: React.MouseEvent<HTMLDivElement>) => {
     if (e.target === e.currentTarget) {
-      setIsModalOpen((prev) => !prev);
+      closeModal();
     }
   };
 
@@ -46,14 +41,14 @@ const Modal: React.FC<ModalProps> = ({
         color={buttonColor}
         size={buttonSize}
         className="block mx-auto"
-        onClick={toggleModalOpen}
+        onClick={openModal}
       >
         {buttonText}
       </Button>
       {isModalOpen && (
         <div
           className="fixed flex items-center justify-center inset-0 w-full h-full z-[100] bg-gray-700 bg-opacity-75"
-          onClick={toggleModalClose}
+          onClick={handleClose}
         >
           <div
             className={`max-h-[80vh] w-full ${
@@ -65,7 +60,7 @@ const Modal: React.FC<ModalProps> = ({
               color="gray"
               size="normal"
               className="block mx-auto"
-              onClick={toggleModalOpen}
+              onClick={closeModal}
             >
               キャンセル
             </Button>
@@ -76,4 +71,4 @@ const Modal: React.FC<ModalProps> = ({
   );
 };
 
-export default Modal;
+export default ModalLayout;
