@@ -5,6 +5,8 @@ import InputText from "../ui/InputText";
 import Textarea from "../ui/Textarea";
 import Button from "../ui/Button";
 import { editProfile } from "@/app/action/ActionProfile";
+import useToggleModal from "../hooks/useToggleModal";
+import { useEffect } from "react";
 
 type FormProfileProps = {
   userId: string;
@@ -33,6 +35,8 @@ type FormProfileState = {
 };
 
 const FormProfile: React.FC<FormProfileProps> = ({ profile, userId }) => {
+  const { closeModal } = useToggleModal();
+
   const initialState = {
     message: null,
     errors: {
@@ -50,6 +54,12 @@ const FormProfile: React.FC<FormProfileProps> = ({ profile, userId }) => {
     editProfile,
     initialState
   );
+
+  useEffect(() => {
+    if (state.message === "success") {
+      closeModal();
+    }
+  }, [state.message, closeModal]);
 
   return (
     <form action={dispatch} className="max-w-[700px] w-[80vw] mx-auto">

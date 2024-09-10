@@ -7,6 +7,8 @@ import Button from "../ui/Button";
 import DynamicInputText from "../ui/DynamicInputText";
 import Link from "next/link";
 import InputImage from "../ui/InputImage";
+import useToggleModal from "../hooks/useToggleModal";
+import { useEffect } from "react";
 
 type FormAppIntroductionProps = {
   formAction: (state: FormState, formData: FormData) => Promise<FormState>;
@@ -51,6 +53,8 @@ const FormAppIntroduction: React.FC<FormAppIntroductionProps> = ({
   appId,
   backButton = false,
 }) => {
+  const { closeModal } = useToggleModal();
+
   const initialState = {
     message: null,
     errors: {
@@ -68,6 +72,12 @@ const FormAppIntroduction: React.FC<FormAppIntroductionProps> = ({
     formAction,
     initialState
   );
+
+  useEffect(() => {
+    if (state.message === "success") {
+      closeModal();
+    }
+  }, [state.message, closeModal]);
 
   return (
     <form action={dispatch} className="max-w-[700px] w-[80vw] mx-auto">

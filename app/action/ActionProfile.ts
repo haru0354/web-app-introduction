@@ -73,6 +73,8 @@ export const editProfile = async (
         },
       },
     });
+    
+    console.log("プロフィールの編集に成功しました。");
   } catch (error) {
     console.error("プロフィールの追加の際にエラーが発生しました。:", error);
     return { message: "プロフィールの追加の際にエラーが発生しました。" };
