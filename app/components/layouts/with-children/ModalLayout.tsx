@@ -51,9 +51,9 @@ const ModalLayout: React.FC<ModalLayoutProps> = ({
           onClick={handleClose}
         >
           <div
-            className={`max-h-[80vh] w-full ${
-              width ? `max-w-[${width}px]` : ""
-            } p-4 border border-gray-700 rounded bg-white overflow-y-auto`}
+            className={`max-h-[85vh] w-full ${
+              width ? `max-w-[${width}px]` : "max-w-[500px]"
+            } p-4 mx-2 border border-gray-700 rounded bg-white overflow-y-auto`}
           >
             {children}
             <Button
