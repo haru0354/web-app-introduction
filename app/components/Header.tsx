@@ -5,8 +5,8 @@ import Link from "next/link";
 import { useSession } from "next-auth/react";
 import FormLogin from "./auth/FormLogin";
 import LogoutButton from "./auth/LogoutButton";
-import Modal from "./layouts/with-children/Modal";
 import Button from "./ui/Button";
+import Modal from "./Modal";
 
 const Header = () => {
   const { data: session } = useSession();
