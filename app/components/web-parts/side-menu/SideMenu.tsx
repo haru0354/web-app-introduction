@@ -1,5 +1,5 @@
-import NewAppIntroductions from "./NewAppIntroductions ";
-import SideLink from "./SideLink";
+import NewAppIntroductions from "../../web-parts/side-menu/NewAppIntroductions ";
+import SideLink from "../../web-parts/side-menu/SideLink";
 
 const SideMenu = () => {
   return (
