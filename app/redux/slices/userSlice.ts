@@ -10,7 +10,7 @@ const userSlice = createSlice({
     error: null as string | null,
   },
   reducers: {
-    addUser(state, action) {
+    setUser(state, action) {
       state.user = action.payload;
     },
     clearUser(state) {
@@ -33,7 +33,7 @@ const userSlice = createSlice({
   },
 });
 
-export const { addUser, clearUser } = userSlice.actions;
+export const { setUser, clearUser } = userSlice.actions;
 export default userSlice.reducer;
 
 export const login = createAsyncThunk(

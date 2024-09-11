@@ -1,16 +1,15 @@
+"use client";
+
 import Image from "next/image";
-import { authOptions } from "../api/auth/[...nextauth]/route";
-import { getServerSession } from "next-auth";
-import { signUp } from "../action/ActionUser";
+import Link from "next/link";
+import { useSession } from "next-auth/react";
 import FormLogin from "./auth/FormLogin";
 import LogoutButton from "./auth/LogoutButton";
-import Modal from "./layouts/with-children/Modal";
-import FormSignUp from "./auth/FormSignUp";
-import Link from "next/link";
 import Button from "./ui/Button";
+import Modal from "./Modal";
 
-const Header = async () => {
-  const session = await getServerSession(authOptions);
+const Header = () => {
+  const { data: session } = useSession();
 
   return (
     <header className="flex justify-between items-center w-full max-w-[1140px] mx-auto px-2">

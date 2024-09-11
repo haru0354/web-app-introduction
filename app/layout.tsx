@@ -4,6 +4,7 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import "./globals.css";
 import StoreProvider from "./components/StoreProvider";
+import AuthContext from "./components/context/AuthContext";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -19,9 +20,11 @@ export default function RootLayout({
     <html lang="ja">
       <body className={`${notoSansJp.className} flex flex-col min-h-screen`}>
         <StoreProvider>
-          <Header />
-          {children}
-          <Footer />
+          <AuthContext>
+            <Header />
+            {children}
+            <Footer />
+          </AuthContext>
         </StoreProvider>
       </body>
     </html>

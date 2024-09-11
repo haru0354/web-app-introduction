@@ -20,7 +20,7 @@ export const authOptions: NextAuthOptions = {
       },
       async authorize(credentials) {
         if (!credentials?.email || !credentials?.password) {
-          throw new Error("メールアドレスとパスワードが存在しません");
+          throw new Error("アドレスとパスワードを入力してください。");
         }
 
         const user = await prisma.user.findUnique({
@@ -42,12 +42,37 @@ export const authOptions: NextAuthOptions = {
           throw new Error("パスワードが一致しません");
         }
 
-        return user;
+        return {
+          ...user,
+          id: user.id.toString(),
+        };
       },
     }),
   ],
   pages: {
     signIn: "/",
+  },
+  callbacks: {
+    async jwt({ token, user }) {
+      if (user) {
+        token.id = user.id;
+        token.name = user.name;
+        token.email = user.email;
+        token.image = user.image;
+      }
+      return token;
+    },
+    async session({ session, token }) {
+      if (token) {
+        session.user = {
+          id: token.id as string,
+          name: token.name as string,
+          email: token.email as string,
+          image: token.image as string,
+        };
+      }
+      return session;
+    },
   },
   secret: process.env.NEXTAUTH_SECRET,
 };

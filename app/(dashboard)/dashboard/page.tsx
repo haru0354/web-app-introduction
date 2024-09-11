@@ -1,11 +1,10 @@
 import { addAppIntroduction } from "@/app/action/ActionAppIntroduction";
 import FormAppIntroduction from "@/app/components/dashboard/FormAppIntroduction";
 import FormProfile from "@/app/components/dashboard/FormProfile";
+import Modal from "@/app/components/Modal";
 import Profile from "@/app/components/Profile";
-import Modal from "@/app/components/layouts/with-children/Modal";
 import UserAppsList from "@/app/components/UserAppsList";
 import { getSessionUser } from "@/app/lib/SessionUserService";
-
 
 const page = async () => {
   const userData = await getSessionUser();
@@ -29,6 +28,7 @@ const page = async () => {
           formAction={addAppIntroduction}
           formName="アプリの登録"
           userId={userData.id}
+          isModalPage={true}
         />
       </Modal>
     </>

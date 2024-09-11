@@ -5,6 +5,7 @@ import prisma from "../lib/prisma";
 import { z } from "zod";
 import { FileSaveStorage } from "../lib/FileSaveStorage";
 import { validateMimeTypeAndExtension } from "../lib/validateMimeTypeAndExtension";
+import { revalidatePath } from "next/cache";
 
 type FormState = {
   message?: string | null;
@@ -84,7 +85,7 @@ export const addAppIntroduction = async (
       errors: validatedFields.error.flatten().fieldErrors,
       message: "正しい形式でフォームを入力してください。",
     };
-    console.log("バリデーションエラー：",errors);
+    console.log("バリデーションエラー：", errors);
     return errors;
   }
 
@@ -152,7 +153,8 @@ export const addAppIntroduction = async (
     console.error("アプリの追加の際にエラーが発生しました。:", error);
     return { message: "アプリの追加の際にエラーが発生しました。" };
   }
-  redirect("/dashboard");
+  revalidatePath("/dashboard");
+  return { message: "success" };
 };
 
 export const updateAppIntroduction = async (

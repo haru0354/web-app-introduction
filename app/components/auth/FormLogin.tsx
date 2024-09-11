@@ -1,12 +1,21 @@
 "use client";
 
+import { useState } from "react";
 import Button from "../ui/Button";
 import InputText from "../ui/InputText";
 import { signIn } from "next-auth/react";
+import { useRouter } from "next/navigation";
 
 const FormLogin = () => {
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const router = useRouter();
+
   const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setIsLoading(true);
+    setError(null);
+
     try {
       const formData = new FormData(e.target as HTMLFormElement);
       const email = formData.get("email") as string;
@@ -15,17 +24,21 @@ const FormLogin = () => {
       const result = await signIn("appIntroduction", {
         email,
         password,
-        callbackUrl: "/dashboard",
+        redirect: false,
       });
 
       if (result?.error) {
+        setError(result.error);
         console.log("ログインに失敗しました。", result.error);
-        return;
+      } else if (result?.ok) {
+        console.log("ログインに成功しました。");
+        router.push("/dashboard");
       }
-
-      console.log("ログインに成功しました。");
     } catch (error) {
+      setError("ログイン中にエラーが発生しました。");
       console.error("ログイン中にエラーが発生しました：", error);
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -44,6 +57,13 @@ const FormLogin = () => {
         name="password"
         placeholder="passwordを入力してください"
       />
+      {isLoading && (
+        <>
+          <p>ログイン中...</p>
+          <p>しばらくお待ちください。</p>
+        </>
+      )}
+      {error && <p className="text-red-500 text-center">{error}</p>}
       <Button
         type="submit"
         color="blue"
