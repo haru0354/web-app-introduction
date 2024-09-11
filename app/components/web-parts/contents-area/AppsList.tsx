@@ -1,8 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
-import Button from "./ui/Button";
+import Button from "../../ui/Button";
 
-type UserAppsListProps = {
+type AppsListProps = {
   appIntroductions: AppIntroductions[];
   editButton?: boolean;
 };
@@ -19,7 +19,7 @@ type Image = {
   imageALT: string;
 };
 
-const UserAppsList: React.FC<UserAppsListProps> = ({
+const AppsList: React.FC<AppsListProps> = ({
   appIntroductions,
   editButton = false,
 }) => {
@@ -66,4 +66,4 @@ const UserAppsList: React.FC<UserAppsListProps> = ({
   );
 };
 
-export default UserAppsList;
+export default AppsList;

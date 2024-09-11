@@ -1,9 +1,7 @@
-import Link from "next/link";
 import { getAllAppIntroductions } from "./lib/AppIntroductionService";
 import { shuffleArray } from "./lib/ShuffleArray";
 import TopPageSection from "./components/layouts/with-children/TopPageSection";
-import InfoCard from "./components/InfoCard";
-import TwoColumnImageAndText from "./components/layouts/TwoColumnImageAndText";
+import InfoCard from "./components/web-parts/contents-area/InfoCard";
 import Hero from "./components/section/Hero";
 import CTASection from "./components/section/CTASection";
 import AboutSection from "./components/section/AboutSection";
