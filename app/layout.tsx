@@ -3,7 +3,7 @@ import { notoSansJp } from "./components/util/Font";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import "./globals.css";
-import StoreProvider from "./components/StoreProvider";
+import StoreProvider from "./components/context/StoreProvider";
 import AuthContext from "./components/context/AuthContext";
 
 export const metadata: Metadata = {
