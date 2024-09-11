@@ -3,9 +3,9 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useSession } from "next-auth/react";
-import FormLogin from "./form/FormLogin";
-import LogoutButton from "./ui/LogoutButton";
-import Button from "./ui/Button";
+import FormLogin from "../form/FormLogin";
+import LogoutButton from "../ui/LogoutButton";
+import Button from "../ui/Button";
 import Modal from "./Modal";
 
 const Header = () => {

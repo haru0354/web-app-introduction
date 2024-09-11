@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { notoSansJp } from "./components/util/Font";
-import Header from "./components/Header";
-import Footer from "./components/Footer";
+import Header from "./components/web-parts/Header";
+import Footer from "./components/web-parts/Footer";
 import "./globals.css";
 import StoreProvider from "./components/context/StoreProvider";
 import AuthContext from "./components/context/AuthContext";

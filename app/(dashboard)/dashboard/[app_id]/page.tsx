@@ -3,7 +3,7 @@ import {
   updateAppIntroduction,
 } from "@/app/action/ActionAppIntroduction";
 import FormAppIntroduction from "@/app/components/form/FormAppIntroduction";
-import Modal from "@/app/components/Modal";
+import Modal from "@/app/components/web-parts/Modal";
 import Button from "@/app/components/ui/Button";
 import prisma from "@/app/lib/prisma";
 import NotFound from "@/app/not-found";
