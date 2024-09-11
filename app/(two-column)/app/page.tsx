@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { getAllAppIntroductions } from "@/app/lib/AppIntroductionService";
+import { getAllAppIntroductions } from "@/app/lib/appIntroductionService";
 
 const page = async () => {
   const allAppIntroductions = await getAllAppIntroductions();

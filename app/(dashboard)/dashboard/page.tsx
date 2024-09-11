@@ -4,7 +4,7 @@ import FormProfile from "@/app/components/form/FormProfile";
 import Modal from "@/app/components/web-parts/Modal";
 import Profile from "@/app/components/web-parts/contents-area/Profile";
 import AppsList from "@/app/components/web-parts/contents-area/AppsList";
-import { getSessionUser } from "@/app/lib/SessionUserService";
+import { getSessionUser } from "@/app/lib/sessionUserService";
 
 const page = async () => {
   const userData = await getSessionUser();

@@ -1,6 +1,6 @@
 import Profile from "@/app/components/web-parts/contents-area/Profile";
 import AppsList from "@/app/components/web-parts/contents-area/AppsList";
-import { getUser } from "@/app/lib/UserService";
+import { getUser } from "@/app/lib/userService";
 import NotFound from "@/app/not-found";
 
 const page = async ({ params }: { params: { userId: string } }) => {
