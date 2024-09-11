@@ -4,11 +4,11 @@ import { shuffleArray } from "./lib/ShuffleArray";
 import TopPageSection from "./components/layouts/with-children/TopPageSection";
 import InfoCard from "./components/InfoCard";
 import TwoColumnImageAndText from "./components/layouts/TwoColumnImageAndText";
-import Hero from "./components/top-page/Hero";
-import CTASection from "./components/top-page/CTASection";
-import AboutSection from "./components/top-page/AboutSection";
-import NewAppsVerticalSection from "./components/top-page/NewAppsVerticalSection";
-import ContentsListSection from "./components/top-page/ContentsListSection";
+import Hero from "./components/section/Hero";
+import CTASection from "./components/section/CTASection";
+import AboutSection from "./components/section/AboutSection";
+import NewAppsVerticalSection from "./components/section/NewAppsVerticalSection";
+import ContentsListSection from "./components/section/ContentsListSection";
 
 export default async function Home() {
   const appIntroductions = await getAllAppIntroductions();
