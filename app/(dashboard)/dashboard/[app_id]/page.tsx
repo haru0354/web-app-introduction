@@ -2,7 +2,7 @@ import {
   deleteAppIntroduction,
   updateAppIntroduction,
 } from "@/app/action/ActionAppIntroduction";
-import FormAppIntroduction from "@/app/components/dashboard/FormAppIntroduction";
+import FormAppIntroduction from "@/app/components/form/FormAppIntroduction";
 import Modal from "@/app/components/Modal";
 import Button from "@/app/components/ui/Button";
 import prisma from "@/app/lib/prisma";

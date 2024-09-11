@@ -1,5 +1,5 @@
 import { signUp } from "@/app/action/ActionUser";
-import FormSignUp from "@/app/components/auth/FormSignUp";
+import FormSignUp from "@/app/components/form/FormSignUp";
 
 const page = () => {
   return (

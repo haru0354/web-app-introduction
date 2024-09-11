@@ -1,6 +1,6 @@
 import { addAppIntroduction } from "@/app/action/ActionAppIntroduction";
-import FormAppIntroduction from "@/app/components/dashboard/FormAppIntroduction";
-import FormProfile from "@/app/components/dashboard/FormProfile";
+import FormAppIntroduction from "@/app/components/form/FormAppIntroduction";
+import FormProfile from "@/app/components/form/FormProfile";
 import Modal from "@/app/components/Modal";
 import Profile from "@/app/components/Profile";
 import UserAppsList from "@/app/components/UserAppsList";
