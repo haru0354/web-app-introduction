@@ -1,6 +1,6 @@
-import Profile from "@/app/components/Profile";
-import UserAppsList from "@/app/components/UserAppsList";
-import { getUser } from "@/app/lib/UserService";
+import Profile from "@/app/components/web-parts/contents-area/Profile";
+import AppsList from "@/app/components/web-parts/contents-area/AppsList";
+import { getUser } from "@/app/lib/userService";
 import NotFound from "@/app/not-found";
 
 const page = async ({ params }: { params: { userId: string } }) => {
@@ -14,7 +14,7 @@ const page = async ({ params }: { params: { userId: string } }) => {
   return (
     <>
       <Profile userName={user.name} profile={user.profile} />
-      <UserAppsList appIntroductions={user.appIntroductions} />
+      <AppsList appIntroductions={user.appIntroductions} />
     </>
   );
 };

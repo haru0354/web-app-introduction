@@ -1,7 +1,7 @@
 "use client";
 
-import { ModalProvider } from "./context/ModalContext";
-import ModalLayout from "./layouts/with-children/ModalLayout";
+import { ModalProvider } from "../context/ModalContext";
+import ModalLayout from "../layouts/with-children/ModalLayout";
 
 type ModalProps = {
   buttonColor?: "red" | "blue" | "gray" | "white";

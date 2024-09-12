@@ -1,8 +1,8 @@
 "use server";
 
-import { supabase } from "../components/util/Supabase";
+import { supabase } from "../components/util/supabase";
 
-export const FileSaveStorage = async (image: File, userId: string) => {
+export const fileSaveStorage = async (image: File, userId: string) => {
   try {
     const fileName = `${Date.now()}_${image.name}`;
     const directory = `app-introduction/${userId}`;

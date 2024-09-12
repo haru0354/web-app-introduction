@@ -1,10 +1,10 @@
 import { addAppIntroduction } from "@/app/action/ActionAppIntroduction";
-import FormAppIntroduction from "@/app/components/dashboard/FormAppIntroduction";
-import FormProfile from "@/app/components/dashboard/FormProfile";
-import Modal from "@/app/components/Modal";
-import Profile from "@/app/components/Profile";
-import UserAppsList from "@/app/components/UserAppsList";
-import { getSessionUser } from "@/app/lib/SessionUserService";
+import FormAppIntroduction from "@/app/components/form/FormAppIntroduction";
+import FormProfile from "@/app/components/form/FormProfile";
+import Modal from "@/app/components/web-parts/Modal";
+import Profile from "@/app/components/web-parts/contents-area/Profile";
+import AppsList from "@/app/components/web-parts/contents-area/AppsList";
+import { getSessionUser } from "@/app/lib/sessionUserService";
 
 const page = async () => {
   const userData = await getSessionUser();
@@ -19,7 +19,7 @@ const page = async () => {
       <Modal buttonColor="blue" buttonText="プロフィールの変更">
         <FormProfile userId={userData.id} profile={userData.profile} />
       </Modal>
-      <UserAppsList
+      <AppsList
         appIntroductions={userData.appIntroductions}
         editButton={true}
       />

@@ -1,4 +1,4 @@
-import { getAllUser } from "@/app/lib/UserService";
+import { getAllUser } from "@/app/lib/userService";
 import Image from "next/image";
 import Link from "next/link";
 

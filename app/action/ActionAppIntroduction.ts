@@ -3,7 +3,7 @@
 import { redirect } from "next/navigation";
 import prisma from "../lib/prisma";
 import { z } from "zod";
-import { FileSaveStorage } from "../lib/FileSaveStorage";
+import { fileSaveStorage } from "../lib/fileSaveStorage";
 import { validateMimeTypeAndExtension } from "../lib/validateMimeTypeAndExtension";
 import { revalidatePath } from "next/cache";
 
@@ -119,7 +119,7 @@ export const addAppIntroduction = async (
         return errors;
       }
 
-      imageURL = await FileSaveStorage(image, userId);
+      imageURL = await fileSaveStorage(image, userId);
     } catch (error) {
       console.error("画像の追加時にエラーが発生しました", error);
       return { message: "画像の追加時にエラーが発生しました" };
@@ -237,7 +237,7 @@ export const updateAppIntroduction = async (
         return errors;
       }
 
-      imageURL = await FileSaveStorage(image, userId);
+      imageURL = await fileSaveStorage(image, userId);
     } catch (error) {
       console.error("画像の追加時にエラーが発生しました", error);
       return { message: "画像の追加時にエラーが発生しました" };

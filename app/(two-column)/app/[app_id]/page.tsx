@@ -1,6 +1,6 @@
 import Link from "next/link";
-import { getAppIntroduction } from "@/app/lib/AppIntroductionService";
-import ImageSlider from "@/app/components/webPage/ImageSlider";
+import { getAppIntroduction } from "@/app/lib/appIntroductionService";
+import ImageSlider from "@/app/components/web-parts/contents-area/ImageSlider";
 import NotFound from "@/app/not-found";
 
 const page = async ({ params }: { params: { app_id: string } }) => {
