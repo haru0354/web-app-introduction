@@ -28,7 +28,6 @@ const page = async () => {
           formAction={addAppIntroduction}
           formName="アプリの登録"
           userId={userData.id}
-          isModalPage={true}
         />
       </Modal>
     </>
