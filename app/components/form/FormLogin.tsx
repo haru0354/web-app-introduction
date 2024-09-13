@@ -1,15 +1,17 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Button from "../ui/Button";
 import InputText from "../ui/InputText";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
+import useToggleModal from "../hooks/useToggleModal";
 
 const FormLogin = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const router = useRouter();
+  const { closeModal } = useToggleModal();
 
   const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -31,6 +33,7 @@ const FormLogin = () => {
         setError(result.error);
         console.log("ログインに失敗しました。", result.error);
       } else if (result?.ok) {
+        closeModal();
         console.log("ログインに成功しました。");
         router.push("/dashboard");
       }

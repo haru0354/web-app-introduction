@@ -19,13 +19,11 @@ export default function RootLayout({
   return (
     <html lang="ja">
       <body className={`${notoSansJp.className} flex flex-col min-h-screen`}>
-        <StoreProvider>
           <AuthContext>
             <Header />
             {children}
             <Footer />
           </AuthContext>
-        </StoreProvider>
       </body>
     </html>
   );
