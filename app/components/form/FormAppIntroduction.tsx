@@ -81,7 +81,7 @@ const FormAppIntroduction: React.FC<FormAppIntroductionProps> = ({
       }
     }, [state.message, closeModal]);
   }
-  
+
   return (
     <form action={dispatch} className="w-full mx-auto">
       <p className="text-center font-semibold pb-2  mb-6 border-b border-dashed border-gray-700">
@@ -154,7 +154,7 @@ const FormAppIntroduction: React.FC<FormAppIntroductionProps> = ({
       {state.errors && state.errors.imageALT && (
         <p className="mb-4 text-red-500">{state.errors.imageALT}</p>
       )}
-      {userId && <input type="hidden" name="userId" value={userId} />}
+      <input type="hidden" name="userId" value={userId} />
       {appId && <input type="hidden" name="appId" value={appId} />}
       {state.errors && state.errors.imageALT && (
         <p className="mb-4 text-red-500">{state.errors.image}</p>

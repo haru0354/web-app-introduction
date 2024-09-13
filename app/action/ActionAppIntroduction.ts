@@ -6,6 +6,7 @@ import { z } from "zod";
 import { fileSaveStorage } from "../lib/FileSaveStorage";
 import { validateMimeTypeAndExtension } from "../lib/validateMimeTypeAndExtension";
 import { revalidatePath } from "next/cache";
+import { getSessionUserId } from "../lib/sessionUserService";
 
 type FormState = {
   message?: string | null;
@@ -168,9 +169,36 @@ export const updateAppIntroduction = async (
   const solution = formData.get("solution") as string;
   const image = formData.get("imageFile") as File;
   const imageALT = formData.get("imageALT") as string;
-
   const appId = formData.get("appId") as string;
   const userId = formData.get("userId") as string;
+  const sessionUserId = await getSessionUserId();
+
+  if (!sessionUserId) {
+    throw new Error("セッションを取得できませんでした。");
+  }
+
+  if (sessionUserId !== userId) {
+    throw new Error("セッションとフォームで送信されたIDが一致しません。");
+  }
+
+  const appIntroduction = await prisma.appIntroduction.findUnique({
+    where: {
+      id: appId,
+    },
+    include: {
+      user: true,
+    },
+  });
+
+  if (!appIntroduction) {
+    throw new Error("登録しているアプリが見つかりません。");
+  }
+
+  if (appIntroduction.userId !== userId) {
+    throw new Error(
+      "登録しているユーザーのIDとフォームから送信されたユーザーのIDが一致しません。"
+    );
+  }
 
   const canArray = [];
   let canIndex = 0;
