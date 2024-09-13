@@ -1,16 +1,14 @@
-"use client";
-
 import Image from "next/image";
 import Link from "next/link";
-import { useSession } from "next-auth/react";
 import FormLogin from "../form/FormLogin";
 import LogoutButton from "../ui/LogoutButton";
 import Button from "../ui/Button";
 import Modal from "./Modal";
+import { getServerSession } from "next-auth";
 
-const Header = () => {
-  const { data: session } = useSession();
-
+const Header = async () => {
+  const session = await getServerSession()  
+  
   return (
     <header className="flex justify-between items-center w-full max-w-[1140px] mx-auto px-2">
       <Link href="/">
