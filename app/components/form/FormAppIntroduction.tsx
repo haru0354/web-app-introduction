@@ -17,6 +17,7 @@ type FormAppIntroductionProps = {
   appIntroductionData?: AppIntroduction | null;
   appId?: string;
   backButton?: boolean;
+  isModalPage?: boolean;
 };
 
 type AppIntroduction = {
@@ -52,9 +53,8 @@ const FormAppIntroduction: React.FC<FormAppIntroductionProps> = ({
   appIntroductionData,
   appId,
   backButton = false,
+  isModalPage = false,
 }) => {
-  const { closeModal } = useToggleModal();
-
   const initialState = {
     message: null,
     errors: {
@@ -73,12 +73,15 @@ const FormAppIntroduction: React.FC<FormAppIntroductionProps> = ({
     initialState
   );
 
-  useEffect(() => {
-    if (state.message === "success") {
-      closeModal();
-    }
-  }, [state.message, closeModal]);
-
+  if (isModalPage === true) {
+    const { closeModal } = useToggleModal();
+    useEffect(() => {
+      if (state.message === "success") {
+        closeModal();
+      }
+    }, [state.message, closeModal]);
+  }
+  
   return (
     <form action={dispatch} className="w-full mx-auto">
       <p className="text-center font-semibold pb-2  mb-6 border-b border-dashed border-gray-700">
