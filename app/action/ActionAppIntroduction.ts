@@ -54,6 +54,15 @@ export const addAppIntroduction = async (
   const image = formData.get("imageFile") as File;
   const imageALT = formData.get("imageALT") as string;
   const userId = formData.get("userId") as string;
+  const sessionUserId = await getSessionUserId();
+
+  if (!sessionUserId) {
+    throw new Error("セッションを取得できませんでした。");
+  }
+
+  if (sessionUserId !== userId) {
+    throw new Error("セッションとフォームで送信されたIDが一致しません。");
+  }
 
   const canArray = [];
   let canIndex = 0;
@@ -303,12 +312,41 @@ export const updateAppIntroduction = async (
 };
 
 export const deleteAppIntroduction = async (formData: FormData) => {
-  const id = formData.get("appId") as string;
+  const appId = formData.get("appId") as string;
+  const userId = formData.get("userId") as string;
+  const sessionUserId = await getSessionUserId();
+
+  if (!sessionUserId) {
+    throw new Error("セッションを取得できませんでした。");
+  }
+
+  if (sessionUserId !== userId) {
+    throw new Error("セッションとフォームで送信されたIDが一致しません。");
+  }
+
+  const appIntroduction = await prisma.appIntroduction.findUnique({
+    where: {
+      id: appId,
+    },
+    include: {
+      user: true,
+    },
+  });
+
+  if (!appIntroduction) {
+    throw new Error("登録しているアプリが見つかりません。");
+  }
+
+  if (appIntroduction.userId !== userId) {
+    throw new Error(
+      "登録しているユーザーのIDとフォームから送信されたユーザーのIDが一致しません。"
+    );
+  }
 
   try {
     await prisma.appIntroduction.delete({
       where: {
-        id,
+        id: appId,
       },
     });
     console.log("アプリの削除に成功しました。");

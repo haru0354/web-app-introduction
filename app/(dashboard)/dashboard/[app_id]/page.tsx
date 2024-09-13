@@ -50,7 +50,8 @@ const page = async ({ params }: { params: { app_id: string } }) => {
         </p>
         <form action={deleteAppIntroduction}>
           <input type="hidden" name="appId" value={id} />
-          <Button color="red" size="normal" className="block mx-auto ">
+          <input type="hidden" name="userId" value={userId} />
+          <Button color="red" size="normal" className="block mx-auto">
             削除
           </Button>
         </form>
