@@ -1,5 +1,5 @@
 import { getServerSession } from "next-auth";
-import { authOptions } from "../api/auth/[...nextauth]/route";
+import { authOptions } from "../components/util/authOptions";
 import prisma from "../lib/prisma";
 
 export const getSessionUser = async () => {
@@ -16,7 +16,7 @@ export const getSessionUser = async () => {
       },
       include: {
         appIntroductions: true,
-      }
+      },
     });
 
     if (!user) {
@@ -63,6 +63,26 @@ export const getSessionUserProfile = async () => {
   } catch (error) {
     console.error(
       "ログイン中のユーザープロフィールの取得中にエラーが発生しました:",
+      error
+    );
+    return;
+  }
+};
+
+export const getSessionUserId = async () => {
+  try {
+    const session = await getServerSession(authOptions);
+
+    if (!session?.user?.email) {
+      return null;
+    }
+
+    return {
+      id: session.user.id,
+    };
+  } catch (error) {
+    console.error(
+      "ログイン中のユーザーのID取得中にエラーが発生しました:",
       error
     );
     return;
