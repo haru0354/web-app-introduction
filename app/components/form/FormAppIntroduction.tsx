@@ -13,7 +13,7 @@ import { useEffect } from "react";
 type FormAppIntroductionProps = {
   formAction: (state: FormState, formData: FormData) => Promise<FormState>;
   formName: string;
-  userId?: string;
+  userId: string;
   appIntroductionData?: AppIntroduction | null;
   appId?: string;
   backButton?: boolean;

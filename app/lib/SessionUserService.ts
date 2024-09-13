@@ -77,9 +77,9 @@ export const getSessionUserId = async () => {
       return null;
     }
 
-    return {
-      id: session.user.id,
-    };
+    const id = session.user.id
+
+    return id;
   } catch (error) {
     console.error(
       "ログイン中のユーザーのID取得中にエラーが発生しました:",

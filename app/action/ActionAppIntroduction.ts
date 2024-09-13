@@ -3,7 +3,7 @@
 import { redirect } from "next/navigation";
 import prisma from "../lib/prisma";
 import { z } from "zod";
-import { fileSaveStorage } from "../lib/fileSaveStorage";
+import { fileSaveStorage } from "../lib/FileSaveStorage";
 import { validateMimeTypeAndExtension } from "../lib/validateMimeTypeAndExtension";
 import { revalidatePath } from "next/cache";
 

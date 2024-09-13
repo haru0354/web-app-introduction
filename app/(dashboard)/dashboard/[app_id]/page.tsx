@@ -7,9 +7,16 @@ import Modal from "@/app/components/web-parts/Modal";
 import Button from "@/app/components/ui/Button";
 import prisma from "@/app/lib/prisma";
 import NotFound from "@/app/not-found";
+import { getSessionUserId } from "@/app/lib/sessionUserService";
 
 const page = async ({ params }: { params: { app_id: string } }) => {
   const id = params.app_id;
+  const userId = await getSessionUserId();
+
+  if (!userId) {
+    return null;
+  }
+
   const appIntroductionData = await prisma.appIntroduction.findUnique({
     where: {
       id,
@@ -30,6 +37,7 @@ const page = async ({ params }: { params: { app_id: string } }) => {
           formAction={updateAppIntroduction}
           appId={id}
           backButton={true}
+          userId={userId}
         />
       </div>
       <h2 className="h2 text-center">アプリの削除</h2>
