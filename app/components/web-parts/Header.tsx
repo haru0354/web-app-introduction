@@ -9,7 +9,7 @@ import Modal from "./Modal";
 import { useSession } from "next-auth/react";
 
 const Header = () => {
-  const { data: session, status } = useSession();
+  const { data: session } = useSession();
 
   return (
     <header className="flex justify-between items-center w-full max-w-[1140px] mx-auto px-2">

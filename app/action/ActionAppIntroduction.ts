@@ -52,7 +52,6 @@ export const addAppIntroduction = async (
   const solution = formData.get("solution") as string;
   const image = formData.get("imageFile") as File;
   const imageALT = formData.get("imageALT") as string;
-
   const userId = formData.get("userId") as string;
 
   const canArray = [];
