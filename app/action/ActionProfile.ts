@@ -1,8 +1,9 @@
-"use server"
+"use server";
 
 import { revalidatePath } from "next/cache";
 import prisma from "../lib/prisma";
 import { z } from "zod";
+import { getSessionUserId } from "../lib/sessionUserService";
 
 type FormProfileState = {
   message?: string | null;
@@ -22,9 +23,24 @@ const profileSchema = z.object({
   skill: z.string().optional(),
 
   // 下記3つは「.url」だと空白はエラーになるのでrefineで値がある時に正規表現でチェック
-  portfolio: z.string().optional().refine(val => !val || /^https?:\/\/[^\s/$.?#].[^\s]*$/.test(val), { message: "URL を入力してください" }),
-  gitHub: z.string().optional().refine(val => !val || /^https?:\/\/[^\s/$.?#].[^\s]*$/.test(val), { message: "URL を入力してください" }),
-  x: z.string().optional().refine(val => !val || /^https?:\/\/[^\s/$.?#].[^\s]*$/.test(val), { message: "URL を入力してください" }),
+  portfolio: z
+    .string()
+    .optional()
+    .refine((val) => !val || /^https?:\/\/[^\s/$.?#].[^\s]*$/.test(val), {
+      message: "URL を入力してください",
+    }),
+  gitHub: z
+    .string()
+    .optional()
+    .refine((val) => !val || /^https?:\/\/[^\s/$.?#].[^\s]*$/.test(val), {
+      message: "URL を入力してください",
+    }),
+  x: z
+    .string()
+    .optional()
+    .refine((val) => !val || /^https?:\/\/[^\s/$.?#].[^\s]*$/.test(val), {
+      message: "URL を入力してください",
+    }),
 });
 
 export const editProfile = async (
@@ -38,6 +54,31 @@ export const editProfile = async (
   const gitHub = formData.get("gitHub") as string;
   const x = formData.get("x") as string;
   const userId = formData.get("userId") as string;
+  const sessionUserId = await getSessionUserId();
+
+  if (!sessionUserId) {
+    throw new Error("セッションを取得できませんでした。");
+  }
+
+  if (sessionUserId !== userId) {
+    throw new Error("セッションとフォームで送信されたIDが一致しません。");
+  }
+
+  const user = await prisma.user.findUnique({
+    where: {
+      id: userId,
+    },
+  });
+
+  if (!user) {
+    throw new Error("登録しているユーザーが見つかりません。");
+  }
+
+  if (user.id !== userId) {
+    throw new Error(
+      "登録しているユーザーのIDとフォームから送信されたユーザーのIDが一致しません。"
+    );
+  }
 
   const validatedFields = profileSchema.safeParse({
     selfIntroduction,
@@ -73,12 +114,12 @@ export const editProfile = async (
         },
       },
     });
-    
+
     console.log("プロフィールの編集に成功しました。");
   } catch (error) {
     console.error("プロフィールの追加の際にエラーが発生しました。:", error);
     return { message: "プロフィールの追加の際にエラーが発生しました。" };
   }
-  revalidatePath("/dashboard")
+  revalidatePath("/dashboard");
   return { message: "success" };
 };
