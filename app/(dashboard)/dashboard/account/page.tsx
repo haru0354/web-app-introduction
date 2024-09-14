@@ -1,6 +1,8 @@
 import FormEmail from "@/app/components/form/FormEmail";
+import Button from "@/app/components/ui/Button";
 import Modal from "@/app/components/web-parts/Modal";
 import { getSessionUserAccount } from "@/app/lib/sessionUserService";
+import Link from "next/link";
 
 const page = async () => {
   const userData = await getSessionUserAccount();
@@ -23,6 +25,11 @@ const page = async () => {
           データ変更後は自動的に「ログアウト」が行われ、TOPページに移動します。
         </p>
       </div>
+      <Link href="/dashboard">
+        <Button color="blue" className="block mx-auto">
+          ダッシュボードへ戻る
+        </Button>
+      </Link>
       <h2 className="h2">メールアドレスの変更</h2>
       <Modal buttonText="メールアドレスの変更">
         <FormEmail
