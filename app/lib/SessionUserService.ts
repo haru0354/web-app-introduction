@@ -38,6 +38,25 @@ export const getSessionUser = async () => {
   }
 };
 
+export const getSessionUserAccount = async () => {
+  try {
+    const session = await getServerSession(authOptions);
+
+    if (!session?.user?.email) {
+      return null;
+    }
+
+    return session;
+  } catch (error) {
+    console.error(
+      "ログイン中のユーザーアカウントデータの取得中にエラーが発生しました:",
+      error
+    );
+    return;
+  }
+};
+
+
 export const getSessionUserProfile = async () => {
   try {
     const session = await getServerSession(authOptions);
