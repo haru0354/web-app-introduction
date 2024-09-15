@@ -1,5 +1,5 @@
-import FormChangePassword from "@/app/components/form/FormChangePassword";
 import FormEmail from "@/app/components/form/FormEmail";
+import FormUpdatePassword from "@/app/components/form/FormUpdatePassword";
 import Button from "@/app/components/ui/Button";
 import Modal from "@/app/components/web-parts/Modal";
 import { getSessionUserAccount } from "@/app/lib/sessionUserService";
@@ -39,8 +39,8 @@ const page = async () => {
         />
       </Modal>
       <h2 className="h2">パスワードの変更</h2>
-      <Modal buttonText="メールアドレスの変更">
-        <FormChangePassword userId={userData.user.id} />
+      <Modal buttonText="パスワードの変更">
+        <FormUpdatePassword userId={userData.user.id} />
       </Modal>
       <h2 className="h2">アカウントの削除</h2>
     </>

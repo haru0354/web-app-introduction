@@ -6,12 +6,13 @@ import Button from "../ui/Button";
 import useToggleModal from "../hooks/useToggleModal";
 import { useEffect } from "react";
 import { signOut } from "next-auth/react";
+import { updatePassword } from "@/app/action/ActionUser";
 
-type FormChangePasswordProps = {
+type FormUpdatePasswordProps = {
   userId: string;
 };
 
-type FormChangePasswordState = {
+type FormUpdatePasswordState = {
   message?: string | null;
   errors?: {
     existingPassword?: string[] | undefined;
@@ -20,7 +21,7 @@ type FormChangePasswordState = {
   };
 };
 
-const FormChangePassword: React.FC<FormChangePasswordProps> = ({ userId }) => {
+const FormUpdatePassword: React.FC<FormUpdatePasswordProps> = ({ userId }) => {
   const { closeModal } = useToggleModal();
 
   const initialState = {
@@ -32,8 +33,8 @@ const FormChangePassword: React.FC<FormChangePasswordProps> = ({ userId }) => {
     },
   };
 
-  const [state, dispatch] = useFormState<FormChangePasswordState, FormData>(
-    serverAction,
+  const [state, dispatch] = useFormState<FormUpdatePasswordState, FormData>(
+    updatePassword,
     initialState
   );
 
@@ -49,28 +50,28 @@ const FormChangePassword: React.FC<FormChangePasswordProps> = ({ userId }) => {
         パスワードの変更
       </p>
       <InputText
-        type="existingPassword"
-        label="登録中のパスワード"
-        name="password"
-        placeholder="確認の為、登録しているパスワードを入力してください"
+        type="password"
+        label="現在登録中のパスワード"
+        name="existingPassword"
+        placeholder="確認の為、現在登録しているパスワードを入力してください"
       />
       {state.errors && state.errors.existingPassword && (
         <p className="mb-4 text-red-500">{state.errors.existingPassword}</p>
       )}
       <InputText
         type="password"
-        label="新しくするパスワード"
+        label="新しいパスワード"
         name="newPasswordOne"
-        placeholder="新しくするパスワードを入力してください"
+        placeholder="新しいパスワードを入力してください"
       />
       {state.errors && state.errors.newPasswordOne && (
         <p className="mb-4 text-red-500">{state.errors.newPasswordOne}</p>
       )}
       <InputText
         type="password"
-        label="新しくするパスワード"
+        label="新しいパスワード"
         name="newPasswordTwo"
-        placeholder="確認の為新しくするパスワードを再度入力してください"
+        placeholder="確認の為、新しいパスワードを再度入力してください"
       />
       {state.errors && state.errors.newPasswordTwo && (
         <p className="mb-4 text-red-500">{state.errors.newPasswordTwo}</p>
@@ -84,4 +85,4 @@ const FormChangePassword: React.FC<FormChangePasswordProps> = ({ userId }) => {
   );
 };
 
-export default FormChangePassword;
+export default FormUpdatePassword;
