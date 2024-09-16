@@ -1,4 +1,3 @@
-
 import FormEmail from "@/app/components/form/FormEmail";
 import FormUpdatePassword from "@/app/components/form/FormUpdatePassword";
 import Button from "@/app/components/ui/Button";
@@ -33,20 +32,49 @@ const page = async () => {
           ダッシュボードへ戻る
         </Button>
       </Link>
-      <h2 className="h2">メールアドレスの変更</h2>
+      <h2 className="h2 text-center">メールアドレスの変更</h2>
+      <p className="text-center">
+        登録しているメールアドレスの変更をすることができます。
+      </p>
+      <p className="text-center">
+        メールアドレスの変更が完了すると「ログアウト」が行われます。
+      </p>
+      <p className="text-center">
+        ログイン時には新しく登録したメールアドレスを使用してください。
+      </p>
       <Modal buttonText="メールアドレスの変更">
         <FormEmail
           userId={userData.user.id}
           email={userData.user.email || undefined}
         />
       </Modal>
-      <h2 className="h2">パスワードの変更</h2>
+      <h2 className="h2 text-center">パスワードの変更</h2>
+      <p className="text-center">
+        登録しているパスワードの変更の変更をすることができます。
+      </p>
+      <p className="text-center">
+        パスワードの変更が完了すると「ログアウト」が行われます。
+      </p>
+      <p className="text-center">
+        ログイン時には新しく登録したパスワードを使用してください。
+      </p>
       <Modal buttonText="パスワードの変更">
         <FormUpdatePassword userId={userData.user.id} />
       </Modal>
-      <h2 className="h2">アカウントの削除00</h2>
+      <h2 className="h2 text-center">アカウントの削除</h2>
+      <p className="text-center">
+        登録しているアカウントの削除をすることができます。
+      </p>
+      <p className="text-center">
+        アカウントの削除をすることで「登録しているアプリデータ」「アカウントデータ」が削除されます。
+      </p>
+      <p className="text-center">
+        削除をするとデータの復元をすることはできません。
+      </p>
+      <p className="text-center">
+        なお、再度アカウントを作成しなおすことはできます。
+      </p>
       <DeleteAccountModal userId={userData.user.id} />
-
     </>
   );
 };
