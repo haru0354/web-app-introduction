@@ -1,3 +1,4 @@
+import FormDeleteAccount from "@/app/components/form/FormDeleteAccount";
 import FormEmail from "@/app/components/form/FormEmail";
 import FormUpdatePassword from "@/app/components/form/FormUpdatePassword";
 import Button from "@/app/components/ui/Button";
@@ -43,6 +44,10 @@ const page = async () => {
         <FormUpdatePassword userId={userData.user.id} />
       </Modal>
       <h2 className="h2">アカウントの削除</h2>
+      <Modal buttonText="アカウントの削除">
+        <FormDeleteAccount userId={userData.user.id} />
+      </Modal>
+      
     </>
   );
 };
