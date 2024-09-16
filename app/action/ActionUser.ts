@@ -22,6 +22,13 @@ type FormUpdatePasswordState = {
   };
 };
 
+type deleteAccountState = {
+  message?: string | null;
+  errors?: {
+    password?: string[] | undefined;
+  };
+};
+
 const accountSchema = z.object({
   email: z.string().email("メールアドレスを入力してください"),
   password: z
@@ -42,6 +49,10 @@ const updatePasswordSchema = z.object({
     .string()
     .min(8, { message: "8文字以上で入力してください。" })
     .max(12, { message: "12文字以下で入力してください。" }),
+});
+
+const deleteAccountSchema = z.object({
+  password: z.string().min(8, { message: "8文字以上で入力してください。" }),
 });
 
 export const signUp = async (state: FormSignUpState, formData: FormData) => {
@@ -230,5 +241,69 @@ export const updatePassword = async (
   } catch (error) {
     console.error("パスワードの変更中にエラーが発生しました:", error);
     return { message: "パスワードの変更中にエラーが発生しました" };
+  }
+};
+
+export const deleteAccount = async (
+  state: deleteAccountState,
+  formData: FormData
+) => {
+  try {
+    const userId = formData.get("userId") as string;
+    const password = formData.get("password") as string;
+
+    const validatedFields = deleteAccountSchema.safeParse({
+      password,
+    });
+
+    if (!validatedFields.success) {
+      const errors = {
+        errors: validatedFields.error.flatten().fieldErrors,
+        message: "正しい形式でフォームを入力してください。",
+      };
+      console.log("バリデーションエラー：", errors);
+      return errors;
+    }
+
+    const sessionUserId = await getSessionUserId();
+
+    if (!sessionUserId) {
+      throw new Error("セッションIDが取得できませんでした。");
+    }
+
+    if (sessionUserId !== userId) {
+      throw new Error(
+        "セッションIDが一致しない、もしくは無効なセッションです。"
+      );
+    }
+
+    const user = await prisma.user.findUnique({
+      where: {
+        id: userId,
+      },
+    });
+
+    if (!user) {
+      throw new Error("登録しているユーザーが見つかりません。");
+    }
+
+    const isPasswordValid = user.hashedPassword
+      ? await bcrypt.compare(password, user.hashedPassword)
+      : false;
+
+    if (!isPasswordValid) {
+      return { message: "登録中のパスワードが正しくありません。" };
+    }
+
+    await prisma.user.delete({
+      where: {
+        id: userId,
+      },
+    });
+
+    return { message: "success" };
+  } catch (error) {
+    console.error("アカウントの削除中にエラーが発生しました:", error);
+    return { message: "アカウントの削除中にエラーが発生しました" };
   }
 };

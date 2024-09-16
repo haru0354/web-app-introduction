@@ -6,6 +6,7 @@ import Button from "../ui/Button";
 import useToggleModal from "../hooks/useToggleModal";
 import { useEffect } from "react";
 import { signOut } from "next-auth/react";
+import { deleteAccount } from "@/app/action/ActionUser";
 
 type FormDeleteAccountProps = {
   userId: string;
@@ -29,7 +30,7 @@ const FormDeleteAccount: React.FC<FormDeleteAccountProps> = ({ userId }) => {
   };
 
   const [state, dispatch] = useFormState<FormDeleteAccountState, FormData>(
-    serverAction,
+    deleteAccount,
     initialState
   );
 
@@ -46,9 +47,9 @@ const FormDeleteAccount: React.FC<FormDeleteAccountProps> = ({ userId }) => {
       </p>
       <InputText
         type="password"
-        label="現在登録中のパスワード"
+        label="パスワード"
         name="existingPassword"
-        placeholder="確認の為、現在登録しているパスワードを入力してください"
+        placeholder="現在登録しているパスワードを入力してください"
       />
       {state.errors && state.errors.password && (
         <p className="mb-4 text-red-500">{state.errors.password}</p>
