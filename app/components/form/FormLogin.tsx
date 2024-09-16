@@ -56,6 +56,7 @@ const FormLogin = () => {
         placeholder="emailを入力してください"
       />
       <InputText
+        type="password"
         label="password"
         name="password"
         placeholder="passwordを入力してください"

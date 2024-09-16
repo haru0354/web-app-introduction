@@ -3,6 +3,8 @@ type InputTextProps = {
   name: string;
   placeholder: string;
   defaultValue?: string;
+  type?: string;
+  disabled?: boolean;
 };
 
 const InputText: React.FC<InputTextProps> = ({
@@ -10,6 +12,8 @@ const InputText: React.FC<InputTextProps> = ({
   name,
   placeholder,
   defaultValue,
+  type = "text",
+  disabled,
 }) => {
   return (
     <>
@@ -19,12 +23,13 @@ const InputText: React.FC<InputTextProps> = ({
         </label>
       )}
       <input
-        type="text"
+        type={type}
         className="w-full mt-2 mb-3 py-1 px-2 border border-gray-700 rounded"
         id={label}
         name={name}
         placeholder={placeholder}
         defaultValue={defaultValue}
+        disabled={disabled}
       />
     </>
   );

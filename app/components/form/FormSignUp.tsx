@@ -47,6 +47,7 @@ const FormSignUp: React.FC<FormSignUpProps> = ({ formAction }) => {
         <p className="mb-4 text-red-500">{state.errors.email}</p>
       )}
       <InputText
+        type="password"
         label="password"
         name="password"
         placeholder="passwordを入力してください"
