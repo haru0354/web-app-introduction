@@ -49,7 +49,7 @@ const FormDeleteAccount: React.FC<FormDeleteAccountProps> = ({ userId }) => {
         <InputText
           type="password"
           label="パスワード"
-          name="existingPassword"
+          name="password"
           placeholder="現在登録しているパスワードを入力してください"
         />
         {state.errors && state.errors.password && (
