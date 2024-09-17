@@ -44,6 +44,10 @@ p {
   color: #19682f !important;
 }
 
+.blog p {
+  margin: 1.5rem 0;
+}
+
 .blog h2 {
   width: 100%;
   font-size: 1.25rem;
