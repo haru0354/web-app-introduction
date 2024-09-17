@@ -5,10 +5,19 @@ type TwoColumnProps = {
   blogPage?: boolean;
 };
 
-const TwoColumn: React.FC<TwoColumnProps> = ({ children, blogPage = false }) => {
+const TwoColumn: React.FC<TwoColumnProps> = ({
+  children,
+  blogPage = false,
+}) => {
   return (
     <main className="flex-grow flex flex-col md:flex-row justify-between w-full max-w-[1140px] mx-auto my-12">
-      <div className={`w-full max-w-[900px] pl-2 pr-2 md:pr-8 ${blogPage ? "blog" : ""}`}>{children}</div>
+      <div
+        className={`w-full max-w-[900px] pl-2 pr-2 md:pr-8 ${
+          blogPage ? "blog" : ""
+        }`}
+      >
+        {children}
+      </div>
       <SideMenu />
     </main>
   );
