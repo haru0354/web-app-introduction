@@ -18,7 +18,7 @@ const TwoFlexBox: React.FC<TwoFlexBoxProps> = ({
       <div
         className={`flex flex-col items-center justify-center w-full md:w-[46%] mx-0 md:mx-4 my-4 px-2 pb-6 border rounded bg-white ${borderColor} `}
       >
-        <h3 className="h3 text-center">{leftTitle}</h3>
+        <h3 className="w-full text-center text-lg font-semibold my-4 py-2 border-b border-dashed border-gray-700">{leftTitle}</h3>
         {leftContents.map((leftContent, index) => {
           return <p key={index}>{leftContent}</p>;
         })}
@@ -26,7 +26,7 @@ const TwoFlexBox: React.FC<TwoFlexBoxProps> = ({
       <div
         className={`flex flex-col items-center justify-center w-full md:w-[46%] mx-0 md:mx-4 my-4 px-4 pb-6 border rounded bg-white ${borderColor} `}
       >
-        <h3 className="h3 text-center">{rightTitle}</h3>
+        <h3 className="w-full text-center text-lg font-semibold my-4 py-2 border-b border-dashed border-gray-700">{rightTitle}</h3>
         {rightContents.map((rightContent, index) => {
           return <p key={index}>{rightContent}</p>;
         })}
