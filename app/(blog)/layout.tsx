@@ -5,5 +5,5 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  return <TwoColumn>{children}</TwoColumn>;
+  return <TwoColumn blogPage={true}>{children}</TwoColumn>;
 }
