@@ -21,6 +21,7 @@ const page = async () => {
       <Modal buttonColor="blue" buttonText="プロフィールの変更">
         <FormProfile userId={userData.id} profile={userData.profile} />
       </Modal>
+      <h2 className="h2">登録しているアプリ一覧</h2>
       <AppsList
         appIntroductions={userData.appIntroductions}
         editButton={true}
