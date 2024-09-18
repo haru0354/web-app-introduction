@@ -32,7 +32,7 @@ const NewAppIntroductions = async () => {
                   alt={imageAlt}
                   className="mx-auto border border-gray-400 rounded"
                 />
-                <h3 className="font-semibold">{appIntroduction.title}</h3>
+                <h3 className="font-semibold mt-3">{appIntroduction.title}</h3>
                 <p className="text-sm">「{appIntroduction.summary}」</p>
             </Link>
           </div>
