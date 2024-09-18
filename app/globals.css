@@ -43,3 +43,26 @@ p {
   font-size: 25px !important;
   color: #19682f !important;
 }
+
+.blog p {
+  margin: 1.5rem 0;
+}
+
+.blog h2 {
+  width: 100%;
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin: 2rem 0;
+  padding: 1rem;
+  color: white;
+  background-color: #505563;
+}
+
+.blog h3 {
+  width: 100%;
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin: 2rem 0;
+  padding: 0.5rem 0;
+  border-bottom: 1px dashed #4a5568;
+}
