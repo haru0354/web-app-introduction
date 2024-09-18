@@ -5,13 +5,13 @@ const SideLink = () => {
     <div>
       <h2 className="h2 pl-2">リンク</h2>
       <ul className="list-disc ml-8 mb-4">
-        <li className="py-2 hover:text-sky-600 ">
+        <li className="py-2 hover:text-customBlue">
           <Link href="test">test</Link>
         </li>
-        <li className="py-2 hover:text-sky-600 ">
+        <li className="py-2 hover:text-customBlue">
           <Link href="test">test</Link>
         </li>
-        <li className="py-2 hover:text-sky-600 ">
+        <li className="py-2 hover:text-customBlue">
           <Link href="test">test</Link>
         </li>
       </ul>

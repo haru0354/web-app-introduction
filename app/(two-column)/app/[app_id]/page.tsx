@@ -30,13 +30,13 @@ const page = async ({ params }: { params: { app_id: string } }) => {
         {appIntroduction.userName ? (
           <li className="pb-2 mb-2 border-b border-dashed border-gray-700">
             アプリ製作者のページ：
-            <Link href={`/user/${appIntroduction.userId}`} className="a">
+            <Link href={`/user/${appIntroduction.userId}`} className="text-customBlue">
               {appIntroduction.userName}
             </Link>
           </li>
         ) : (
           <li className="pb-2 mb-2 border-b border-dashed border-gray-700">
-            <Link href={`/user/${appIntroduction.userId}`} className="a">
+            <Link href={`/user/${appIntroduction.userId}`} className="text-customBlue">
               アプリ製作者のページ
             </Link>
           </li>
