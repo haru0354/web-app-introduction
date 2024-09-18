@@ -12,7 +12,7 @@ const TwoColumn: React.FC<TwoColumnProps> = ({
   return (
     <main className="flex-grow flex flex-col md:flex-row justify-between w-full max-w-[1140px] mx-auto my-12">
       <div
-        className={`w-full max-w-[900px] pl-2 pr-2 md:pr-8 ${
+        className={`w-full max-w-[800px] px-2 ${
           blogPage ? "blog" : ""
         }`}
       >
