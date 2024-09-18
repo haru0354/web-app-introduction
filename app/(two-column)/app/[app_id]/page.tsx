@@ -18,25 +18,31 @@ const page = async ({ params }: { params: { app_id: string } }) => {
         <ImageSlider images={appIntroduction.images} />
       )}
       <ul>
-        <li className="pb-2 mb-2 border-b border-dashed border-gray-700">
+        <li className="pb-2 mb-2 border-b border-dashed border-customBlack">
           アプリの特徴：{appIntroduction.summary}
         </li>
-        <li className="pb-2 mb-2 border-b border-dashed border-gray-700">
+        <li className="pb-2 mb-2 border-b border-dashed border-customBlack">
           URL：{appIntroduction.url}
         </li>
-        <li className="pb-2 mb-2 border-b border-dashed border-gray-700">
+        <li className="pb-2 mb-2 border-b border-dashed border-customBlack">
           使用技術：{appIntroduction.technology}
         </li>
         {appIntroduction.userName ? (
-          <li className="pb-2 mb-2 border-b border-dashed border-gray-700">
+          <li className="pb-2 mb-2 border-b border-dashed border-customBlack">
             アプリ製作者のページ：
-            <Link href={`/user/${appIntroduction.userId}`} className="text-customBlue">
+            <Link
+              href={`/user/${appIntroduction.userId}`}
+              className="text-customBlue"
+            >
               {appIntroduction.userName}
             </Link>
           </li>
         ) : (
-          <li className="pb-2 mb-2 border-b border-dashed border-gray-700">
-            <Link href={`/user/${appIntroduction.userId}`} className="text-customBlue">
+          <li className="pb-2 mb-2 border-b border-dashed border-customBlack">
+            <Link
+              href={`/user/${appIntroduction.userId}`}
+              className="text-customBlue"
+            >
               アプリ製作者のページ
             </Link>
           </li>

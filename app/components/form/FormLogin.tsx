@@ -47,7 +47,7 @@ const FormLogin = () => {
 
   return (
     <form onSubmit={onSubmit} className="w-full mx-auto">
-      <p className="text-center font-semibold pb-2  mb-6 border-b border-dashed border-gray-700">
+      <p className="text-center font-semibold pb-2  mb-6 border-b border-dashed border-customBlack">
         ログイン
       </p>
       <InputText

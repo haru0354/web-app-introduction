@@ -35,7 +35,7 @@ const FormSignUp: React.FC<FormSignUpProps> = ({ formAction }) => {
 
   return (
     <form action={dispatch} className="w-full">
-      <p className="text-center font-semibold pb-2  mb-6 border-b border-dashed border-gray-700">
+      <p className="text-center font-semibold pb-2  mb-6 border-b border-dashed border-customBlack">
         登録
       </p>
       <InputText
