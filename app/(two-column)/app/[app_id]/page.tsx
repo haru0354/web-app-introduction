@@ -10,7 +10,7 @@ const page = async ({ params }: { params: { app_id: string } }) => {
   if (!appIntroduction) {
     return <NotFound />;
   }
-
+  
   return (
     <>
       <h1 className="h1">{appIntroduction.title}の詳細</h1>
@@ -48,16 +48,20 @@ const page = async ({ params }: { params: { app_id: string } }) => {
           </li>
         )}
       </ul>
-      <h2 className="h2">「{appIntroduction.title}」で出来ること</h2>
-      <ul className="my-8 mx-12 py-2 px-4 border border-gray-400">
-        {appIntroduction.can.map((can, index) => {
-          return (
-            <li className="my-2" key={index}>
-              {can}
-            </li>
-          );
-        })}
-      </ul>
+      {appIntroduction.can.length > 0 && (
+        <>
+          <h2 className="h2">「{appIntroduction.title}」で出来ること</h2>
+          <ul className="list-disc list-inside my-8 mx-12 py-2 px-6 border rounded border-gray-400">
+            {appIntroduction.can.map((can, index) => {
+              return (
+                <li className="my-2" key={index}>
+                  {can}
+                </li>
+              );
+            })}
+          </ul>
+        </>
+      )}
       <h2 className="h2">「{appIntroduction.title}」の概要</h2>
       {appIntroduction.overview}
       <h2 className="h2">
