@@ -45,7 +45,7 @@ const FormEmail: React.FC<FormEmailProps> = ({ userId, email }) => {
 
   return (
     <form action={dispatch} className="w-full mx-auto">
-      <p className="text-center font-semibold pb-2 mb-6 border-b border-dashed border-gray-700">
+      <p className="text-center font-semibold pb-2 mb-6 border-b border-dashed border-customBlack">
         メールアドレスの変更
       </p>
       <InputText
@@ -73,9 +73,7 @@ const FormEmail: React.FC<FormEmailProps> = ({ userId, email }) => {
         <p className="mb-4 text-red-500">{state.errors.password}</p>
       )}
       <input type="hidden" name="userId" value={userId} />
-      {state.message && (
-        <p className="mb-4 text-red-500">{state.message}</p>
-      )}
+      {state.message && <p className="mb-4 text-red-500">{state.message}</p>}
       <Button color="blue" size="normal" className="block mx-auto">
         編集
       </Button>

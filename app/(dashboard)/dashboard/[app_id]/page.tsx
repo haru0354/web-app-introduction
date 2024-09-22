@@ -30,7 +30,7 @@ const page = async ({ params }: { params: { app_id: string } }) => {
   return (
     <>
       <h2 className="h1 text-center">アプリの編集</h2>
-      <div className="mx-auto max-w-[760px] p-4 border border-gray-700 rounded">
+      <div className="mx-auto max-w-[760px] p-4 border border-customBlack rounded">
         <FormAppIntroduction
           formName="編集フォーム"
           appIntroductionData={appIntroductionData}

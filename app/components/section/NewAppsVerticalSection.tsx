@@ -43,8 +43,8 @@ const NewAppsVerticalSection: React.FC<NewAppsVerticalSectionProps> = ({
           return (
             <Link href={`/app/${appIntroduction.id}`} key={appIntroduction.id}>
               <div
-                className={`flex flex-col md:flex-row items-center justify-center w-full pt-8 md:py-1 border-b border-dashed border-gray-700 hover:bg-blue-100 ${
-                  index === 0 && "border-t border-dashed border-gray-700"
+                className={`flex flex-col md:flex-row items-center justify-center w-full pt-8 md:py-1 border-b border-dashed border-customBlack hover:bg-blue-100 ${
+                  index === 0 && "border-t border-dashed border-customBlack"
                 }`}
               >
                 <div className="min-w-[200px] mx-2">

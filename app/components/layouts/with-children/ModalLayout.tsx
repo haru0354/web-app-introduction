@@ -47,13 +47,13 @@ const ModalLayout: React.FC<ModalLayoutProps> = ({
       </Button>
       {isModalOpen && (
         <div
-          className="fixed flex items-center justify-center inset-0 w-full h-full z-[100] bg-gray-700 bg-opacity-75"
+          className="fixed flex items-center justify-center inset-0 w-full h-full z-[100] bg-customBlack bg-opacity-75"
           onClick={handleClose}
         >
           <div
             className={`max-h-[85vh] w-full ${
               width ? `max-w-[${width}px]` : "max-w-[500px]"
-            } p-4 mx-2 border border-gray-700 rounded bg-white overflow-y-auto`}
+            } p-4 mx-2 border border-customBlack rounded bg-white overflow-y-auto`}
           >
             {children}
             <Button

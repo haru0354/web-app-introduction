@@ -47,19 +47,19 @@ const FormLogin = () => {
 
   return (
     <form onSubmit={onSubmit} className="w-full mx-auto">
-      <p className="text-center font-semibold pb-2  mb-6 border-b border-dashed border-gray-700">
+      <p className="text-center font-semibold pb-2  mb-6 border-b border-dashed border-customBlack">
         ログイン
       </p>
       <InputText
-        label="email"
+        label="メールアドレス"
         name="email"
-        placeholder="emailを入力してください"
+        placeholder="メールアドレスを入力してください"
       />
       <InputText
         type="password"
-        label="password"
+        label="パスワード"
         name="password"
-        placeholder="passwordを入力してください"
+        placeholder="パスワードを入力してください"
       />
       {isLoading && (
         <>

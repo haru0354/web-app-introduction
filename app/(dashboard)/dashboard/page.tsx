@@ -21,6 +21,7 @@ const page = async () => {
       <Modal buttonColor="blue" buttonText="プロフィールの変更">
         <FormProfile userId={userData.id} profile={userData.profile} />
       </Modal>
+      <h2 className="h2">登録しているアプリ一覧</h2>
       <AppsList
         appIntroductions={userData.appIntroductions}
         editButton={true}
@@ -37,7 +38,7 @@ const page = async () => {
       <p className="text-center">
         下記のアカウントデータの変更はアカウントデータページにて行えます。
       </p>
-      <ul className="list-disc w-full max-w-[400px] mx-auto my-4 px-12 py-4 border border-gray-700 border-dashed">
+      <ul className="list-disc w-full max-w-[400px] mx-auto my-4 px-12 py-4 border border-customBlack border-dashed">
         <li className="my-2">メールアドレスの変更</li>
         <li className="my-2">パスワードの変更</li>
         <li className="my-2">アカウントの削除</li>

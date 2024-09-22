@@ -20,7 +20,7 @@ const InputImage: React.FC<InputImageProps> = ({
       )}
       <input
         type="file"
-        className="w-full mt-2 mb-3 py-1 px-2 border border-gray-700 rounded"
+        className="w-full mt-2 mb-3 py-1 px-2 border border-customBlack rounded"
         id={label}
         name={name}
         placeholder={placeholder}

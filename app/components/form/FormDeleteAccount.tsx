@@ -43,7 +43,7 @@ const FormDeleteAccount: React.FC<FormDeleteAccountProps> = ({ userId }) => {
   return (
     <>
       <form action={dispatch} className="w-full mx-auto">
-        <p className="text-center font-semibold pb-2 mb-6 border-b border-dashed border-gray-700">
+        <p className="text-center font-semibold pb-2 mb-6 border-b border-dashed border-customBlack">
           アカウントの削除
         </p>
         <InputText

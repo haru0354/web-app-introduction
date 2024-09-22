@@ -3,7 +3,7 @@ import SideLink from "../../web-parts/side-menu/SideLink";
 
 const SideMenu = () => {
   return (
-    <div className="w-full max-w-[240px] px-2">
+    <div className="w-full mx-auto md:mx-0 md:max-w-[280px] px-2">
       <NewAppIntroductions />
       <SideLink />
     </div>

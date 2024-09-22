@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import { useState } from "react";
 import InputText from "./InputText";
@@ -23,7 +23,7 @@ const DynamicInputText: React.FC<DynamicInputTextProps> = ({
   const renderInputFields = () => {
     const inputs = [];
     const values = defaultValue ?? [];
-    
+
     for (let i = 0; i < visibleCount; i++) {
       inputs.push(
         <InputText
@@ -38,7 +38,7 @@ const DynamicInputText: React.FC<DynamicInputTextProps> = ({
   };
 
   return (
-    <div className="border border-gray-700 p-4">
+    <div className="border border-customBlack p-4">
       <p className="font-semibold mb-2">出来ることリスト</p>
       {renderInputFields()}
       <Button

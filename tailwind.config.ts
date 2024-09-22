@@ -1,3 +1,4 @@
+import { link } from "fs";
 import type { Config } from "tailwindcss";
 
 const config: Config = {
@@ -12,6 +13,10 @@ const config: Config = {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+      },
+      colors: {
+        customBlack: "rgb(75, 85, 99)",
+        customBlue: "rgb(2, 132, 199)",
       },
     },
   },

@@ -9,7 +9,10 @@ export const metadata: Metadata = {
 const page = () => {
   return (
     <>
-      <BlogTopInfo title="サンプルタイトル" date="2024-08-29" image={false} />
+      <BlogTopInfo title="プライバシーポリシーと免責事項" date="2024-08-29" image={false} />
+      <p>
+      このページでは当サイトにおける「プライバシーポリシー」と「免責事項」についての指針の記載をしています。
+      </p>
       <h2>プライバシーポリシー</h2>
       <p>
         このプライバシーポリシーは、「当サイト」の利用に関する情報収集、利用、および開示に関する方針を説明します。

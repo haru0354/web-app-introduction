@@ -18,9 +18,9 @@ const Button: React.FC<ButtonProps> = ({
   disabled,
 }) => {
   const colors = {
-    red: "text-white hover:text-gray-700 border border-red-900 bg-red-700 hover:bg-red-200",
-    blue: "text-white hover:text-gray-700 border border-sky-900 bg-sky-700 hover:bg-sky-200",
-    gray: "text-white hover:text-gray-700 border border-gray-900 bg-gray-700 hover:bg-gray-200",
+    red: "text-white hover:text-customBlack border border-red-900 bg-red-700 hover:bg-red-200",
+    blue: "text-white hover:text-customBlack border border-sky-900 bg-sky-700 hover:bg-sky-200",
+    gray: "text-white hover:text-customBlack border border-gray-900 bg-customBlack hover:bg-gray-200",
     white: "bg-white hover:bg-gray-200",
   };
 

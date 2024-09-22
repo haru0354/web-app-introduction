@@ -16,7 +16,7 @@ const page = async () => {
   return (
     <>
       <h1 className="h1 text-center">アカウントデータの変更</h1>
-      <div className="text-center p-4 mx-2 md:mx-16 border border-gray-700 border-dashed">
+      <div className="text-center p-4 mx-2 md:mx-16 border border-customBlack border-dashed">
         <p>
           このページでは登録しているアカウントデータの変更をすることができます。
         </p>
