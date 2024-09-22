@@ -51,15 +51,15 @@ const FormLogin = () => {
         ログイン
       </p>
       <InputText
-        label="email"
+        label="メールアドレス"
         name="email"
-        placeholder="emailを入力してください"
+        placeholder="メールアドレスを入力してください"
       />
       <InputText
         type="password"
-        label="password"
+        label="パスワード"
         name="password"
-        placeholder="passwordを入力してください"
+        placeholder="パスワードを入力してください"
       />
       {isLoading && (
         <>
