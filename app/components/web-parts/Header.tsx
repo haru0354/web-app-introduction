@@ -23,7 +23,7 @@ const Header = () => {
               <li className="px-4 py-2">
                 <LogoutButton />
               </li>
-              <li className="px-4 py-2 my-auto">
+              <li className="px-4 py-2 my-auto text-white">
                 <Link href="/dashboard">ダッシュボード</Link>
               </li>
             </>
