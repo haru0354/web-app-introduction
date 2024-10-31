@@ -33,7 +33,7 @@ const Button: React.FC<ButtonProps> = ({
   return (
     <>
       <button
-        className={`font-bold my-4 
+        className={`font-bold my-4 transition-colors duration-300
         ${colors[color]}
         ${sizes[size]}
         ${className}

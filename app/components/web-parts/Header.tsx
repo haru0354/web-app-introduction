@@ -23,7 +23,7 @@ const Header = () => {
               <li className="px-4 py-2">
                 <LogoutButton />
               </li>
-              <li className="px-4 py-2 my-auto text-white">
+              <li className="px-4 py-2 my-auto text-white transition-colors duration-300 hover:text-customBlue">
                 <Link href="/dashboard">ダッシュボード</Link>
               </li>
             </>
