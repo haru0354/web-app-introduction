@@ -10,15 +10,13 @@ const TwoColumn: React.FC<TwoColumnProps> = ({
   blogPage = false,
 }) => {
   return (
-    <main className="flex-grow flex flex-col md:flex-row justify-between w-full max-w-[1140px] mx-auto my-12">
-      <div
-        className={`w-full max-w-[800px] px-2 ${
-          blogPage ? "blog" : ""
-        }`}
-      >
-        {children}
+    <main className="w-full p-2 md:py-12 bg-layout-bgColor">
+      <div className="flex-grow flex flex-col md:flex-row justify-between max-w-[1140px] mx-auto bg-white rounded">
+        <div className={`w-full max-w-[800px] px-4 md:px-6 ${blogPage ? "blog" : ""}`}>
+          {children}
+        </div>
+        <SideMenu />
       </div>
-      <SideMenu />
     </main>
   );
 };

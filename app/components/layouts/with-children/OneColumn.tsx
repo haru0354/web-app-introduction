@@ -5,8 +5,8 @@ type OneColumnProps = {
 
 const OneColumn: React.FC<OneColumnProps> = ({ children, center = false }) => {
   return (
-    <main className={`flex-grow w-full py-12 ${center && "flex items-center justify-center bg-blue-50"}`}>
-      <div className={`w-full max-w-[1140px] mx-auto px-2 ${center && "bg-blue-50"}`}>
+    <main className={`flex-grow w-full p-2 md:py-12 bg-layout-bgColor ${center && "flex items-center justify-center"}`}>
+      <div className={`w-full max-w-[1140px] mx-auto py-1 px-4 md:px-6 bg-white rounded`}>
         {children}
       </div>
     </main>

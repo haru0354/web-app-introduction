@@ -15,7 +15,8 @@ const config: Config = {
       },
       colors: {
         layout: {
-          mainColor: "rgb(61 63 67)",
+          bgColor: "white",
+          mainColor: "rgb(61, 63, 67)",
         },
         customBlack: "rgb(75, 85, 99)",
         customBlue: "rgb(2, 132, 199)",
