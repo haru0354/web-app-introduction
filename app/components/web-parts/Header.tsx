@@ -12,7 +12,7 @@ const Header = () => {
   const { data: session } = useSession();
 
   return (
-    <header className="w-full bg-gray-700">
+    <header className="w-full bg-layout-mainColor">
       <div className="flex justify-between items-center w-full max-w-[1140px] mx-auto px-2">
         <Link href="/">
           <Image src="/logo.png" width={200} height={80} alt="ロゴ" />
