@@ -1,12 +1,22 @@
+import { Metadata } from "next";
+import Link from "next/link";
 import { addAppIntroduction } from "@/app/action/ActionAppIntroduction";
+import { getSessionUser } from "@/app/lib/sessionUserService";
+import Modal from "@/app/components/web-parts/Modal";
 import FormAppIntroduction from "@/app/components/form/FormAppIntroduction";
 import FormProfile from "@/app/components/form/FormProfile";
-import Modal from "@/app/components/web-parts/Modal";
 import Profile from "@/app/components/web-parts/contents-area/Profile";
 import AppsList from "@/app/components/web-parts/contents-area/AppsList";
-import { getSessionUser } from "@/app/lib/sessionUserService";
 import Button from "@/app/components/ui/Button";
-import Link from "next/link";
+
+export const metadata: Metadata = {
+  title: "ダッシュボード",
+  description: "このページはアダッシュボードページです。登録をした自作WEBアプリの登録・編集・削除の他、プロフィールの追加・編集やアカウントの編集・削除をすることができます。",
+  robots: {
+    index: false,
+    follow: false,
+  },
+};
 
 const page = async () => {
   const userData = await getSessionUser();
