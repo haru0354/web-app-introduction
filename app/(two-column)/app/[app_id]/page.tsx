@@ -16,6 +16,9 @@ export const generateMetadata = async ({
     return {
       title: "404NotFound",
       description: "指定されたページは存在しません。URLの誤りまたは削除された可能性があります。",
+      robots: {
+        index: false,
+      },
     };
   }
 
@@ -24,7 +27,6 @@ export const generateMetadata = async ({
     description: appIntroduction.overview,
   };
 };
-
 
 const page = async ({ params }: { params: { app_id: string } }) => {
   const appId = params.app_id;
