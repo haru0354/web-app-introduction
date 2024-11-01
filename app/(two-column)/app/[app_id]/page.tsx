@@ -1,7 +1,30 @@
 import Link from "next/link";
+import { Metadata } from "next";
 import { getAppIntroduction } from "@/app/lib/appIntroductionService";
 import ImageSlider from "@/app/components/web-parts/contents-area/ImageSlider";
 import NotFound from "@/app/not-found";
+
+export const generateMetadata = async ({
+  params,
+}: {
+  params: { app_id: string };
+}): Promise<Metadata> => {
+  const appId = params.app_id;
+  const appIntroduction = await getAppIntroduction(appId);
+
+  if (!appIntroduction) {
+    return {
+      title: "404NotFound",
+      description: "指定されたページは存在しません。URLの誤りまたは削除された可能性があります。",
+    };
+  }
+
+  return {
+    title: appIntroduction.title,
+    description: appIntroduction.overview,
+  };
+};
+
 
 const page = async ({ params }: { params: { app_id: string } }) => {
   const appId = params.app_id;
