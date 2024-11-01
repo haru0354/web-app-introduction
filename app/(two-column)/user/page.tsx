@@ -1,6 +1,15 @@
-import { getAllUser } from "@/app/lib/userService";
 import Image from "next/image";
 import Link from "next/link";
+import { Metadata } from "next";
+import { getAllUser } from "@/app/lib/userService";
+
+export const metadata: Metadata = {
+  title: "ユーザーの一覧",
+  description: "このページはWEBアプリを登録しているユーザーの一覧ページです。様々なWEBアプリの製作者を見つけることができるようになっています。",
+  robots: {
+    index: false,
+  },
+};
 
 const page = async () => {
   const allUser = await getAllUser();
