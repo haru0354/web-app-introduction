@@ -1,5 +1,14 @@
+import { Metadata } from "next";
 import { signUp } from "@/app/action/ActionUser";
 import FormSignUp from "@/app/components/form/FormSignUp";
+
+export const metadata: Metadata = {
+  title: "アカウントの登録",
+  description: "このページはアカウントの登録ページです。アカウントの登録をすることによって、自作したWEBアプリの掲載をすることができるようになります。ア",
+  robots: {
+    index: false, 
+  },
+};
 
 const page = () => {
   return (
