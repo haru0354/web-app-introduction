@@ -1,10 +1,16 @@
+import Link from "next/link";
+import { Metadata } from "next";
+import { getSessionUserAccount } from "@/app/lib/sessionUserService";
 import FormEmail from "@/app/components/form/FormEmail";
 import FormUpdatePassword from "@/app/components/form/FormUpdatePassword";
-import Button from "@/app/components/ui/Button";
-import DeleteAccountModal from "@/app/components/web-parts/dashboard/DeleteAccountModal";
 import Modal from "@/app/components/web-parts/Modal";
-import { getSessionUserAccount } from "@/app/lib/sessionUserService";
-import Link from "next/link";
+import DeleteAccountModal from "@/app/components/web-parts/dashboard/DeleteAccountModal";
+import Button from "@/app/components/ui/Button";
+
+export const metadata: Metadata = {
+  title: "アカウントデータの変更",
+  description: "このページはアカウントデータの変更ページです。登録をしたメールアドレスの変更・パスワードの変更・アカウントの削除をすることができます。",
+};
 
 const page = async () => {
   const userData = await getSessionUserAccount();
