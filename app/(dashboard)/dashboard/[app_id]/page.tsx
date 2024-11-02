@@ -8,6 +8,12 @@ import Button from "@/app/components/ui/Button";
 import prisma from "@/app/lib/prisma";
 import NotFound from "@/app/not-found";
 import { getSessionUserId } from "@/app/lib/sessionUserService";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "アプリの編集",
+  description: "このページはアプリの編集ページです。登録をした自作WEBアプリの情報の編集、及び、データの削除を行うことができます。",
+};
 
 const page = async ({ params }: { params: { app_id: string } }) => {
   const id = params.app_id;
