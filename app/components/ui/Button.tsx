@@ -22,6 +22,7 @@ const Button: React.FC<ButtonProps> = ({
     blue: "text-white hover:text-customBlack border border-sky-900 bg-sky-700 hover:bg-sky-200",
     gray: "text-white hover:text-customBlack border border-gray-900 bg-customBlack hover:bg-gray-200",
     white: "bg-white hover:bg-gray-200",
+    black: "bg-customBlack hover:bg-gray-200",
   };
 
   const sizes = {
