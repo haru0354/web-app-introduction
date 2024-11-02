@@ -18,6 +18,7 @@ export const generateMetadata = async ({
       description: "指定されたページは存在しません。URLの誤りまたは削除された可能性があります。",
       robots: {
         index: false,
+        follow: false,
       },
     };
   }
