@@ -28,7 +28,7 @@ const AppsList: React.FC<AppsListProps> = ({
   }
 
   return (
-    <div className="flex flex-wrap md:justify-start justify-center w-full">
+    <div className="flex flex-wrap w-full">
       {appIntroductions.map((appIntroduction) => {
         const firstImage = appIntroduction.images[0];
         const title =
@@ -42,7 +42,7 @@ const AppsList: React.FC<AppsListProps> = ({
         return (
           <div
             key={appIntroduction.id}
-            className="flex flex-col items-center justify-start min-w-[200px] mx-3 my-6 text-center"
+            className="flex flex-col items-center min-w-[200px] mx-2 my-6 text-center"
           >
             <Link href={`/app/${appIntroduction.id}`}>
               <Image
