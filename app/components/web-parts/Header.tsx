@@ -33,7 +33,7 @@ const Header = () => {
                 <Modal
                   buttonText="ログイン"
                   width="400"
-                  buttonColor="white"
+                  buttonColor="black"
                   buttonSize="small"
                 >
                   <FormLogin />

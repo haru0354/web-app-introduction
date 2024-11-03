@@ -6,7 +6,7 @@ import useToggleModal from "../../hooks/useToggleModal";
 
 type ModalLayoutProps = {
   buttonText: string;
-  buttonColor?: "red" | "blue" | "gray" | "white";
+  buttonColor?: "red" | "blue" | "gray" | "white" | "black";
   buttonSize?: "normal" | "small";
   width?: string;
   children: React.ReactNode;

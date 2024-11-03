@@ -2,7 +2,7 @@ import Link from "next/link";
 
 const NotFound = () => {
   return (
-    <div className="min-h-[70vh] flex flex-col items-center justify-center">
+    <div className="flex-grow flex flex-col items-center justify-center min-h-[70vh]">
       <h1 className="text-2xl text-center py-8 text-customBlack font-bold">
         404NotFound
       </h1>
