@@ -20,7 +20,7 @@ const page = async () => {
     <>
       <BlogTopInfo title="サイトマップ" date="2024-11-03" image={false} />
       <ul className="list-disc list-inside mx-4">
-        <li className="py-2">
+        <li className="py-2 font-semibold">
           <Link href="/app">WEBアプリ一覧ページ</Link>
         </li>
         <ul className="list-disc list-inside mx-6">
@@ -32,15 +32,15 @@ const page = async () => {
             </li>
           ))}
         </ul>
-        <li className="py-2">
+        <li className="py-2 font-semibold">
           <Link href="/user">ユーザー一覧ページ</Link>
         </li>
       </ul>
       <ul className="list-disc list-inside mx-4">
-        <li className="py-2">
+        <li className="py-2 font-semibold">
           <Link href="/signup">アカウント登録ページ</Link>
         </li>
-        <li className="py-2">
+        <li className="py-2 font-semibold">
           <Link href="/privacypolicy">プライバシーポリシー</Link>
         </li>
       </ul>
