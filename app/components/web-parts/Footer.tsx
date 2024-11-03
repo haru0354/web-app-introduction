@@ -7,6 +7,9 @@ const Footer = () => {
         <li className="py-1 mx-4 transition-colors duration-300 hover:text-customBlue">
           <Link href="/privacypolicy">プライバシーポリシー・免責事項</Link>
         </li>
+        <li className="py-1 mx-4 transition-colors duration-300 hover:text-customBlue">
+          <Link href="/sitemaps">サイトマップ</Link>
+        </li>
       </ul>
       <p>&copy;サイトタイトル</p>
     </footer>
