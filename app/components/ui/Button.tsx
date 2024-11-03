@@ -1,6 +1,6 @@
 type ButtonProps = {
   children: React.ReactNode;
-  color: "red" | "blue" | "gray" | "white";
+  color: "red" | "blue" | "gray" | "white" | "black";
   size?: "normal" | "small" | "big";
   className?: string;
   type?: "submit" | "button";
@@ -22,7 +22,7 @@ const Button: React.FC<ButtonProps> = ({
     blue: "text-white hover:text-customBlack border border-sky-900 bg-sky-700 hover:bg-sky-200",
     gray: "text-white hover:text-customBlack border border-gray-900 bg-customBlack hover:bg-gray-200",
     white: "bg-white hover:bg-gray-200",
-    black: "bg-customBlack hover:bg-gray-200",
+    black: "text-white hover:text-customBlack bg-layout-mainColor hover:bg-gray-200",
   };
 
   const sizes = {

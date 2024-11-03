@@ -4,7 +4,7 @@ import { ModalProvider } from "../context/ModalContext";
 import ModalLayout from "../layouts/with-children/ModalLayout";
 
 type ModalProps = {
-  buttonColor?: "red" | "blue" | "gray" | "white";
+  buttonColor?: "red" | "blue" | "gray" | "white" | "black";
   buttonText: string;
   buttonSize?: "normal" | "small";
   width?: string;
