@@ -41,17 +41,17 @@ const Breadcrumbs = () => {
             <Image
               src="/home_image.png"
               alt="home"
-              width={25}
-              height={25}
-              className="inline mb-[2px] mr-2"
+              width={20}
+              height={20}
+              className="inline mr-2"
             />
             <Link href="/">ホーム</Link>
-            {"　>　"}
+            <span className="mx-2"> &gt; </span>
           </li>
           {breadcrumb.label && (
             <li>
               <Link href={breadcrumb.href}>{breadcrumb.label}</Link>
-              {"　>　"}
+              <span className="mx-2"> &gt; </span>
             </li>
           )}
         </ol>
