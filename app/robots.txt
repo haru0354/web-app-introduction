@@ -1,0 +1,5 @@
+User-Agent: *
+Disallow: /dashboard
+Disallow: /dashboard/
+
+Sitemap: https://●●●●.com(変更箇所)/sitemap.xml
