@@ -11,7 +11,7 @@ const TwoColumn: React.FC<TwoColumnProps> = ({
   blogPage = false,
 }) => {
   return (
-    <main className="w-full p-2 md:py-12 bg-layout-bgColor">
+    <main className="w-full p-2 md:py-8 bg-layout-bgColor">
       <Breadcrumbs />
       <div className="flex-grow flex flex-col md:flex-row justify-between max-w-[1140px] mx-auto bg-white rounded">
         <div
