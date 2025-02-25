@@ -1,9 +1,10 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
-import prisma from "../lib/prisma";
 import { z } from "zod";
+
 import { getSessionUserId } from "../lib/sessionUserService";
+import prisma from "../lib/prisma";
 
 type FormProfileState = {
   message?: string | null;

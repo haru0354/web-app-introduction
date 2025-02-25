@@ -1,9 +1,10 @@
 "use server";
 
-import bcrypt from "bcrypt";
-import prisma from "../lib/prisma";
 import { z } from "zod";
+import bcrypt from "bcrypt";
+
 import { getSessionUserId } from "../lib/sessionUserService";
+import prisma from "../lib/prisma";
 
 type FormSignUpState = {
   message?: string | null;
