@@ -4,7 +4,7 @@ import { useFormState } from "react-dom";
 import { useEffect } from "react";
 import { signOut } from "next-auth/react";
 
-import { updateEmail } from "@/app/action/ActionUser";
+import { updateEmail } from "@/app/action/actionUser";
 import useToggleModal from "../hooks/useToggleModal";
 import InputText from "../ui/InputText";
 import Button from "../ui/Button";

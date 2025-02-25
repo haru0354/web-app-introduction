@@ -4,7 +4,7 @@ import { useFormState } from "react-dom";
 import { useEffect } from "react";
 import { signOut } from "next-auth/react";
 
-import { updatePassword } from "@/app/action/ActionUser";
+import { updatePassword } from "@/app/action/actionUser";
 import InputText from "../ui/InputText";
 import Button from "../ui/Button";
 import useToggleModal from "../hooks/useToggleModal";
