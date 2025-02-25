@@ -1,14 +1,15 @@
+import { Metadata } from "next";
+
+import { getSessionUserId } from "@/app/lib/sessionUserService";
 import {
   deleteAppIntroduction,
   updateAppIntroduction,
-} from "@/app/action/ActionAppIntroduction";
+} from "@/app/action/actionAppIntroduction";
+import prisma from "@/app/lib/prisma";
 import FormAppIntroduction from "@/app/components/form/FormAppIntroduction";
 import Modal from "@/app/components/web-parts/Modal";
 import Button from "@/app/components/ui/Button";
-import prisma from "@/app/lib/prisma";
 import NotFound from "@/app/not-found";
-import { getSessionUserId } from "@/app/lib/sessionUserService";
-import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "アプリの編集",

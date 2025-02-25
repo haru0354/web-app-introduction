@@ -1,5 +1,6 @@
-import Link from "next/link";
 import { Metadata } from "next";
+import Link from "next/link";
+
 import { getAllAppIntroductions } from "@/app/lib/appIntroductionService";
 import BlogTopInfo from "@/app/components/layouts/BlogTopInfo";
 

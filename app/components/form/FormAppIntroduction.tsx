@@ -1,14 +1,15 @@
 "use client";
 
 import { useFormState } from "react-dom";
+import { useEffect } from "react";
+import Link from "next/link";
+
+import useToggleModal from "../hooks/useToggleModal";
 import InputText from "../ui/InputText";
 import Textarea from "../ui/Textarea";
-import Button from "../ui/Button";
 import DynamicInputText from "../ui/DynamicInputText";
-import Link from "next/link";
 import InputImage from "../ui/InputImage";
-import useToggleModal from "../hooks/useToggleModal";
-import { useEffect } from "react";
+import Button from "../ui/Button";
 
 type FormAppIntroductionProps = {
   formAction: (state: FormState, formData: FormData) => Promise<FormState>;

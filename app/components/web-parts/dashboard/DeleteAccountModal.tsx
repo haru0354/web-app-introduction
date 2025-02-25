@@ -1,9 +1,10 @@
 "use client";
 
 import { useState } from "react";
+
 import Modal from "../Modal";
-import Button from "../../ui/Button";
 import FormDeleteAccount from "../../form/FormDeleteAccount";
+import Button from "../../ui/Button";
 
 type deleteAccountModalProps = {
   userId: string;

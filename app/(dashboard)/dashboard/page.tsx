@@ -1,7 +1,8 @@
 import { Metadata } from "next";
 import Link from "next/link";
-import { addAppIntroduction } from "@/app/action/ActionAppIntroduction";
+
 import { getSessionUser } from "@/app/lib/sessionUserService";
+import { addAppIntroduction } from "@/app/action/actionAppIntroduction";
 import Modal from "@/app/components/web-parts/Modal";
 import FormAppIntroduction from "@/app/components/form/FormAppIntroduction";
 import FormProfile from "@/app/components/form/FormProfile";

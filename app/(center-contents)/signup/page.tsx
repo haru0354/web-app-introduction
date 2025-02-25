@@ -1,5 +1,6 @@
 import { Metadata } from "next";
-import { signUp } from "@/app/action/ActionUser";
+
+import { signUp } from "@/app/action/actionUser";
 import FormSignUp from "@/app/components/form/FormSignUp";
 
 export const metadata: Metadata = {

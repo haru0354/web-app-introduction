@@ -1,8 +1,9 @@
+import { Metadata } from "next";
+
+import { getUser } from "@/app/lib/userService";
 import Profile from "@/app/components/web-parts/contents-area/Profile";
 import AppsList from "@/app/components/web-parts/contents-area/AppsList";
-import { getUser } from "@/app/lib/userService";
 import NotFound from "@/app/not-found";
-import { Metadata } from "next";
 
 export const generateMetadata = async ({
   params,

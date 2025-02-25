@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import { notoSansJp } from "./components/util/font";
+
+import "./globals.css";
 import Header from "./components/web-parts/Header";
 import Footer from "./components/web-parts/Footer";
-import "./globals.css";
 import AuthContext from "./components/context/AuthContext";
 
 export const metadata: Metadata = {
