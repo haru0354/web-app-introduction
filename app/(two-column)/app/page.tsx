@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+
 import { getAllAppIntroductions } from "@/app/lib/appIntroductionService";
 import AppsList from "@/app/components/web-parts/contents-area/AppsList";
 

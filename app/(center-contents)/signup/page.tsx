@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+
 import { signUp } from "@/app/action/ActionUser";
 import FormSignUp from "@/app/components/form/FormSignUp";
 

@@ -1,10 +1,11 @@
-import Link from "next/link";
 import { Metadata } from "next";
+import Link from "next/link";
+
 import { getSessionUserAccount } from "@/app/lib/sessionUserService";
-import FormEmail from "@/app/components/form/FormEmail";
-import FormUpdatePassword from "@/app/components/form/FormUpdatePassword";
 import Modal from "@/app/components/web-parts/Modal";
 import DeleteAccountModal from "@/app/components/web-parts/dashboard/DeleteAccountModal";
+import FormEmail from "@/app/components/form/FormEmail";
+import FormUpdatePassword from "@/app/components/form/FormUpdatePassword";
 import Button from "@/app/components/ui/Button";
 
 export const metadata: Metadata = {

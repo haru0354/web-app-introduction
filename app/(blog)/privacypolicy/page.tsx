@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+
 import BlogTopInfo from "@/app/components/layouts/BlogTopInfo";
 
 export const metadata: Metadata = {
