@@ -4,7 +4,7 @@ import { getSessionUserId } from "@/app/lib/sessionUserService";
 import {
   deleteAppIntroduction,
   updateAppIntroduction,
-} from "@/app/action/ActionAppIntroduction";
+} from "@/app/action/actionAppIntroduction";
 import prisma from "@/app/lib/prisma";
 import FormAppIntroduction from "@/app/components/form/FormAppIntroduction";
 import Modal from "@/app/components/web-parts/Modal";
