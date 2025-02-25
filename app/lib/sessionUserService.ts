@@ -1,4 +1,5 @@
 import { getServerSession } from "next-auth";
+
 import { authOptions } from "../components/util/authOptions";
 import prisma from "../lib/prisma";
 
