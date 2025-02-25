@@ -3,7 +3,7 @@
 import { useFormState } from "react-dom";
 import { useEffect } from "react";
 
-import { editProfile } from "@/app/action/ActionProfile";
+import { editProfile } from "@/app/action/actionProfile";
 import useToggleModal from "../hooks/useToggleModal";
 import InputText from "../ui/InputText";
 import Textarea from "../ui/Textarea";
