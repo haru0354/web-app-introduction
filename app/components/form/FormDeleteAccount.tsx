@@ -1,12 +1,13 @@
 "use client";
 
+import { useEffect } from "react";
 import { useFormState } from "react-dom";
+import { signOut } from "next-auth/react";
+
+import { deleteAccount } from "@/app/action/ActionUser";
+import useToggleModal from "../hooks/useToggleModal";
 import InputText from "../ui/InputText";
 import Button from "../ui/Button";
-import useToggleModal from "../hooks/useToggleModal";
-import { useEffect } from "react";
-import { signOut } from "next-auth/react";
-import { deleteAccount } from "@/app/action/ActionUser";
 
 type FormDeleteAccountProps = {
   userId: string;

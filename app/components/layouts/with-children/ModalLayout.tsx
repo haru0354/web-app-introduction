@@ -1,8 +1,9 @@
 "use client";
 
 import { useEffect } from "react";
-import Button from "../../ui/Button";
+
 import useToggleModal from "../../hooks/useToggleModal";
+import Button from "../../ui/Button";
 
 type ModalLayoutProps = {
   buttonText: string;

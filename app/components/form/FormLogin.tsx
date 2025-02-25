@@ -1,11 +1,12 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import { useRouter } from "next/navigation";
+import { signIn } from "next-auth/react";
+
+import useToggleModal from "../hooks/useToggleModal";
 import Button from "../ui/Button";
 import InputText from "../ui/InputText";
-import { signIn } from "next-auth/react";
-import { useRouter } from "next/navigation";
-import useToggleModal from "../hooks/useToggleModal";
 
 const FormLogin = () => {
   const [isLoading, setIsLoading] = useState(false);

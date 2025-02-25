@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+
 import prisma from "@/app/lib/prisma";
 
 const NewAppIntroductions = async () => {

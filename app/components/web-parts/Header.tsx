@@ -1,12 +1,13 @@
 "use client";
 
+import { useSession } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
+
+import Modal from "./Modal";
 import FormLogin from "../form/FormLogin";
 import LogoutButton from "../ui/LogoutButton";
 import Button from "../ui/Button";
-import Modal from "./Modal";
-import { useSession } from "next-auth/react";
 
 const Header = () => {
   const { data: session } = useSession();
