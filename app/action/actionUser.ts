@@ -10,16 +10,8 @@ import type {
   DeleteAccountFormState,
   EmailFormState,
   SignUpFormState,
+  UpdatePasswordFormState,
 } from "@/types/formStateTypes";
-
-type FormUpdatePasswordState = {
-  message?: string | null;
-  errors?: {
-    existingPassword?: string[] | undefined;
-    newPasswordOne?: string[] | undefined;
-    newPasswordTwo?: string[] | undefined;
-  };
-};
 
 const accountSchema = z.object({
   email: z.string().email("メールアドレスを入力してください"),
@@ -163,7 +155,7 @@ export const updateEmail = async (
 };
 
 export const updatePassword = async (
-  state: FormUpdatePasswordState,
+  state: UpdatePasswordFormState,
   formData: FormData
 ) => {
   try {

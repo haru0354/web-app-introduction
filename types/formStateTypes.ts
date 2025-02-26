@@ -47,3 +47,12 @@ export type ProfileFormState = {
     x?: string[] | undefined;
   };
 };
+
+export type UpdatePasswordFormState = {
+  message?: string | null;
+  errors?: {
+    existingPassword?: string[] | undefined;
+    newPasswordOne?: string[] | undefined;
+    newPasswordTwo?: string[] | undefined;
+  };
+};
