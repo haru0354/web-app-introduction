@@ -6,6 +6,8 @@ import bcrypt from "bcrypt";
 import { getSessionUserId } from "../lib/sessionUserService";
 import prisma from "../lib/prisma";
 
+import type { DeleteAccountFormState } from "@/types/formStateTypes";
+
 type FormSignUpState = {
   message?: string | null;
   errors?: {
@@ -20,13 +22,6 @@ type FormUpdatePasswordState = {
     existingPassword?: string[] | undefined;
     newPasswordOne?: string[] | undefined;
     newPasswordTwo?: string[] | undefined;
-  };
-};
-
-type deleteAccountState = {
-  message?: string | null;
-  errors?: {
-    password?: string[] | undefined;
   };
 };
 
@@ -249,7 +244,7 @@ export const updatePassword = async (
 };
 
 export const deleteAccount = async (
-  state: deleteAccountState,
+  state: DeleteAccountFormState,
   formData: FormData
 ) => {
   try {

@@ -12,3 +12,10 @@ export type AppIntroductionFormState = {
     imageALT?: string[] | undefined;
   };
 };
+
+export type DeleteAccountFormState = {
+  message?: string | null;
+  errors?: {
+    password?: string[] | undefined;
+  };
+};
