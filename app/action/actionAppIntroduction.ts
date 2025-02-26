@@ -1,27 +1,16 @@
 "use server";
 
 import { redirect } from "next/navigation";
-import { z } from "zod";
 import { revalidatePath } from "next/cache";
+import { z } from "zod";
 
 import prisma from "../lib/prisma";
 import { getSessionUserId } from "../lib/sessionUserService";
 import { fileSaveStorage } from "../lib/fileSaveStorage";
 import { validateMimeTypeAndExtension } from "../lib/validateMimeTypeAndExtension";
 
+import { appIntroductionSchema } from "../schemas/appIntroductionSchema";
 import type { AppIntroductionFormState } from "@/types/formStateTypes";
-
-const appIntroductionSchema = z.object({
-  title: z.string().min(1, { message: "タイトルの入力は必須です" }),
-  summary: z.string().min(1, { message: "アプリの種類の入力は必須です" }),
-  url: z.string().url({ message: "URLを入力してください" }),
-  technology: z.string().optional(),
-  overview: z.string().min(1, { message: "詳細の入力は必須です" }),
-  solution: z.string().min(1, { message: "解決できる課題の入力は必須です" }),
-  can: z.array(
-    z.string().min(1, { message: "最低でも1つ出来ることを記載が必要です" })
-  ),
-});
 
 const ImageSchema = z.object({
   imageALT: z
