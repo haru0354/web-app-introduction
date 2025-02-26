@@ -11,3 +11,9 @@ export const appIntroductionSchema = z.object({
     z.string().min(1, { message: "最低でも1つ出来ることを記載が必要です" })
   ),
 });
+
+export const ImageSchema = z.object({
+  imageALT: z
+    .string()
+    .min(1, { message: "画像の保存時には「画像の説明」の入力は必須です。" }),
+});

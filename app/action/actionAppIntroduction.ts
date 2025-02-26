@@ -2,21 +2,17 @@
 
 import { redirect } from "next/navigation";
 import { revalidatePath } from "next/cache";
-import { z } from "zod";
 
 import prisma from "../lib/prisma";
 import { getSessionUserId } from "../lib/sessionUserService";
 import { fileSaveStorage } from "../lib/fileSaveStorage";
 import { validateMimeTypeAndExtension } from "../lib/validateMimeTypeAndExtension";
 
-import { appIntroductionSchema } from "../schemas/appIntroductionSchema";
+import {
+  appIntroductionSchema,
+  ImageSchema,
+} from "../schemas/appIntroductionSchema";
 import type { AppIntroductionFormState } from "@/types/formStateTypes";
-
-const ImageSchema = z.object({
-  imageALT: z
-    .string()
-    .min(1, { message: "画像の保存時には「画像の説明」の入力は必須です。" }),
-});
 
 export const addAppIntroduction = async (
   state: AppIntroductionFormState,
