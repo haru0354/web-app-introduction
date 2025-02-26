@@ -6,15 +6,11 @@ import bcrypt from "bcrypt";
 import { getSessionUserId } from "../lib/sessionUserService";
 import prisma from "../lib/prisma";
 
-import type { DeleteAccountFormState, EmailFormState } from "@/types/formStateTypes";
-
-type FormSignUpState = {
-  message?: string | null;
-  errors?: {
-    email?: string[] | undefined;
-    password?: string[] | undefined;
-  };
-};
+import type {
+  DeleteAccountFormState,
+  EmailFormState,
+  SignUpFormState,
+} from "@/types/formStateTypes";
 
 type FormUpdatePasswordState = {
   message?: string | null;
@@ -54,7 +50,7 @@ const deleteAccountSchema = z.object({
     .max(12, { message: "12文字以下で入力してください。" }),
 });
 
-export const signUp = async (state: FormSignUpState, formData: FormData) => {
+export const signUp = async (state: SignUpFormState, formData: FormData) => {
   try {
     const email = formData.get("email") as string;
     const password = formData.get("password") as string;

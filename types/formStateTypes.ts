@@ -13,6 +13,14 @@ export type AppIntroductionFormState = {
   };
 };
 
+export type SignUpFormState = {
+  message?: string | null;
+  errors?: {
+    email?: string[] | undefined;
+    password?: string[] | undefined;
+  };
+};
+
 export type DeleteAccountFormState = {
   message?: string | null;
   errors?: {
