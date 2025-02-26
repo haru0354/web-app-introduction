@@ -8,7 +8,8 @@ import { deleteAccount } from "@/app/action/actionUser";
 import useToggleModal from "../hooks/useToggleModal";
 import InputText from "../ui/InputText";
 import Button from "../ui/Button";
-import { DeleteAccountFormState } from "@/types/formStateTypes";
+
+import type{ DeleteAccountFormState } from "@/types/formStateTypes";
 
 type FormDeleteAccountProps = {
   userId: string;

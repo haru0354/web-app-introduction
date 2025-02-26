@@ -9,20 +9,12 @@ import InputText from "../ui/InputText";
 import Textarea from "../ui/Textarea";
 import Button from "../ui/Button";
 
+import type { Profile } from "@prisma/client";
 import type { ProfileFormState } from "@/types/formStateTypes";
 
 type FormProfileProps = {
   userId: string;
   profile: Profile;
-};
-
-type Profile = {
-  selfIntroduction: string | null;
-  occupation: string | null;
-  skill: string | null;
-  portfolio: string | null;
-  gitHub: string | null;
-  x: string | null;
 };
 
 const FormProfile: React.FC<FormProfileProps> = ({ profile, userId }) => {

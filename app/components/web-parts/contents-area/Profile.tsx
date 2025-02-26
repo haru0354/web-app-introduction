@@ -1,15 +1,8 @@
+import type { Profile } from "@prisma/client";
+
 type ProfileProps = {
   userName: string | null;
   profile: Profile | null;
-};
-
-type Profile = {
-  selfIntroduction: string | null;
-  occupation: string | null;
-  skill: string | null;
-  portfolio: string | null;
-  gitHub: string | null;
-  x: string | null;
 };
 
 const Profile: React.FC<ProfileProps> = ({ userName, profile }) => {
