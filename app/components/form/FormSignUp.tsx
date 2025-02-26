@@ -5,19 +5,13 @@ import { useFormState } from "react-dom";
 import InputText from "../ui/InputText";
 import Button from "../ui/Button";
 
+import type { SignUpFormState } from "@/types/formStateTypes";
+
 type FormSignUpProps = {
   formAction: (
-    state: FormSignUpState,
+    state: SignUpFormState,
     formData: FormData
-  ) => Promise<FormSignUpState>;
-};
-
-type FormSignUpState = {
-  message?: string | null;
-  errors?: {
-    email?: string[] | undefined;
-    password?: string[] | undefined;
-  };
+  ) => Promise<SignUpFormState>;
 };
 
 const FormSignUp: React.FC<FormSignUpProps> = ({ formAction }) => {
@@ -29,7 +23,7 @@ const FormSignUp: React.FC<FormSignUpProps> = ({ formAction }) => {
     },
   };
 
-  const [state, dispatch] = useFormState<FormSignUpState, FormData>(
+  const [state, dispatch] = useFormState<SignUpFormState, FormData>(
     formAction,
     initialState
   );

@@ -5,14 +5,11 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-type ImageSliderProps = {
-  images: Images[];
-};
+import type { Image as PrismaImage } from "@prisma/client";
 
-type Images = {
-  imageURL: string;
-  imageALT: string;
-}
+type ImageSliderProps = {
+  images: PrismaImage[];
+};
 
 const ImageSlider: React.FC<ImageSliderProps> = ({ images }) => {
   const settings = {
@@ -28,7 +25,10 @@ const ImageSlider: React.FC<ImageSliderProps> = ({ images }) => {
       <Slider {...settings}>
         {images.map((image, index) => {
           return (
-            <div key={index} className="min-w-[200px]text-center my-4 mx-8 md:mx-0">
+            <div
+              key={index}
+              className="min-w-[200px]text-center my-4 mx-8 md:mx-0"
+            >
               <Image
                 src={`/${image.imageURL}`}
                 width={200}

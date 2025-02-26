@@ -1,7 +1,6 @@
 "use server";
 
 import { redirect } from "next/navigation";
-import { z } from "zod";
 import { revalidatePath } from "next/cache";
 
 import prisma from "../lib/prisma";
@@ -9,41 +8,14 @@ import { getSessionUserId } from "../lib/sessionUserService";
 import { fileSaveStorage } from "../lib/fileSaveStorage";
 import { validateMimeTypeAndExtension } from "../lib/validateMimeTypeAndExtension";
 
-type FormState = {
-  message?: string | null;
-  errors?: {
-    title?: string[] | undefined;
-    summary?: string[] | undefined;
-    url?: string[] | undefined;
-    technology?: string[] | undefined;
-    overview?: string[] | undefined;
-    solution?: string[] | undefined;
-    can?: string[] | undefined;
-    image?: string[] | undefined;
-    imageALT?: string[] | undefined;
-  };
-};
-
-const appIntroductionSchema = z.object({
-  title: z.string().min(1, { message: "タイトルの入力は必須です" }),
-  summary: z.string().min(1, { message: "アプリの種類の入力は必須です" }),
-  url: z.string().url({ message: "URLを入力してください" }),
-  technology: z.string().optional(),
-  overview: z.string().min(1, { message: "詳細の入力は必須です" }),
-  solution: z.string().min(1, { message: "解決できる課題の入力は必須です" }),
-  can: z.array(
-    z.string().min(1, { message: "最低でも1つ出来ることを記載が必要です" })
-  ),
-});
-
-const ImageSchema = z.object({
-  imageALT: z
-    .string()
-    .min(1, { message: "画像の保存時には「画像の説明」の入力は必須です。" }),
-});
+import {
+  appIntroductionSchema,
+  ImageSchema,
+} from "../schemas/appIntroductionSchema";
+import type { AppIntroductionFormState } from "@/types/formStateTypes";
 
 export const addAppIntroduction = async (
-  state: FormState,
+  state: AppIntroductionFormState,
   formData: FormData
 ) => {
   const title = formData.get("title") as string;
@@ -168,7 +140,7 @@ export const addAppIntroduction = async (
 };
 
 export const updateAppIntroduction = async (
-  state: FormState,
+  state: AppIntroductionFormState,
   formData: FormData
 ) => {
   const title = formData.get("title") as string;

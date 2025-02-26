@@ -9,17 +9,11 @@ import useToggleModal from "../hooks/useToggleModal";
 import InputText from "../ui/InputText";
 import Button from "../ui/Button";
 
+import type { EmailFormState } from "@/types/formStateTypes";
+
 type FormEmailProps = {
   userId: string;
   email: string | undefined;
-};
-
-type FormEmailState = {
-  message?: string | null;
-  errors?: {
-    email?: string[] | undefined;
-    password?: string[] | undefined;
-  };
 };
 
 const FormEmail: React.FC<FormEmailProps> = ({ userId, email }) => {
@@ -33,7 +27,7 @@ const FormEmail: React.FC<FormEmailProps> = ({ userId, email }) => {
     },
   };
 
-  const [state, dispatch] = useFormState<FormEmailState, FormData>(
+  const [state, dispatch] = useFormState<EmailFormState, FormData>(
     updateEmail,
     initialState
   );

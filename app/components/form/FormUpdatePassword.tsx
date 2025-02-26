@@ -8,18 +8,10 @@ import { updatePassword } from "@/app/action/actionUser";
 import InputText from "../ui/InputText";
 import Button from "../ui/Button";
 import useToggleModal from "../hooks/useToggleModal";
+import { UpdatePasswordFormState } from "@/types/formStateTypes";
 
 type FormUpdatePasswordProps = {
   userId: string;
-};
-
-type FormUpdatePasswordState = {
-  message?: string | null;
-  errors?: {
-    existingPassword?: string[] | undefined;
-    newPasswordOne?: string[] | undefined;
-    newPasswordTwo?: string[] | undefined;
-  };
 };
 
 const FormUpdatePassword: React.FC<FormUpdatePasswordProps> = ({ userId }) => {
@@ -34,7 +26,7 @@ const FormUpdatePassword: React.FC<FormUpdatePasswordProps> = ({ userId }) => {
     },
   };
 
-  const [state, dispatch] = useFormState<FormUpdatePasswordState, FormData>(
+  const [state, dispatch] = useFormState<UpdatePasswordFormState, FormData>(
     updatePassword,
     initialState
   );

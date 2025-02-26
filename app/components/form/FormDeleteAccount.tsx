@@ -9,15 +9,10 @@ import useToggleModal from "../hooks/useToggleModal";
 import InputText from "../ui/InputText";
 import Button from "../ui/Button";
 
+import type{ DeleteAccountFormState } from "@/types/formStateTypes";
+
 type FormDeleteAccountProps = {
   userId: string;
-};
-
-type FormDeleteAccountState = {
-  message?: string | null;
-  errors?: {
-    password?: string[] | undefined;
-  };
 };
 
 const FormDeleteAccount: React.FC<FormDeleteAccountProps> = ({ userId }) => {
@@ -30,7 +25,7 @@ const FormDeleteAccount: React.FC<FormDeleteAccountProps> = ({ userId }) => {
     },
   };
 
-  const [state, dispatch] = useFormState<FormDeleteAccountState, FormData>(
+  const [state, dispatch] = useFormState<DeleteAccountFormState, FormData>(
     deleteAccount,
     initialState
   );

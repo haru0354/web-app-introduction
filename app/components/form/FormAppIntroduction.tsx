@@ -11,40 +11,20 @@ import DynamicInputText from "../ui/DynamicInputText";
 import InputImage from "../ui/InputImage";
 import Button from "../ui/Button";
 
+import type { AppIntroductionFormState } from "@/types/formStateTypes";
+import type { AppIntroduction } from "@prisma/client";
+
 type FormAppIntroductionProps = {
-  formAction: (state: FormState, formData: FormData) => Promise<FormState>;
+  formAction: (
+    state: AppIntroductionFormState,
+    formData: FormData
+  ) => Promise<AppIntroductionFormState>;
   formName: string;
   userId: string;
   appIntroductionData?: AppIntroduction | null;
   appId?: string;
   backButton?: boolean;
   isModalPage?: boolean;
-};
-
-type AppIntroduction = {
-  title: string;
-  summary: string;
-  url: string;
-  technology?: string | null;
-  overview: string;
-  solution: string;
-  can: string[];
-  imageALT?: string | null;
-};
-
-type FormState = {
-  message?: string | null;
-  errors?: {
-    title?: string[] | undefined;
-    summary?: string[] | undefined;
-    url?: string[] | undefined;
-    technology?: string[] | undefined;
-    overview?: string[] | undefined;
-    solution?: string[] | undefined;
-    can?: string[] | undefined;
-    image?: string[] | undefined;
-    imageALT?: string[] | undefined;
-  };
 };
 
 const FormAppIntroduction: React.FC<FormAppIntroductionProps> = ({
@@ -69,7 +49,7 @@ const FormAppIntroduction: React.FC<FormAppIntroductionProps> = ({
     },
   };
 
-  const [state, dispatch] = useFormState<FormState, FormData>(
+  const [state, dispatch] = useFormState<AppIntroductionFormState, FormData>(
     formAction,
     initialState
   );

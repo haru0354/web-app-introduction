@@ -1,65 +1,19 @@
 "use server";
 
-import { z } from "zod";
 import bcrypt from "bcrypt";
 
 import { getSessionUserId } from "../lib/sessionUserService";
 import prisma from "../lib/prisma";
 
-type FormSignUpState = {
-  message?: string | null;
-  errors?: {
-    email?: string[] | undefined;
-    password?: string[] | undefined;
-  };
-};
+import { accountSchema, deleteAccountSchema, updatePasswordSchema } from "../schemas/userSchemas";
+import type {
+  DeleteAccountFormState,
+  EmailFormState,
+  SignUpFormState,
+  UpdatePasswordFormState,
+} from "@/types/formStateTypes";
 
-type FormUpdatePasswordState = {
-  message?: string | null;
-  errors?: {
-    existingPassword?: string[] | undefined;
-    newPasswordOne?: string[] | undefined;
-    newPasswordTwo?: string[] | undefined;
-  };
-};
-
-type deleteAccountState = {
-  message?: string | null;
-  errors?: {
-    password?: string[] | undefined;
-  };
-};
-
-const accountSchema = z.object({
-  email: z.string().email("メールアドレスを入力してください"),
-  password: z
-    .string()
-    .min(8, { message: "8文字以上で入力してください。" })
-    .max(12, { message: "12文字以下で入力してください。" }),
-});
-
-const updatePasswordSchema = z.object({
-  existingPassword: z
-    .string()
-    .min(8, { message: "8文字以上で入力してください。" }),
-  newPasswordOne: z
-    .string()
-    .min(8, { message: "8文字以上で入力してください。" })
-    .max(12, { message: "12文字以下で入力してください。" }),
-  newPasswordTwo: z
-    .string()
-    .min(8, { message: "8文字以上で入力してください。" })
-    .max(12, { message: "12文字以下で入力してください。" }),
-});
-
-const deleteAccountSchema = z.object({
-  password: z
-    .string()
-    .min(8, { message: "8文字以上で入力してください。" })
-    .max(12, { message: "12文字以下で入力してください。" }),
-});
-
-export const signUp = async (state: FormSignUpState, formData: FormData) => {
+export const signUp = async (state: SignUpFormState, formData: FormData) => {
   try {
     const email = formData.get("email") as string;
     const password = formData.get("password") as string;
@@ -103,7 +57,7 @@ export const signUp = async (state: FormSignUpState, formData: FormData) => {
 };
 
 export const updateEmail = async (
-  state: FormSignUpState,
+  state: EmailFormState,
   formData: FormData
 ) => {
   try {
@@ -172,7 +126,7 @@ export const updateEmail = async (
 };
 
 export const updatePassword = async (
-  state: FormUpdatePasswordState,
+  state: UpdatePasswordFormState,
   formData: FormData
 ) => {
   try {
@@ -249,7 +203,7 @@ export const updatePassword = async (
 };
 
 export const deleteAccount = async (
-  state: deleteAccountState,
+  state: DeleteAccountFormState,
   formData: FormData
 ) => {
   try {
