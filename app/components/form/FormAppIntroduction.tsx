@@ -12,6 +12,7 @@ import InputImage from "../ui/InputImage";
 import Button from "../ui/Button";
 
 import type { AppIntroductionFormState } from "@/types/formStateTypes";
+import type { AppIntroduction } from "@prisma/client";
 
 type FormAppIntroductionProps = {
   formAction: (
@@ -24,17 +25,6 @@ type FormAppIntroductionProps = {
   appId?: string;
   backButton?: boolean;
   isModalPage?: boolean;
-};
-
-type AppIntroduction = {
-  title: string;
-  summary: string;
-  url: string;
-  technology?: string | null;
-  overview: string;
-  solution: string;
-  can: string[];
-  imageALT?: string | null;
 };
 
 const FormAppIntroduction: React.FC<FormAppIntroductionProps> = ({

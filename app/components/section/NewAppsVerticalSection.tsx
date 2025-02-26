@@ -4,22 +4,11 @@ import Link from "next/link";
 import TopPageSection from "../layouts/with-children/TopPageSection";
 import Button from "../ui/Button";
 
+import type { AppIntroduction } from "@prisma/client";
+
 type NewAppsVerticalSectionProps = {
   title: string;
-  appIntroductions: AppIntroductions[];
-};
-
-type AppIntroductions = {
-  id: string;
-  title: string;
-  overview: string;
-  images: Image[];
-  createdAt: Date;
-};
-
-type Image = {
-  imageURL: string;
-  imageALT: string;
+  appIntroductions: AppIntroduction[];
 };
 
 const NewAppsVerticalSection: React.FC<NewAppsVerticalSectionProps> = ({

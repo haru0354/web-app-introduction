@@ -3,21 +3,10 @@ import Link from "next/link";
 
 import TopPageSection from "../layouts/with-children/TopPageSection";
 
+import type { AppIntroduction } from "@prisma/client";
+
 type NewAppsListProps = {
-  appIntroductions: AppIntroductions[];
-};
-
-type AppIntroductions = {
-  id: string;
-  title: string;
-  summary: string;
-  images: Image[];
-  createdAt: Date;
-};
-
-type Image = {
-  imageURL: string;
-  imageALT: string;
+  appIntroductions: AppIntroduction[];
 };
 
 const NewAppsList: React.FC<NewAppsListProps> = ({ appIntroductions }) => {

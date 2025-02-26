@@ -3,21 +3,11 @@ import Link from "next/link";
 
 import Button from "../../ui/Button";
 
+import type { AppIntroduction } from "@prisma/client";
+
 type AppsListProps = {
-  appIntroductions: AppIntroductions[];
+  appIntroductions: AppIntroduction[];
   editButton?: boolean;
-};
-
-type AppIntroductions = {
-  id: string;
-  title: string;
-  summary: string;
-  images: Image[];
-};
-
-type Image = {
-  imageURL: string;
-  imageALT: string;
 };
 
 const AppsList: React.FC<AppsListProps> = ({
@@ -54,8 +44,8 @@ const AppsList: React.FC<AppsListProps> = ({
                 className="border border-gray-400 hover:-translate-y-2 transition"
               />
             </Link>
-            <h2 className="font-semibold text-gray-600 mt-3">{title}</h2>
-            「{summary}」
+            <h2 className="font-semibold text-gray-600 mt-3">{title}</h2>「
+            {summary}」
             {editButton && (
               <Link href={`/dashboard/${appIntroduction.id}`}>
                 <Button color="gray" size="normal">
