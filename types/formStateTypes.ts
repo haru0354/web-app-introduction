@@ -19,3 +19,11 @@ export type DeleteAccountFormState = {
     password?: string[] | undefined;
   };
 };
+
+export type EmailFormState = {
+  message?: string | null;
+  errors?: {
+    email?: string[] | undefined;
+    password?: string[] | undefined;
+  };
+};

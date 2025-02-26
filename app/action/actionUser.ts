@@ -6,7 +6,7 @@ import bcrypt from "bcrypt";
 import { getSessionUserId } from "../lib/sessionUserService";
 import prisma from "../lib/prisma";
 
-import type { DeleteAccountFormState } from "@/types/formStateTypes";
+import type { DeleteAccountFormState, EmailFormState } from "@/types/formStateTypes";
 
 type FormSignUpState = {
   message?: string | null;
@@ -98,7 +98,7 @@ export const signUp = async (state: FormSignUpState, formData: FormData) => {
 };
 
 export const updateEmail = async (
-  state: FormSignUpState,
+  state: EmailFormState,
   formData: FormData
 ) => {
   try {
