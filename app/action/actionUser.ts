@@ -1,25 +1,17 @@
 "use server";
 
-import { z } from "zod";
 import bcrypt from "bcrypt";
 
 import { getSessionUserId } from "../lib/sessionUserService";
 import prisma from "../lib/prisma";
 
-import { accountSchema, updatePasswordSchema } from "../schemas/userSchemas";
+import { accountSchema, deleteAccountSchema, updatePasswordSchema } from "../schemas/userSchemas";
 import type {
   DeleteAccountFormState,
   EmailFormState,
   SignUpFormState,
   UpdatePasswordFormState,
 } from "@/types/formStateTypes";
-
-const deleteAccountSchema = z.object({
-  password: z
-    .string()
-    .min(8, { message: "8文字以上で入力してください。" })
-    .max(12, { message: "12文字以下で入力してください。" }),
-});
 
 export const signUp = async (state: SignUpFormState, formData: FormData) => {
   try {
