@@ -27,3 +27,15 @@ export type EmailFormState = {
     password?: string[] | undefined;
   };
 };
+
+export type ProfileFormState = {
+  message?: string | null;
+  errors?: {
+    selfIntroduction?: string[] | undefined;
+    occupation?: string[] | undefined;
+    skill?: string[] | undefined;
+    portfolio?: string[] | undefined;
+    gitHub?: string[] | undefined;
+    x?: string[] | undefined;
+  };
+};

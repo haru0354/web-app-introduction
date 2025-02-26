@@ -9,6 +9,8 @@ import InputText from "../ui/InputText";
 import Textarea from "../ui/Textarea";
 import Button from "../ui/Button";
 
+import type { ProfileFormState } from "@/types/formStateTypes";
+
 type FormProfileProps = {
   userId: string;
   profile: Profile;
@@ -21,18 +23,6 @@ type Profile = {
   portfolio: string | null;
   gitHub: string | null;
   x: string | null;
-};
-
-type FormProfileState = {
-  message?: string | null;
-  errors?: {
-    selfIntroduction?: string[] | undefined;
-    occupation?: string[] | undefined;
-    skill?: string[] | undefined;
-    portfolio?: string[] | undefined;
-    gitHub?: string[] | undefined;
-    x?: string[] | undefined;
-  };
 };
 
 const FormProfile: React.FC<FormProfileProps> = ({ profile, userId }) => {
@@ -51,7 +41,7 @@ const FormProfile: React.FC<FormProfileProps> = ({ profile, userId }) => {
     },
   };
 
-  const [state, dispatch] = useFormState<FormProfileState, FormData>(
+  const [state, dispatch] = useFormState<ProfileFormState, FormData>(
     editProfile,
     initialState
   );

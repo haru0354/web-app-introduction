@@ -6,17 +6,7 @@ import { z } from "zod";
 import { getSessionUserId } from "../lib/sessionUserService";
 import prisma from "../lib/prisma";
 
-type FormProfileState = {
-  message?: string | null;
-  errors?: {
-    selfIntroduction?: string[] | undefined;
-    occupation?: string[] | undefined;
-    skill?: string[] | undefined;
-    portfolio?: string[] | undefined;
-    gitHub?: string[] | undefined;
-    x?: string[] | undefined;
-  };
-};
+import type { ProfileFormState } from "@/types/formStateTypes";
 
 const profileSchema = z.object({
   selfIntroduction: z.string().optional(),
@@ -45,7 +35,7 @@ const profileSchema = z.object({
 });
 
 export const editProfile = async (
-  state: FormProfileState,
+  state: ProfileFormState,
   formData: FormData
 ) => {
   const selfIntroduction = formData.get("selfIntroduction") as string;
