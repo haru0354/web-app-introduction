@@ -9,20 +9,7 @@ import { getSessionUserId } from "../lib/sessionUserService";
 import { fileSaveStorage } from "../lib/fileSaveStorage";
 import { validateMimeTypeAndExtension } from "../lib/validateMimeTypeAndExtension";
 
-type FormState = {
-  message?: string | null;
-  errors?: {
-    title?: string[] | undefined;
-    summary?: string[] | undefined;
-    url?: string[] | undefined;
-    technology?: string[] | undefined;
-    overview?: string[] | undefined;
-    solution?: string[] | undefined;
-    can?: string[] | undefined;
-    image?: string[] | undefined;
-    imageALT?: string[] | undefined;
-  };
-};
+import type { AppIntroductionFormState } from "@/types/formStateTypes";
 
 const appIntroductionSchema = z.object({
   title: z.string().min(1, { message: "タイトルの入力は必須です" }),
@@ -43,7 +30,7 @@ const ImageSchema = z.object({
 });
 
 export const addAppIntroduction = async (
-  state: FormState,
+  state: AppIntroductionFormState,
   formData: FormData
 ) => {
   const title = formData.get("title") as string;
@@ -168,7 +155,7 @@ export const addAppIntroduction = async (
 };
 
 export const updateAppIntroduction = async (
-  state: FormState,
+  state: AppIntroductionFormState,
   formData: FormData
 ) => {
   const title = formData.get("title") as string;
