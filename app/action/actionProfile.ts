@@ -18,31 +18,25 @@ export const editProfile = async (
   const portfolio = formData.get("portfolio") as string;
   const gitHub = formData.get("gitHub") as string;
   const x = formData.get("x") as string;
-  const userId = formData.get("userId") as string;
   const sessionUserId = await getSessionUserId();
 
   if (!sessionUserId) {
-    throw new Error("セッションを取得できませんでした。");
-  }
-
-  if (sessionUserId !== userId) {
-    throw new Error("セッションとフォームで送信されたIDが一致しません。");
+    console.error("セッションの取得に失敗しました。");
+    return { message: "再度ログイン後にお試しください。（認証エラー）" };
   }
 
   const user = await prisma.user.findUnique({
     where: {
-      id: userId,
+      id: sessionUserId,
     },
   });
 
   if (!user) {
-    throw new Error("登録しているユーザーが見つかりません。");
-  }
-
-  if (user.id !== userId) {
-    throw new Error(
-      "登録しているユーザーのIDとフォームから送信されたユーザーのIDが一致しません。"
-    );
+    console.error("ユーザーが見つかりませんでした。");
+    return {
+      message:
+        "ユーザーデータが見つかりませんでした。再度ログイン後にお試しください。",
+    };
   }
 
   const validatedFields = profileSchema.safeParse({
@@ -66,7 +60,7 @@ export const editProfile = async (
   try {
     await prisma.user.update({
       where: {
-        id: userId,
+        id: sessionUserId,
       },
       data: {
         profile: {
@@ -79,12 +73,11 @@ export const editProfile = async (
         },
       },
     });
-
-    console.log("プロフィールの編集に成功しました。");
+    
+    revalidatePath("/dashboard");
+    return { message: "success" };
   } catch (error) {
     console.error("プロフィールの追加の際にエラーが発生しました。:", error);
     return { message: "プロフィールの追加の際にエラーが発生しました。" };
   }
-  revalidatePath("/dashboard");
-  return { message: "success" };
 };
