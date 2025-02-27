@@ -135,15 +135,14 @@ export const updatePassword = async (
   formData: FormData
 ) => {
   try {
-    const userId = formData.get("userId") as string;
-    const existingPassword = formData.get("existingPassword") as string;
-    const newPasswordOne = formData.get("newPasswordOne") as string;
-    const newPasswordTwo = formData.get("newPasswordTwo") as string;
+    const password = formData.get("password") as string;
+    const newPassword = formData.get("newPassword") as string;
+    const confirmationPassword = formData.get("confirmationPassword") as string;
 
     const validatedFields = updatePasswordSchema.safeParse({
-      existingPassword,
-      newPasswordOne,
-      newPasswordTwo,
+      password,
+      newPassword,
+      confirmationPassword,
     });
 
     if (!validatedFields.success) {
@@ -155,45 +154,50 @@ export const updatePassword = async (
       return errors;
     }
 
-    if (newPasswordOne !== newPasswordTwo) {
-      return { message: "入力した「新しいパスワード」が同じ値ではありません" };
+    if (newPassword !== confirmationPassword) {
+      console.error(
+        "「新しいパスワード」「新しいパスワード（確認用）」が一致しません。"
+      );
+      return {
+        message:
+          "「新しいパスワード」「新しいパスワード（確認用）」が一致しません。",
+      };
     }
 
     const sessionUserId = await getSessionUserId();
 
     if (!sessionUserId) {
-      throw new Error("セッションIDが取得できませんでした。");
-    }
-
-    if (sessionUserId !== userId) {
-      throw new Error(
-        "セッションIDが一致しない、もしくは無効なセッションです。"
-      );
+      console.error("メールアドレス変更中にセッションの取得に失敗しました。");
+      return { message: "再度ログイン後にお試しください。（認証エラー）" };
     }
 
     const user = await prisma.user.findUnique({
       where: {
-        id: userId,
+        id: sessionUserId,
       },
     });
 
     if (!user) {
-      throw new Error("登録しているユーザーが見つかりません。");
+      console.error("ユーザーが見つかりませんでした。");
+      return {
+        message:
+          "ユーザーデータが見つかりませんでした。再度ログイン後にお試しください。",
+      };
     }
 
     const isPasswordValid = user.hashedPassword
-      ? await bcrypt.compare(existingPassword, user.hashedPassword)
+      ? await bcrypt.compare(password, user.hashedPassword)
       : false;
 
     if (!isPasswordValid) {
       return { message: "登録中のパスワードが正しくありません。" };
     }
 
-    const newHashedPassword = await bcrypt.hash(newPasswordOne, 12);
+    const newHashedPassword = await bcrypt.hash(newPassword, 12);
 
     await prisma.user.update({
       where: {
-        id: userId,
+        id: sessionUserId,
       },
       data: {
         hashedPassword: newHashedPassword,

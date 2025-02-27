@@ -18,14 +18,12 @@ export const updateEmailSchema = z.object({
 });
 
 export const updatePasswordSchema = z.object({
-  existingPassword: z
-    .string()
-    .min(8, { message: "8文字以上で入力してください。" }),
-  newPasswordOne: z
+  password: z.string().min(8, { message: "8文字以上で入力してください。" }),
+  newPassword: z
     .string()
     .min(8, { message: "8文字以上で入力してください。" })
     .max(12, { message: "12文字以下で入力してください。" }),
-  newPasswordTwo: z
+  confirmationPassword: z
     .string()
     .min(8, { message: "8文字以上で入力してください。" })
     .max(12, { message: "12文字以下で入力してください。" }),

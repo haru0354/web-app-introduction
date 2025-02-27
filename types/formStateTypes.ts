@@ -52,8 +52,8 @@ export type ProfileFormState = {
 export type UpdatePasswordFormState = {
   message?: string | null;
   errors?: {
-    existingPassword?: string[] | undefined;
-    newPasswordOne?: string[] | undefined;
-    newPasswordTwo?: string[] | undefined;
+    password?: string[] | undefined;
+    newPassword?: string[] | undefined;
+    confirmationPassword?: string[] | undefined;
   };
 };
