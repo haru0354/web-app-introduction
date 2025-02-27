@@ -25,6 +25,7 @@ export type DeleteAccountFormState = {
   message?: string | null;
   errors?: {
     password?: string[] | undefined;
+    confirmationPassword?: string[] | undefined;
   };
 };
 

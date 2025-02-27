@@ -9,7 +9,7 @@ import useToggleModal from "../hooks/useToggleModal";
 import InputText from "../ui/InputText";
 import Button from "../ui/Button";
 
-import type{ DeleteAccountFormState } from "@/types/formStateTypes";
+import type { DeleteAccountFormState } from "@/types/formStateTypes";
 
 type FormDeleteAccountProps = {
   userId: string;
@@ -22,6 +22,7 @@ const FormDeleteAccount: React.FC<FormDeleteAccountProps> = ({ userId }) => {
     message: null,
     errors: {
       password: undefined,
+      confirmationPassword: undefined,
     },
   };
 
@@ -51,7 +52,15 @@ const FormDeleteAccount: React.FC<FormDeleteAccountProps> = ({ userId }) => {
         {state.errors && state.errors.password && (
           <p className="mb-4 text-red-500">{state.errors.password}</p>
         )}
-        <input type="hidden" name="userId" value={userId} />
+        <InputText
+          type="password"
+          label="パスワード（確認用）"
+          name="confirmationPassword"
+          placeholder="確認の為、再度パスワードを入力してください"
+        />
+        {state.errors && state.errors.confirmationPassword && (
+          <p className="mb-4 text-red-500">{state.errors.confirmationPassword}</p>
+        )}
         {state.message && <p className="mb-4 text-red-500">{state.message}</p>}
         <Button color="red" size="normal" className="block mx-auto">
           削除
