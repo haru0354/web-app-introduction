@@ -59,9 +59,13 @@ const FormDeleteAccount: React.FC<FormDeleteAccountProps> = ({ userId }) => {
           placeholder="確認の為、再度パスワードを入力してください"
         />
         {state.errors && state.errors.confirmationPassword && (
-          <p className="mb-4 text-red-500">{state.errors.confirmationPassword}</p>
+          <p className="mb-4 text-red-500">
+            {state.errors.confirmationPassword}
+          </p>
         )}
-        {state.message && <p className="mb-4 text-red-500">{state.message}</p>}
+        {state.message && state.message !== "success" && (
+          <p className="mb-4 text-red-500">{state.message}</p>
+        )}
         <Button color="red" size="normal" className="block mx-auto">
           削除
         </Button>

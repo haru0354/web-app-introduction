@@ -69,7 +69,9 @@ const FormUpdatePassword: React.FC<FormUpdatePasswordProps> = ({ userId }) => {
       {state.errors && state.errors.confirmationPassword && (
         <p className="mb-4 text-red-500">{state.errors.confirmationPassword}</p>
       )}
-      {state.message && <p className="mb-4 text-red-500">{state.message}</p>}
+      {state.message && state.message !== "success" && (
+        <p className="mb-4 text-red-500">{state.message}</p>
+      )}
       <Button color="blue" size="normal" className="block mx-auto">
         編集
       </Button>

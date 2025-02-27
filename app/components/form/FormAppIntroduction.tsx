@@ -140,8 +140,8 @@ const FormAppIntroduction: React.FC<FormAppIntroductionProps> = ({
       {state.errors && state.errors.imageALT && (
         <p className="mb-4 text-red-500">{state.errors.image}</p>
       )}
-      {state.message && (
-        <p className="mb-4 text-center text-red-500">{state.message}</p>
+      {state.message && state.message !== "success" && (
+        <p className="mb-4 text-red-500">{state.message}</p>
       )}
       <Button color="blue" size="normal" className="block mx-auto">
         保存

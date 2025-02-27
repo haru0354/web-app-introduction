@@ -1,5 +1,6 @@
 "use server";
 
+import { redirect } from "next/navigation";
 import bcrypt from "bcrypt";
 
 import { getSessionUserId } from "../lib/sessionUserService";
@@ -37,7 +38,7 @@ export const signUp = async (state: SignUpFormState, formData: FormData) => {
   }
 
   const hashedPassword = await bcrypt.hash(password, 12);
-  
+
   try {
     await prisma.user.create({
       data: {
@@ -53,12 +54,12 @@ export const signUp = async (state: SignUpFormState, formData: FormData) => {
         },
       },
     });
-
-    return { message: "アカウントの登録に成功しました。" };
   } catch (error) {
     console.error("アカウントの登録中にエラーが発生しました:", error);
     return { message: "アカウントの登録中にエラーが発生しました" };
   }
+  
+  redirect("/dashboard");
 };
 
 export const updateEmail = async (

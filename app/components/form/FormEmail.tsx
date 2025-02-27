@@ -69,7 +69,9 @@ const FormEmail: React.FC<FormEmailProps> = ({ userId, email }) => {
       {state.errors && state.errors.password && (
         <p className="mb-4 text-red-500">{state.errors.password}</p>
       )}
-      {state.message && <p className="mb-4 text-red-500">{state.message}</p>}
+      {state.message && state.message !== "success" && (
+        <p className="mb-4 text-red-500">{state.message}</p>
+      )}
       <Button color="blue" size="normal" className="block mx-auto">
         変更
       </Button>
