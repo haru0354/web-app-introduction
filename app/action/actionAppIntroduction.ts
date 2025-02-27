@@ -26,15 +26,11 @@ export const addAppIntroduction = async (
   const solution = formData.get("solution") as string;
   const image = formData.get("imageFile") as File;
   const imageALT = formData.get("imageALT") as string;
-  const userId = formData.get("userId") as string;
   const sessionUserId = await getSessionUserId();
 
   if (!sessionUserId) {
-    throw new Error("セッションを取得できませんでした。");
-  }
-
-  if (sessionUserId !== userId) {
-    throw new Error("セッションとフォームで送信されたIDが一致しません。");
+    console.error("メールアドレス変更中にセッションの取得に失敗しました。");
+    return { message: "再度ログイン後にお試しください。（認証エラー）" };
   }
 
   const canArray = [];
@@ -101,7 +97,7 @@ export const addAppIntroduction = async (
         return errors;
       }
 
-      imageURL = await fileSaveStorage(image, userId);
+      imageURL = await fileSaveStorage(image, sessionUserId);
     } catch (error) {
       console.error("画像の追加時にエラーが発生しました", error);
       return { message: "画像の追加時にエラーが発生しました" };
@@ -126,11 +122,9 @@ export const addAppIntroduction = async (
               },
             ]
           : [],
-        userId,
+        userId: sessionUserId,
       },
     });
-
-    console.log("アプリの追加に成功しました。");
   } catch (error) {
     console.error("アプリの追加の際にエラーが発生しました。:", error);
     return { message: "アプリの追加の際にエラーが発生しました。" };
@@ -152,15 +146,11 @@ export const updateAppIntroduction = async (
   const image = formData.get("imageFile") as File;
   const imageALT = formData.get("imageALT") as string;
   const appId = formData.get("appId") as string;
-  const userId = formData.get("userId") as string;
   const sessionUserId = await getSessionUserId();
 
   if (!sessionUserId) {
-    throw new Error("セッションを取得できませんでした。");
-  }
-
-  if (sessionUserId !== userId) {
-    throw new Error("セッションとフォームで送信されたIDが一致しません。");
+    console.error("メールアドレス変更中にセッションの取得に失敗しました。");
+    return { message: "再度ログイン後にお試しください。（認証エラー）" };
   }
 
   const appIntroduction = await prisma.appIntroduction.findUnique({
@@ -173,13 +163,15 @@ export const updateAppIntroduction = async (
   });
 
   if (!appIntroduction) {
-    throw new Error("登録しているアプリが見つかりません。");
+    console.error("登録しているアプリが見つかりません。");
+    return {
+      message: "登録しているアプリが見つかりません。再度編集をしてください。",
+    };
   }
 
-  if (appIntroduction.userId !== userId) {
-    throw new Error(
-      "登録しているユーザーのIDとフォームから送信されたユーザーのIDが一致しません。"
-    );
+  if (appIntroduction.userId !== sessionUserId) {
+    console.error("登録しているユーザーとセッションが一致しませんでした。");
+    return { message: "再度ログイン後にお試しください。（編集エラー）" };
   }
 
   const canArray = [];
@@ -246,7 +238,7 @@ export const updateAppIntroduction = async (
         return errors;
       }
 
-      imageURL = await fileSaveStorage(image, userId);
+      imageURL = await fileSaveStorage(image, sessionUserId);
     } catch (error) {
       console.error("画像の追加時にエラーが発生しました", error);
       return { message: "画像の追加時にエラーが発生しました" };
@@ -276,7 +268,6 @@ export const updateAppIntroduction = async (
           : [],
       },
     });
-    console.log("アプリの編集に成功しました。");
   } catch (error) {
     console.error("アプリの編集の際にエラーが発生しました。:", error);
     return { message: "アプリの編集の際にエラーが発生しました。" };
@@ -286,15 +277,11 @@ export const updateAppIntroduction = async (
 
 export const deleteAppIntroduction = async (formData: FormData) => {
   const appId = formData.get("appId") as string;
-  const userId = formData.get("userId") as string;
   const sessionUserId = await getSessionUserId();
 
   if (!sessionUserId) {
-    throw new Error("セッションを取得できませんでした。");
-  }
-
-  if (sessionUserId !== userId) {
-    throw new Error("セッションとフォームで送信されたIDが一致しません。");
+    console.error("メールアドレス変更中にセッションの取得に失敗しました。");
+    return { message: "再度ログイン後にお試しください。（認証エラー）" };
   }
 
   const appIntroduction = await prisma.appIntroduction.findUnique({
@@ -307,13 +294,18 @@ export const deleteAppIntroduction = async (formData: FormData) => {
   });
 
   if (!appIntroduction) {
-    throw new Error("登録しているアプリが見つかりません。");
+    console.error("登録しているアプリが見つかりません。");
+    return {
+      message:
+        "登録しているアプリが見つかりません。再度、削除をやり直してください。",
+    };
   }
 
-  if (appIntroduction.userId !== userId) {
-    throw new Error(
-      "登録しているユーザーのIDとフォームから送信されたユーザーのIDが一致しません。"
-    );
+  if (appIntroduction.userId !== sessionUserId) {
+    console.error("登録しているユーザーとセッションが一致しませんでした。");
+    return {
+      message: "再度、削除をやり直してください。（セッションエラー）",
+    };
   }
 
   try {
@@ -322,7 +314,6 @@ export const deleteAppIntroduction = async (formData: FormData) => {
         id: appId,
       },
     });
-    console.log("アプリの削除に成功しました。");
   } catch (error) {
     console.error("アプリの削除の際にエラーが発生しました。:", error);
     return { message: "アプリの削除の際にエラーが発生しました。" };

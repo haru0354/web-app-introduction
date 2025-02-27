@@ -135,7 +135,6 @@ const FormAppIntroduction: React.FC<FormAppIntroductionProps> = ({
       {state.errors && state.errors.imageALT && (
         <p className="mb-4 text-red-500">{state.errors.imageALT}</p>
       )}
-      <input type="hidden" name="userId" value={userId} />
       {appId && <input type="hidden" name="appId" value={appId} />}
       {state.errors && state.errors.imageALT && (
         <p className="mb-4 text-red-500">{state.errors.image}</p>
