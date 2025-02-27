@@ -5,7 +5,12 @@ import bcrypt from "bcrypt";
 import { getSessionUserId } from "../lib/sessionUserService";
 import prisma from "../lib/prisma";
 
-import { accountSchema, deleteAccountSchema, updatePasswordSchema } from "../schemas/userSchemas";
+import {
+  accountSchema,
+  deleteAccountSchema,
+  updateEmailSchema,
+  updatePasswordSchema,
+} from "../schemas/userSchemas";
 import type {
   DeleteAccountFormState,
   EmailFormState,
@@ -61,12 +66,13 @@ export const updateEmail = async (
   formData: FormData
 ) => {
   try {
-    const userId = formData.get("userId") as string;
+    const email = formData.get("email") as string;
     const newEmail = formData.get("newEmail") as string;
     const password = formData.get("password") as string;
 
-    const validatedFields = accountSchema.safeParse({
-      email: newEmail,
+    const validatedFields = updateEmailSchema.safeParse({
+      email,
+      newEmail,
       password,
     });
 
@@ -82,23 +88,22 @@ export const updateEmail = async (
     const sessionUserId = await getSessionUserId();
 
     if (!sessionUserId) {
-      throw new Error("セッションを取得できませんでした。");
-    }
-
-    if (sessionUserId !== userId) {
-      throw new Error(
-        "セッションIDが一致しない、もしくは無効なセッションです。"
-      );
+      console.error("メールアドレス変更中にセッションの取得に失敗しました。");
+      return { message: "再度ログイン後にお試しください。（認証エラー）" };
     }
 
     const user = await prisma.user.findUnique({
       where: {
-        id: userId,
+        id: sessionUserId,
       },
     });
 
     if (!user) {
-      throw new Error("登録しているユーザーが見つかりません。");
+      console.error("ユーザーが見つかりませんでした。");
+      return {
+        message:
+          "ユーザーデータが見つかりませんでした。再度ログイン後にお試しください。",
+      };
     }
 
     const isPasswordValid = user.hashedPassword
@@ -111,7 +116,7 @@ export const updateEmail = async (
 
     await prisma.user.update({
       where: {
-        id: userId,
+        id: sessionUserId,
       },
       data: {
         email: newEmail,

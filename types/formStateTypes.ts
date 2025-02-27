@@ -32,6 +32,7 @@ export type EmailFormState = {
   message?: string | null;
   errors?: {
     email?: string[] | undefined;
+    newEmail?: string[] | undefined;
     password?: string[] | undefined;
   };
 };
