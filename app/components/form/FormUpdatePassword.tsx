@@ -20,9 +20,9 @@ const FormUpdatePassword: React.FC<FormUpdatePasswordProps> = ({ userId }) => {
   const initialState = {
     message: null,
     errors: {
-      existingPassword: undefined,
-      newPasswordOne: undefined,
-      newPasswordTwo: undefined,
+      password: undefined,
+      newPassword: undefined,
+      confirmationPassword: undefined,
     },
   };
 
@@ -45,32 +45,33 @@ const FormUpdatePassword: React.FC<FormUpdatePasswordProps> = ({ userId }) => {
       <InputText
         type="password"
         label="現在登録中のパスワード"
-        name="existingPassword"
+        name="password"
         placeholder="確認の為、現在登録しているパスワードを入力してください"
       />
-      {state.errors && state.errors.existingPassword && (
-        <p className="mb-4 text-red-500">{state.errors.existingPassword}</p>
+      {state.errors && state.errors.password && (
+        <p className="mb-4 text-red-500">{state.errors.password}</p>
       )}
       <InputText
         type="password"
         label="新しいパスワード"
-        name="newPasswordOne"
+        name="newPassword"
         placeholder="新しいパスワードを入力してください"
       />
-      {state.errors && state.errors.newPasswordOne && (
-        <p className="mb-4 text-red-500">{state.errors.newPasswordOne}</p>
+      {state.errors && state.errors.newPassword && (
+        <p className="mb-4 text-red-500">{state.errors.newPassword}</p>
       )}
       <InputText
         type="password"
-        label="新しいパスワード"
-        name="newPasswordTwo"
+        label="新しいパスワード（確認用）"
+        name="confirmationPassword"
         placeholder="確認の為、新しいパスワードを再度入力してください"
       />
-      {state.errors && state.errors.newPasswordTwo && (
-        <p className="mb-4 text-red-500">{state.errors.newPasswordTwo}</p>
+      {state.errors && state.errors.confirmationPassword && (
+        <p className="mb-4 text-red-500">{state.errors.confirmationPassword}</p>
       )}
-      <input type="hidden" name="userId" value={userId} />
-      {state.message && <p className="mb-4 text-red-500">{state.message}</p>}
+      {state.message && state.message !== "success" && (
+        <p className="mb-4 text-red-500">{state.message}</p>
+      )}
       <Button color="blue" size="normal" className="block mx-auto">
         編集
       </Button>

@@ -25,6 +25,7 @@ export type DeleteAccountFormState = {
   message?: string | null;
   errors?: {
     password?: string[] | undefined;
+    confirmationPassword?: string[] | undefined;
   };
 };
 
@@ -32,6 +33,7 @@ export type EmailFormState = {
   message?: string | null;
   errors?: {
     email?: string[] | undefined;
+    newEmail?: string[] | undefined;
     password?: string[] | undefined;
   };
 };
@@ -51,8 +53,8 @@ export type ProfileFormState = {
 export type UpdatePasswordFormState = {
   message?: string | null;
   errors?: {
-    existingPassword?: string[] | undefined;
-    newPasswordOne?: string[] | undefined;
-    newPasswordTwo?: string[] | undefined;
+    password?: string[] | undefined;
+    newPassword?: string[] | undefined;
+    confirmationPassword?: string[] | undefined;
   };
 };

@@ -23,6 +23,7 @@ const FormEmail: React.FC<FormEmailProps> = ({ userId, email }) => {
     message: null,
     errors: {
       email: undefined,
+      newEmail: undefined,
       password: undefined,
     },
   };
@@ -47,16 +48,17 @@ const FormEmail: React.FC<FormEmailProps> = ({ userId, email }) => {
         label="登録中のメールアドレス"
         name="email"
         placeholder="登録中のメールアドレスです"
-        defaultValue={email}
-        disabled={true}
       />
+      {state.errors && state.errors.email && (
+        <p className="mb-4 text-red-500">{state.errors.email}</p>
+      )}
       <InputText
         label="新しいメールアドレス"
         name="newEmail"
         placeholder="新しいメールアドレスを入力してください。"
       />
-      {state.errors && state.errors.email && (
-        <p className="mb-4 text-red-500">{state.errors.email}</p>
+      {state.errors && state.errors.newEmail && (
+        <p className="mb-4 text-red-500">{state.errors.newEmail}</p>
       )}
       <InputText
         type="password"
@@ -67,10 +69,11 @@ const FormEmail: React.FC<FormEmailProps> = ({ userId, email }) => {
       {state.errors && state.errors.password && (
         <p className="mb-4 text-red-500">{state.errors.password}</p>
       )}
-      <input type="hidden" name="userId" value={userId} />
-      {state.message && <p className="mb-4 text-red-500">{state.message}</p>}
+      {state.message && state.message !== "success" && (
+        <p className="mb-4 text-red-500">{state.message}</p>
+      )}
       <Button color="blue" size="normal" className="block mx-auto">
-        編集
+        変更
       </Button>
     </form>
   );
