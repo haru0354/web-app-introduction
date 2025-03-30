@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 import Link from "next/link";
 
-import { getSessionUserAccount } from "@/app/lib/sessionUserService";
+import { getSessionUserAccount } from "@/app/lib/service/sessionUserService";
 import Modal from "@/app/components/web-parts/Modal";
 import DeleteAccountModal from "@/app/components/web-parts/dashboard/DeleteAccountModal";
 import FormEmail from "@/app/components/form/FormEmail";

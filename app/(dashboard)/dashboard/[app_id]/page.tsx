@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 
-import { getSessionUserId } from "@/app/lib/sessionUserService";
+import { getSessionUserId } from "@/app/lib/service/sessionUserService";
 import {
   deleteAppIntroduction,
   updateAppIntroduction,

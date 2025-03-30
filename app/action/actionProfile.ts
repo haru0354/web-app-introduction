@@ -2,7 +2,7 @@
 
 import { revalidatePath } from "next/cache";
 
-import { getSessionUserId } from "../lib/sessionUserService";
+import { getSessionUserId } from "../lib/service/sessionUserService";
 import prisma from "../lib/prisma";
 
 import { profileSchema } from "../schemas/profileSchema";
