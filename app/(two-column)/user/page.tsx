@@ -2,7 +2,7 @@ import { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 
-import { getAllUser } from "@/app/lib/userService";
+import { getAllUser } from "@/app/lib/service/userService";
 
 export const metadata: Metadata = {
   title: "ユーザーの一覧",
