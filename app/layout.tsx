@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { notoSansJp } from "./components/util/font";
+import { notoSansJp } from "./utils/font";
 
 import "./globals.css";
 import Header from "./components/web-parts/Header";
