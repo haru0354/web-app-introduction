@@ -7,8 +7,9 @@ import { signOut } from "next-auth/react";
 import { updatePassword } from "@/app/action/actionUser";
 import InputText from "../ui/InputText";
 import Button from "../ui/Button";
-import useToggleModal from "../hooks/useToggleModal";
-import { UpdatePasswordFormState } from "@/types/formStateTypes";
+import useToggleModal from "../../hooks/useToggleModal";
+
+import type { UpdatePasswordFormState } from "@/types/formStateTypes";
 
 type FormUpdatePasswordProps = {
   userId: string;

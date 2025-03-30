@@ -4,7 +4,7 @@ import { useFormState } from "react-dom";
 import { useEffect } from "react";
 
 import { editProfile } from "@/app/action/actionProfile";
-import useToggleModal from "../hooks/useToggleModal";
+import useToggleModal from "../../hooks/useToggleModal";
 import InputText from "../ui/InputText";
 import Textarea from "../ui/Textarea";
 import Button from "../ui/Button";

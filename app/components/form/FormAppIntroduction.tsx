@@ -4,7 +4,7 @@ import { useFormState } from "react-dom";
 import { useEffect } from "react";
 import Link from "next/link";
 
-import useToggleModal from "../hooks/useToggleModal";
+import useToggleModal from "../../hooks/useToggleModal";
 import InputText from "../ui/InputText";
 import Textarea from "../ui/Textarea";
 import DynamicInputText from "../ui/DynamicInputText";
