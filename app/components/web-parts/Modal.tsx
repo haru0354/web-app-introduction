@@ -1,6 +1,6 @@
 "use client";
 
-import { ModalProvider } from "../context/ModalContext";
+import { ModalProvider } from "@/app/context/ModalContext";
 import ModalLayout from "../layouts/with-children/ModalLayout";
 
 type ModalProps = {
