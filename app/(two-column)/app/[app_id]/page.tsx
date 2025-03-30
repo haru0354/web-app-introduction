@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 import Link from "next/link";
 
-import { getAppIntroduction } from "@/app/lib/appIntroductionService";
+import { getAppIntroduction } from "@/app/lib/service/appIntroductionService";
 import ImageSlider from "@/app/components/web-parts/contents-area/ImageSlider";
 import NotFound from "@/app/not-found";
 

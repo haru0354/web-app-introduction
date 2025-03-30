@@ -3,7 +3,7 @@
 import { redirect } from "next/navigation";
 import bcrypt from "bcrypt";
 
-import { getSessionUserId } from "../lib/sessionUserService";
+import { getSessionUserId } from "../lib/service/sessionUserService";
 import prisma from "../lib/prisma";
 
 import {

@@ -1,7 +1,7 @@
 import { getServerSession } from "next-auth";
 
-import { authOptions } from "../components/util/authOptions";
-import prisma from "../lib/prisma";
+import { authOptions } from "@/app/utils/authOptions";
+import prisma from "../prisma";
 
 export const getSessionUser = async () => {
   try {

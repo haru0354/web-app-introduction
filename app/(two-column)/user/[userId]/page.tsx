@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 
-import { getUser } from "@/app/lib/userService";
+import { getUser } from "@/app/lib/service/userService";
 import Profile from "@/app/components/web-parts/contents-area/Profile";
 import AppsList from "@/app/components/web-parts/contents-area/AppsList";
 import NotFound from "@/app/not-found";

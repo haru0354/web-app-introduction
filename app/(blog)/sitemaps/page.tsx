@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 import Link from "next/link";
 
-import { getAllAppIntroductions } from "@/app/lib/appIntroductionService";
+import { getAllAppIntroductions } from "@/app/lib/service/appIntroductionService";
 import BlogTopInfo from "@/app/components/layouts/BlogTopInfo";
 
 export const metadata: Metadata = {

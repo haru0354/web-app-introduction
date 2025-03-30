@@ -1,4 +1,4 @@
-import { getAllAppIntroductions } from "./lib/appIntroductionService";
+import { getAllAppIntroductions } from "./lib/service/appIntroductionService";
 import { shuffleArray } from "./lib/shuffleArray";
 
 import TopPageSection from "./components/layouts/with-children/TopPageSection";

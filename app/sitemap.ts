@@ -1,5 +1,5 @@
 import { MetadataRoute } from "next";
-import { getAllAppIntroductions } from "./lib/appIntroductionService";
+import { getAllAppIntroductions } from "./lib/service/appIntroductionService";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseURL = process.env.WEBSITE_URL;

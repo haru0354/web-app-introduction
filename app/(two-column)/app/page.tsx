@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 
-import { getAllAppIntroductions } from "@/app/lib/appIntroductionService";
+import { getAllAppIntroductions } from "@/app/lib/service/appIntroductionService";
 import AppsList from "@/app/components/web-parts/contents-area/AppsList";
 
 export const metadata: Metadata = {

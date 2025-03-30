@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
-import { notoSansJp } from "./components/util/font";
+import { notoSansJp } from "./utils/font";
 
 import "./globals.css";
 import Header from "./components/web-parts/Header";
 import Footer from "./components/web-parts/Footer";
-import AuthContext from "./components/context/AuthContext";
+import AuthContext from "./context/AuthContext";
 
 export const metadata: Metadata = {
   title: {

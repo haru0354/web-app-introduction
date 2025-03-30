@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { signIn } from "next-auth/react";
-import { getUserData } from "@/app/lib/userService";
+import { getUserData } from "@/app/lib/service/userService";
 
 const userSlice = createSlice({
   name: "user",

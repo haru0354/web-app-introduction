@@ -4,7 +4,7 @@ import { redirect } from "next/navigation";
 import { revalidatePath } from "next/cache";
 
 import prisma from "../lib/prisma";
-import { getSessionUserId } from "../lib/sessionUserService";
+import { getSessionUserId } from "../lib/service/sessionUserService";
 import { fileSaveStorage } from "../lib/fileSaveStorage";
 import { validateMimeTypeAndExtension } from "../lib/validateMimeTypeAndExtension";
 
