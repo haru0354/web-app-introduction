@@ -1,6 +1,4 @@
-import Link from "next/link";
-
-type NextLinkButtonProps = {
+type ExternalLinkButtonProps = {
   children: React.ReactNode;
   href: string;
   color?: "red" | "blue" | "gray" | "white" | "black";
@@ -8,7 +6,7 @@ type NextLinkButtonProps = {
   className?: string;
 };
 
-const NextLinkButton: React.FC<NextLinkButtonProps> = ({
+const ExternalLinkButton: React.FC<ExternalLinkButtonProps> = ({
   children,
   href,
   color = "blue",
@@ -31,16 +29,18 @@ const NextLinkButton: React.FC<NextLinkButtonProps> = ({
   };
 
   return (
-    <Link
-        className={`my-4 text-center font-bold transition-colors duration-300
-        ${colors[color]}
-        ${sizes[size]}
+    <a
+      className={`my-4 text-center font-bold transition-colors duration-300
+          ${colors[color]} 
+          ${sizes[size]} 
           ${className}`}
       href={href}
+      target="_blank"
+      rel="noopener noreferrer"
     >
       {children}
-    </Link>
+    </a>
   );
 };
 
-export default NextLinkButton;
+export default ExternalLinkButton;
