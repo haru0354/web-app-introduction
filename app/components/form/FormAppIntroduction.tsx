@@ -9,7 +9,7 @@ import InputText from "../ui/InputText";
 import Textarea from "../ui/Textarea";
 import DynamicInputText from "../ui/DynamicInputText";
 import InputImage from "../ui/InputImage";
-import Button from "../ui/Button";
+import Button from "../ui/button/Button";
 
 import type { AppIntroductionFormState } from "@/types/formStateTypes";
 import type { AppIntroduction } from "@prisma/client";
@@ -30,7 +30,6 @@ type FormAppIntroductionProps = {
 const FormAppIntroduction: React.FC<FormAppIntroductionProps> = ({
   formAction,
   formName,
-  userId,
   appIntroductionData,
   appId,
   backButton = false,

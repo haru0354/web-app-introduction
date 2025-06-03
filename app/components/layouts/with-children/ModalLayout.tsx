@@ -3,7 +3,7 @@
 import { useEffect } from "react";
 
 import useToggleModal from "../../../hooks/useToggleModal";
-import Button from "../../ui/Button";
+import Button from "../../ui/button/Button";
 
 type ModalLayoutProps = {
   buttonText: string;

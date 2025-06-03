@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import { signIn } from "next-auth/react";
 
 import useToggleModal from "../../hooks/useToggleModal";
-import Button from "../ui/Button";
+import Button from "../ui/button/Button";
 import InputText from "../ui/InputText";
 
 const FormLogin = () => {

@@ -3,7 +3,7 @@
 import { useFormState } from "react-dom";
 
 import InputText from "../ui/InputText";
-import Button from "../ui/Button";
+import Button from "../ui/button/Button";
 
 import type { SignUpFormState } from "@/types/formStateTypes";
 

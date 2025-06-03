@@ -6,7 +6,7 @@ import Modal from "@/app/components/web-parts/Modal";
 import DeleteAccountModal from "@/app/components/web-parts/dashboard/DeleteAccountModal";
 import FormEmail from "@/app/components/form/FormEmail";
 import FormUpdatePassword from "@/app/components/form/FormUpdatePassword";
-import Button from "@/app/components/ui/Button";
+import Button from "@/app/components/ui/button/Button";
 
 export const metadata: Metadata = {
   title: "アカウントデータの変更",

@@ -8,7 +8,7 @@ import FormAppIntroduction from "@/app/components/form/FormAppIntroduction";
 import FormProfile from "@/app/components/form/FormProfile";
 import Profile from "@/app/components/web-parts/contents-area/Profile";
 import AppsList from "@/app/components/web-parts/contents-area/AppsList";
-import Button from "@/app/components/ui/Button";
+import Button from "@/app/components/ui/button/Button";
 
 export const metadata: Metadata = {
   title: "ダッシュボード",

@@ -4,7 +4,7 @@ import { useState } from "react";
 
 import Modal from "../Modal";
 import FormDeleteAccount from "../../form/FormDeleteAccount";
-import Button from "../../ui/Button";
+import Button from "../../ui/button/Button";
 
 type deleteAccountModalProps = {
   userId: string;

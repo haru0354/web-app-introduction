@@ -6,8 +6,8 @@ import Link from "next/link";
 
 import Modal from "./Modal";
 import FormLogin from "../form/FormLogin";
-import LogoutButton from "../ui/LogoutButton";
-import Button from "../ui/Button";
+import Button from "../ui/button/Button";
+import LogoutButton from "../ui/button/LogoutButton";
 
 const Header = () => {
   const { data: session } = useSession();

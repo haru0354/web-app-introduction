@@ -1,7 +1,7 @@
 import Link from "next/link";
 
 import TopPageSection from "../layouts/with-children/TopPageSection";
-import Button from "../ui/Button";
+import Button from "../ui/button/Button";
 
 type CTASectionProps = {
   title: string;

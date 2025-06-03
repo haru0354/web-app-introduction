@@ -8,7 +8,7 @@ import {
 import prisma from "@/app/lib/prisma";
 import FormAppIntroduction from "@/app/components/form/FormAppIntroduction";
 import Modal from "@/app/components/web-parts/Modal";
-import Button from "@/app/components/ui/Button";
+import Button from "@/app/components/ui/button/Button";
 import NotFound from "@/app/not-found";
 
 export const metadata: Metadata = {

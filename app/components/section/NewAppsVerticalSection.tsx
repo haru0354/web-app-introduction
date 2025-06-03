@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 import TopPageSection from "../layouts/with-children/TopPageSection";
-import Button from "../ui/Button";
+import Button from "../ui/button/Button";
 
 import type { AppIntroduction } from "@prisma/client";
 
