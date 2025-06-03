@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 import TopPageSection from "../layouts/with-children/TopPageSection";
-import Button from "../ui/button/Button";
+import NextLinkButton from "../ui/button/NextLinkButton";
 
 import type { AppIntroduction } from "@prisma/client";
 
@@ -57,17 +57,23 @@ const NewAppsVerticalSection: React.FC<NewAppsVerticalSectionProps> = ({
           );
         })}
       </div>
-      <div className="flex flex-col md:flex-row items-center justify-center">
-        <Link href="/app">
-          <Button color="gray" size="big" className="mx-4 mt-8 rounded">
-            アプリの一覧へ
-          </Button>
-        </Link>
-        <Link href="/user">
-          <Button color="gray" size="big" className="mx-4 md:mt-8 rounded">
-            製作者の一覧へ
-          </Button>
-        </Link>
+      <div className="flex flex-col md:flex-row items-center justify-center mt-8">
+        <NextLinkButton
+          href="/app"
+          color="gray"
+          size="big"
+          className="mx-4 rounded"
+        >
+          アプリの一覧へ
+        </NextLinkButton>
+        <NextLinkButton
+          href="/user"
+          color="gray"
+          size="big"
+          className="mx-4 rounded"
+        >
+          製作者の一覧へ
+        </NextLinkButton>
       </div>
     </TopPageSection>
   );

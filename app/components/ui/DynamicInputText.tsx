@@ -43,9 +43,9 @@ const DynamicInputText: React.FC<DynamicInputTextProps> = ({
       <p className="font-semibold mb-2">出来ることリスト</p>
       {renderInputFields()}
       <Button
+        type="button"
         color="blue"
         size="normal"
-        type="button"
         onClick={handleAddItem}
         disabled={visibleCount >= maxVisibleCount}
       >

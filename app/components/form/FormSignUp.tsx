@@ -51,7 +51,7 @@ const FormSignUp: React.FC<FormSignUpProps> = ({ formAction }) => {
         <p className="mb-4 text-red-500">{state.errors.password}</p>
       )}
       {state.message && <p className="mb-4 text-red-500">{state.message}</p>}
-      <Button color="blue" size="normal" className="block mx-auto">
+      <Button type="submit" color="blue" size="normal" className="block mx-auto rounded">
         登録
       </Button>
     </form>

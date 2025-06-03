@@ -39,9 +39,10 @@ const ModalLayout: React.FC<ModalLayoutProps> = ({
   return (
     <>
       <Button
+        type="button"
         color={buttonColor}
         size={buttonSize}
-        className="block mx-auto"
+        className="block mx-auto rounded"
         onClick={openModal}
       >
         {buttonText}
@@ -58,9 +59,10 @@ const ModalLayout: React.FC<ModalLayoutProps> = ({
           >
             {children}
             <Button
+              type="button"
               color="gray"
               size="normal"
-              className="block mx-auto"
+              className="block mx-auto rounded"
               onClick={closeModal}
             >
               キャンセル

@@ -2,7 +2,6 @@
 
 import { useFormState } from "react-dom";
 import { useEffect } from "react";
-import Link from "next/link";
 
 import useToggleModal from "../../hooks/useToggleModal";
 import InputText from "../ui/InputText";
@@ -13,6 +12,7 @@ import Button from "../ui/button/Button";
 
 import type { AppIntroductionFormState } from "@/types/formStateTypes";
 import type { AppIntroduction } from "@prisma/client";
+import NextLinkButton from "../ui/button/NextLinkButton";
 
 type FormAppIntroductionProps = {
   formAction: (
@@ -141,20 +141,20 @@ const FormAppIntroduction: React.FC<FormAppIntroductionProps> = ({
       {state.message && state.message !== "success" && (
         <p className="mb-4 text-red-500">{state.message}</p>
       )}
-      <Button color="blue" size="normal" className="block mx-auto">
+      <Button
+        type="submit"
+        color="blue"
+        size="normal"
+        className="block mx-auto rounded"
+      >
         保存
       </Button>
       {backButton && (
-        <Link href="/dashboard">
-          <Button
-            color="gray"
-            size="normal"
-            className="block mx-auto"
-            type="button"
-          >
+        <div className="flex items-center justify-center">
+          <NextLinkButton href="/dashboard" color="gray" className="rounded">
             キャンセル
-          </Button>
-        </Link>
+          </NextLinkButton>
+        </div>
       )}
     </form>
   );

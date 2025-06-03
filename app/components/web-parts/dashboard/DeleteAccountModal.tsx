@@ -28,7 +28,7 @@ const DeleteAccountModal: React.FC<deleteAccountModalProps> = ({ userId }) => {
           <p className="text-center">
             削除されたデータの復元をすることはできません。
           </p>
-          <Button color="red" onClick={toggleModal} className="block mx-auto">
+          <Button type="button" color="red" onClick={toggleModal} className="block mx-auto">
             削除する
           </Button>
         </>

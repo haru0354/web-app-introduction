@@ -26,7 +26,7 @@ const NextLinkButton: React.FC<NextLinkButtonProps> = ({
 
   const sizes = {
     small: "min-w-[80px] p-1",
-    normal: "min-w-[170px] p-2",
+    normal: "min-w-[170px] px-4 py-2",
     big: "min-w-[240px] p-3",
   };
 

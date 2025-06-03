@@ -14,7 +14,7 @@ const Button: React.FC<ButtonProps> = ({
   size = "normal",
   className,
   onClick,
-  type,
+  type = "submit",
   disabled,
 }) => {
   const colors = {

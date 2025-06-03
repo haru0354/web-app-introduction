@@ -1,8 +1,6 @@
-import Link from "next/link";
-
 import TwoFlexBox from "../layouts/TwoFlexBox";
 import TopPageSection from "../layouts/with-children/TopPageSection";
-import Button from "../ui/button/Button";
+import NextLinkButton from "../ui/button/NextLinkButton";
 
 type AboutSectionProps = {
   title: string;
@@ -35,11 +33,16 @@ const AboutSection: React.FC<AboutSectionProps> = ({
         rightContents={rightContents}
       />
       {buttonLinkURL && buttonText && (
-        <Link href={`${buttonLinkURL}`}>
-          <Button color="white" size="big" className="block mx-auto rounded">
+        <div className="flex items-center justify-center">
+          <NextLinkButton
+            href={`${buttonLinkURL}`}
+            color="white"
+            size="big"
+            className="rounded"
+          >
             {buttonText}
-          </Button>
-        </Link>
+          </NextLinkButton>
+        </div>
       )}
     </TopPageSection>
   );
