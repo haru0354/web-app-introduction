@@ -54,10 +54,8 @@ const FormProfile: React.FC<FormProfileProps> = ({ profile, userId }) => {
         name="selfIntroduction"
         placeholder="自己紹介を入力してください。"
         defaultValue={profile.selfIntroduction ?? undefined}
+        error={state.errors?.selfIntroduction}
       />
-      {state.errors && state.errors.selfIntroduction && (
-        <p className="mb-4 text-red-500">{state.errors.selfIntroduction}</p>
-      )}
       <InputText
         label="職業"
         name="occupation"

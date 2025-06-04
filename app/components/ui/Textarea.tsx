@@ -9,6 +9,7 @@ type TextareaProps = {
   defaultValue?: string;
   minRows?: number;
   maxRows?: number;
+  error?: string[];
 };
 
 const Textarea: React.FC<TextareaProps> = ({
@@ -16,24 +17,29 @@ const Textarea: React.FC<TextareaProps> = ({
   name,
   placeholder,
   defaultValue,
-  minRows = 3,
-  maxRows = 6,
+  minRows = 5,
+  maxRows = 8,
+  error,
 }) => {
+  const borderColor = error ? "border-red-500 " : "border-gray-300 ";
+
   return (
-    <>
-      <label htmlFor={label} className="block text-sm">
+    <div className="mb-2">
+      <label htmlFor={name} className="block mb-1 text-sm font-medium">
         {label}
       </label>
       <TextareaAutosize
-        className="w-full mt-2 mb-3 py-1 px-2 border border-customBlack rounded"
-        id={label}
+        id={name}
         name={name}
         placeholder={placeholder}
         defaultValue={defaultValue}
         minRows={minRows}
         maxRows={maxRows}
+        className={`w-full py-2 px-3 border rounded  
+          ${borderColor}`}
       />
-    </>
+      {error && <p className="mt-2 text-sm text-red-600">{error}</p>}
+    </div>
   );
 };
 

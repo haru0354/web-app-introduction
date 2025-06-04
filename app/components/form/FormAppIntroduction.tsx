@@ -100,10 +100,8 @@ const FormAppIntroduction: React.FC<FormAppIntroductionProps> = ({
         name="overview"
         placeholder="アプリの詳細を入力してください。"
         defaultValue={appIntroductionData?.overview}
+        error={state.errors?.overview}
       />
-      {state.errors && state.errors.overview && (
-        <p className="mb-4 text-red-500">{state.errors.overview}</p>
-      )}
       <InputText
         label="解決できる課題"
         name="solution"
