@@ -92,7 +92,7 @@ const FormProfile: React.FC<FormProfileProps> = ({ profile, userId }) => {
         error={state.errors?.x}
       />
       {state.message && state.message !== "success" && (
-        <p className="mb-4 text-red-500">{state.message}</p>
+        <p className="mt-4 text-center text-sm text-red-600">{state.message}</p>
       )}
       <Button
         type="submit"

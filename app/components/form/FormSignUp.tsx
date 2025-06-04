@@ -46,7 +46,7 @@ const FormSignUp: React.FC<FormSignUpProps> = ({ formAction }) => {
         placeholder="パスワードを入力してください"
         error={state.errors?.password}
       />
-      {state.message && <p className="mb-4 text-red-500">{state.message}</p>}
+      {state.message && <p className="mt-4 text-center text-sm text-red-600">{state.message}</p>}
       <Button
         type="submit"
         color="blue"

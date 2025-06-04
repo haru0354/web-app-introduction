@@ -68,7 +68,7 @@ const FormLogin = () => {
           <p>しばらくお待ちください。</p>
         </>
       )}
-      {error && <p className="text-red-500 text-center">{error}</p>}
+      {error && <p className="mt-4 text-center text-sm text-red-600">{error}</p>}
       <Button
         type="submit"
         color="blue"
