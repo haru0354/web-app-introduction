@@ -109,10 +109,11 @@ const FormAppIntroduction: React.FC<FormAppIntroductionProps> = ({
         defaultValue={appIntroductionData?.solution}
         error={state.errors?.solution}
       />
-      <DynamicInputText defaultValue={appIntroductionData?.can} />
-      {state.errors && state.errors.can && (
-        <p className="mb-4 text-red-500">{state.errors.can}</p>
-      )}
+      <DynamicInputText
+        label="出来ることリスト"
+        defaultValue={appIntroductionData?.can}
+        error={state.errors?.can}
+      />
       <InputImage label="画像のアップロード" name="imageFile" />
       <InputText
         label="画像の説明"

@@ -1,7 +1,7 @@
 type InputTextProps = {
-  label: string;
   name: string;
   placeholder: string;
+  label?: string;
   type?: string;
   defaultValue?: string;
   disabled?: boolean;
@@ -9,21 +9,23 @@ type InputTextProps = {
 };
 
 const InputText: React.FC<InputTextProps> = ({
-  label,
   name,
   placeholder,
+  label,
   type = "text",
   defaultValue,
   disabled,
   error,
 }) => {
-  const borderColor = error ? "border-red-500 " : "border-gray-300 ";
+  const borderColor = error ? "border-red-500" : "border-gray-300";
 
   return (
     <div className="mb-2">
-      <label htmlFor={name} className="block mb-1 text-sm font-medium">
-        {label}
-      </label>
+      {label && (
+        <label htmlFor={name} className="block mb-1 text-sm font-medium">
+          {label}
+        </label>
+      )}
       <input
         id={name}
         name={name}
