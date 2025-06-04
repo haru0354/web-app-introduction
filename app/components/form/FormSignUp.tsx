@@ -37,21 +37,22 @@ const FormSignUp: React.FC<FormSignUpProps> = ({ formAction }) => {
         label="メールアドレス"
         name="email"
         placeholder="メールアドレスを入力してください"
+        error={state.errors?.email}
       />
-      {state.errors && state.errors.email && (
-        <p className="mb-4 text-red-500">{state.errors.email}</p>
-      )}
       <InputText
         type="password"
         label="パスワード"
         name="password"
         placeholder="パスワードを入力してください"
+        error={state.errors?.password}
       />
-      {state.errors && state.errors.password && (
-        <p className="mb-4 text-red-500">{state.errors.password}</p>
-      )}
       {state.message && <p className="mb-4 text-red-500">{state.message}</p>}
-      <Button type="submit" color="blue" size="normal" className="block mx-auto rounded">
+      <Button
+        type="submit"
+        color="blue"
+        size="normal"
+        className="block mx-auto rounded"
+      >
         登録
       </Button>
     </form>

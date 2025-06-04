@@ -63,50 +63,45 @@ const FormProfile: React.FC<FormProfileProps> = ({ profile, userId }) => {
         name="occupation"
         placeholder="職業・職種を入力してください。例:フロントエンドエンジニア"
         defaultValue={profile.occupation ?? undefined}
+        error={state.errors?.occupation}
       />
-      {state.errors && state.errors.occupation && (
-        <p className="mb-4 text-red-500">{state.errors.occupation}</p>
-      )}
       <InputText
         label="プログラミングスキル"
         name="skill"
         placeholder="プログラミングスキルを入力してください。例:React,PHP"
         defaultValue={profile.skill ?? undefined}
+        error={state.errors?.skill}
       />
-      {state.errors && state.errors.skill && (
-        <p className="mb-4 text-red-500">{state.errors.skill}</p>
-      )}
       <InputText
         label="ポートフォリオサイト(URL)"
         name="portfolio"
         placeholder="ポートフォリオサイトのURLを入力してください。"
         defaultValue={profile.portfolio ?? undefined}
+        error={state.errors?.portfolio}
       />
-      {state.errors && state.errors.portfolio && (
-        <p className="mb-4 text-red-500">{state.errors.portfolio}</p>
-      )}
       <InputText
         label="GitHub(URL)"
         name="gitHub"
         placeholder="GitHubのURLを入力してください。"
         defaultValue={profile.gitHub ?? undefined}
+        error={state.errors?.gitHub}
       />
-      {state.errors && state.errors.gitHub && (
-        <p className="mb-4 text-red-500">{state.errors.gitHub}</p>
-      )}
       <InputText
         label="X(URL)"
         name="x"
         placeholder="XのURLを入力してください。"
         defaultValue={profile.x ?? undefined}
+        error={state.errors?.x}
       />
-      {state.errors && state.errors.x && (
-        <p className="mb-4 text-red-500">{state.errors.x}</p>
-      )}
       {state.message && state.message !== "success" && (
         <p className="mb-4 text-red-500">{state.message}</p>
       )}
-      <Button type="submit" color="blue" size="normal" className="block mx-auto rounded">
+      <Button
+        type="submit"
+        color="blue"
+        size="normal"
+        className="block mx-auto rounded"
+      >
         編集
       </Button>
     </form>

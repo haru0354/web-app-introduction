@@ -9,10 +9,10 @@ import Textarea from "../ui/Textarea";
 import DynamicInputText from "../ui/DynamicInputText";
 import InputImage from "../ui/InputImage";
 import Button from "../ui/button/Button";
+import NextLinkButton from "../ui/button/NextLinkButton";
 
 import type { AppIntroductionFormState } from "@/types/formStateTypes";
 import type { AppIntroduction } from "@prisma/client";
-import NextLinkButton from "../ui/button/NextLinkButton";
 
 type FormAppIntroductionProps = {
   formAction: (
@@ -72,37 +72,29 @@ const FormAppIntroduction: React.FC<FormAppIntroductionProps> = ({
         name="title"
         placeholder="アプリ名を入力してください。"
         defaultValue={appIntroductionData?.title}
+        error={state.errors?.title}
       />
-      {state.errors && state.errors.title && (
-        <p className="mb-4 text-red-500">{state.errors.title}</p>
-      )}
       <InputText
         label="アプリの種類"
         name="summary"
         placeholder="一言でどんなアプリか入力してください。"
         defaultValue={appIntroductionData?.summary}
+        error={state.errors?.summary}
       />
-      {state.errors && state.errors.summary && (
-        <p className="mb-4 text-red-500">{state.errors.summary}</p>
-      )}
       <InputText
         label="URL"
         name="url"
         placeholder="アプリのURLを入力してください。"
         defaultValue={appIntroductionData?.url}
+        error={state.errors?.url}
       />
-      {state.errors && state.errors.url && (
-        <p className="mb-4 text-red-500">{state.errors.url}</p>
-      )}
       <InputText
         label="使用技術"
         name="technology"
         placeholder="使用技術を入力してください。"
         defaultValue={appIntroductionData?.technology ?? undefined}
+        error={state.errors?.technology}
       />
-      {state.errors && state.errors.technology && (
-        <p className="mb-4 text-red-500">{state.errors.technology}</p>
-      )}
       <Textarea
         label="詳細"
         name="overview"
@@ -117,10 +109,8 @@ const FormAppIntroduction: React.FC<FormAppIntroductionProps> = ({
         name="solution"
         placeholder="アプリで解決できる課題を入力してください。"
         defaultValue={appIntroductionData?.solution}
+        error={state.errors?.solution}
       />
-      {state.errors && state.errors.solution && (
-        <p className="mb-4 text-red-500">{state.errors.solution}</p>
-      )}
       <DynamicInputText defaultValue={appIntroductionData?.can} />
       {state.errors && state.errors.can && (
         <p className="mb-4 text-red-500">{state.errors.can}</p>
@@ -130,14 +120,9 @@ const FormAppIntroduction: React.FC<FormAppIntroductionProps> = ({
         label="画像の説明"
         name="imageALT"
         placeholder="アップロードする画像の簡単な説明"
+        error={state.errors?.imageALT}
       />
-      {state.errors && state.errors.imageALT && (
-        <p className="mb-4 text-red-500">{state.errors.imageALT}</p>
-      )}
       {appId && <input type="hidden" name="appId" value={appId} />}
-      {state.errors && state.errors.imageALT && (
-        <p className="mb-4 text-red-500">{state.errors.image}</p>
-      )}
       {state.message && state.message !== "success" && (
         <p className="mb-4 text-red-500">{state.message}</p>
       )}

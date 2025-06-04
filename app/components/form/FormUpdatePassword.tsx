@@ -48,32 +48,31 @@ const FormUpdatePassword: React.FC<FormUpdatePasswordProps> = ({ userId }) => {
         label="現在登録中のパスワード"
         name="password"
         placeholder="確認の為、現在登録しているパスワードを入力してください"
+        error={state.errors?.password}
       />
-      {state.errors && state.errors.password && (
-        <p className="mb-4 text-red-500">{state.errors.password}</p>
-      )}
       <InputText
         type="password"
         label="新しいパスワード"
         name="newPassword"
         placeholder="新しいパスワードを入力してください"
+        error={state.errors?.newPassword}
       />
-      {state.errors && state.errors.newPassword && (
-        <p className="mb-4 text-red-500">{state.errors.newPassword}</p>
-      )}
       <InputText
         type="password"
         label="新しいパスワード（確認用）"
         name="confirmationPassword"
         placeholder="確認の為、新しいパスワードを再度入力してください"
+        error={state.errors?.confirmationPassword}
       />
-      {state.errors && state.errors.confirmationPassword && (
-        <p className="mb-4 text-red-500">{state.errors.confirmationPassword}</p>
-      )}
       {state.message && state.message !== "success" && (
         <p className="mb-4 text-red-500">{state.message}</p>
       )}
-      <Button type="submit" color="blue" size="normal" className="block mx-auto rounded">
+      <Button
+        type="submit"
+        color="blue"
+        size="normal"
+        className="block mx-auto rounded"
+      >
         編集
       </Button>
     </form>

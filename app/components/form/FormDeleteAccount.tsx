@@ -47,19 +47,15 @@ const FormDeleteAccount: React.FC<FormDeleteAccountProps> = ({ userId }) => {
         label="パスワード"
         name="password"
         placeholder="現在登録しているパスワードを入力してください"
+        error={state.errors?.password}
       />
-      {state.errors && state.errors.password && (
-        <p className="mb-4 text-red-500">{state.errors.password}</p>
-      )}
       <InputText
         type="password"
         label="パスワード（確認用）"
         name="confirmationPassword"
         placeholder="確認の為、再度パスワードを入力してください"
+        error={state.errors?.confirmationPassword}
       />
-      {state.errors && state.errors.confirmationPassword && (
-        <p className="mb-4 text-red-500">{state.errors.confirmationPassword}</p>
-      )}
       {state.message && state.message !== "success" && (
         <p className="mb-4 text-red-500">{state.message}</p>
       )}
