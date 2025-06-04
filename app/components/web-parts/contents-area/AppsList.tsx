@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
-import Button from "../../ui/Button";
+import NextLinkButton from "../../ui/button/NextLinkButton";
 
 import type { AppIntroduction } from "@prisma/client";
 
@@ -47,11 +47,16 @@ const AppsList: React.FC<AppsListProps> = ({
             <h2 className="font-semibold text-gray-600 mt-3">{title}</h2>「
             {summary}」
             {editButton && (
-              <Link href={`/dashboard/${appIntroduction.id}`}>
-                <Button color="gray" size="normal">
+              <div className="flex items-center justify-center">
+                <NextLinkButton
+                  href={`/dashboard/${appIntroduction.id}`}
+                  color="gray"
+                  size="normal"
+                  className="rounded"
+                >
                   編集
-                </Button>
-              </Link>
+                </NextLinkButton>
+              </div>
             )}
           </div>
         );

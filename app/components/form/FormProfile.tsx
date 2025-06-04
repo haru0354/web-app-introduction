@@ -7,7 +7,7 @@ import { editProfile } from "@/app/action/actionProfile";
 import useToggleModal from "../../hooks/useToggleModal";
 import InputText from "../ui/InputText";
 import Textarea from "../ui/Textarea";
-import Button from "../ui/Button";
+import Button from "../ui/button/Button";
 
 import type { Profile } from "@prisma/client";
 import type { ProfileFormState } from "@/types/formStateTypes";
@@ -54,59 +54,52 @@ const FormProfile: React.FC<FormProfileProps> = ({ profile, userId }) => {
         name="selfIntroduction"
         placeholder="自己紹介を入力してください。"
         defaultValue={profile.selfIntroduction ?? undefined}
+        error={state.errors?.selfIntroduction}
       />
-      {state.errors && state.errors.selfIntroduction && (
-        <p className="mb-4 text-red-500">{state.errors.selfIntroduction}</p>
-      )}
       <InputText
         label="職業"
         name="occupation"
         placeholder="職業・職種を入力してください。例:フロントエンドエンジニア"
         defaultValue={profile.occupation ?? undefined}
+        error={state.errors?.occupation}
       />
-      {state.errors && state.errors.occupation && (
-        <p className="mb-4 text-red-500">{state.errors.occupation}</p>
-      )}
       <InputText
         label="プログラミングスキル"
         name="skill"
         placeholder="プログラミングスキルを入力してください。例:React,PHP"
         defaultValue={profile.skill ?? undefined}
+        error={state.errors?.skill}
       />
-      {state.errors && state.errors.skill && (
-        <p className="mb-4 text-red-500">{state.errors.skill}</p>
-      )}
       <InputText
         label="ポートフォリオサイト(URL)"
         name="portfolio"
         placeholder="ポートフォリオサイトのURLを入力してください。"
         defaultValue={profile.portfolio ?? undefined}
+        error={state.errors?.portfolio}
       />
-      {state.errors && state.errors.portfolio && (
-        <p className="mb-4 text-red-500">{state.errors.portfolio}</p>
-      )}
       <InputText
         label="GitHub(URL)"
         name="gitHub"
         placeholder="GitHubのURLを入力してください。"
         defaultValue={profile.gitHub ?? undefined}
+        error={state.errors?.gitHub}
       />
-      {state.errors && state.errors.gitHub && (
-        <p className="mb-4 text-red-500">{state.errors.gitHub}</p>
-      )}
       <InputText
         label="X(URL)"
         name="x"
         placeholder="XのURLを入力してください。"
         defaultValue={profile.x ?? undefined}
+        error={state.errors?.x}
       />
-      {state.errors && state.errors.x && (
-        <p className="mb-4 text-red-500">{state.errors.x}</p>
-      )}
       {state.message && state.message !== "success" && (
-        <p className="mb-4 text-red-500">{state.message}</p>
+        <p className="mt-4 text-center text-sm text-red-600">{state.message}</p>
       )}
-      <Button color="blue" size="normal" className="block mx-auto">
+      <Button
+        type="submit"
+        color="blue"
+        size="normal"
+        className="block mx-auto rounded"
+      >
         編集
       </Button>
     </form>

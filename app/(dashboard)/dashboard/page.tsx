@@ -1,5 +1,4 @@
 import { Metadata } from "next";
-import Link from "next/link";
 
 import { getSessionUser } from "@/app/lib/service/sessionUserService";
 import { addAppIntroduction } from "@/app/action/actionAppIntroduction";
@@ -8,11 +7,12 @@ import FormAppIntroduction from "@/app/components/form/FormAppIntroduction";
 import FormProfile from "@/app/components/form/FormProfile";
 import Profile from "@/app/components/web-parts/contents-area/Profile";
 import AppsList from "@/app/components/web-parts/contents-area/AppsList";
-import Button from "@/app/components/ui/Button";
+import NextLinkButton from "@/app/components/ui/button/NextLinkButton";
 
 export const metadata: Metadata = {
   title: "ダッシュボード",
-  description: "このページはアダッシュボードページです。登録をした自作WEBアプリの登録・編集・削除の他、プロフィールの追加・編集やアカウントの編集・削除をすることができます。",
+  description:
+    "このページはアダッシュボードページです。登録をした自作WEBアプリの登録・編集・削除の他、プロフィールの追加・編集やアカウントの編集・削除をすることができます。",
   robots: {
     index: false,
     follow: false,
@@ -57,11 +57,15 @@ const page = async () => {
       <p className="text-center">
         これらを変更するには下記ボタンよりアカウントデータページへお進みください。
       </p>
-      <Link href="/dashboard/account">
-        <Button color="blue" className="block mx-auto">
+      <div className="flex items-center justify-center">
+        <NextLinkButton
+          href="/dashboard/account"
+          color="blue"
+          className="rounded"
+        >
           アカウントデータの変更
-        </Button>
-      </Link>
+        </NextLinkButton>
+      </div>
     </>
   );
 };

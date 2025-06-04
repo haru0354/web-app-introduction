@@ -6,8 +6,7 @@ import Link from "next/link";
 
 import Modal from "./Modal";
 import FormLogin from "../form/FormLogin";
-import LogoutButton from "../ui/LogoutButton";
-import Button from "../ui/Button";
+import LogoutButton from "../ui/button/LogoutButton";
 
 const Header = () => {
   const { data: session } = useSession();
@@ -30,7 +29,7 @@ const Header = () => {
             </>
           ) : (
             <>
-              <li className="px-4 py-2">
+              <li className="mx-2 px-4 py-2">
                 <Modal
                   buttonText="ログイン"
                   width="400"
@@ -40,12 +39,8 @@ const Header = () => {
                   <FormLogin />
                 </Modal>
               </li>
-              <li className="px-4 py-2">
-                <Link href="/signup">
-                  <Button size="small" color="blue">
-                    登録
-                  </Button>
-                </Link>
+              <li className="mx-2 px-4 py-2 my-auto rounded text-white hover:text-customBlack bg-sky-700 hover:bg-sky-200 transition-colors duration-300">
+                <Link href="/signup">登録</Link>
               </li>
             </>
           )}

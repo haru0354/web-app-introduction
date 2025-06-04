@@ -7,7 +7,7 @@ import { signOut } from "next-auth/react";
 import { updateEmail } from "@/app/action/actionUser";
 import useToggleModal from "../../hooks/useToggleModal";
 import InputText from "../ui/InputText";
-import Button from "../ui/Button";
+import Button from "../ui/button/Button";
 
 import type { EmailFormState } from "@/types/formStateTypes";
 
@@ -48,31 +48,30 @@ const FormEmail: React.FC<FormEmailProps> = ({ userId, email }) => {
         label="登録中のメールアドレス"
         name="email"
         placeholder="登録中のメールアドレスです"
+        error={state.errors?.email}
       />
-      {state.errors && state.errors.email && (
-        <p className="mb-4 text-red-500">{state.errors.email}</p>
-      )}
       <InputText
         label="新しいメールアドレス"
         name="newEmail"
         placeholder="新しいメールアドレスを入力してください。"
+        error={state.errors?.newEmail}
       />
-      {state.errors && state.errors.newEmail && (
-        <p className="mb-4 text-red-500">{state.errors.newEmail}</p>
-      )}
       <InputText
         type="password"
         label="登録中のパスワード"
         name="password"
         placeholder="確認の為、登録しているパスワードを入力してください"
+        error={state.errors?.password}
       />
-      {state.errors && state.errors.password && (
-        <p className="mb-4 text-red-500">{state.errors.password}</p>
-      )}
       {state.message && state.message !== "success" && (
-        <p className="mb-4 text-red-500">{state.message}</p>
+        <p className="mt-4 text-center text-sm text-red-600">{state.message}</p>
       )}
-      <Button color="blue" size="normal" className="block mx-auto">
+      <Button
+        type="submit"
+        color="blue"
+        size="normal"
+        className="block mx-auto rounded"
+      >
         変更
       </Button>
     </form>

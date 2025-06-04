@@ -1,7 +1,5 @@
-import Link from "next/link";
-
 import TopPageSection from "../layouts/with-children/TopPageSection";
-import Button from "../ui/Button";
+import NextLinkButton from "../ui/button/NextLinkButton";
 
 type CTASectionProps = {
   title: string;
@@ -31,11 +29,15 @@ const CTASection: React.FC<CTASectionProps> = ({
         );
       })}
       {buttonText && linkURL && (
-        <Link href={`${linkURL}`}>
-          <Button color="blue" className="block mx-auto rounded mt-8">
+        <div className="flex items-center justify-center">
+          <NextLinkButton
+            href={`${linkURL}`}
+            color="blue"
+            className="rounded"
+          >
             {buttonText}
-          </Button>
-        </Link>
+          </NextLinkButton>
+        </div>
       )}
     </TopPageSection>
   );

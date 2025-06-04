@@ -1,12 +1,11 @@
 import { Metadata } from "next";
-import Link from "next/link";
 
 import { getSessionUserAccount } from "@/app/lib/service/sessionUserService";
 import Modal from "@/app/components/web-parts/Modal";
 import DeleteAccountModal from "@/app/components/web-parts/dashboard/DeleteAccountModal";
 import FormEmail from "@/app/components/form/FormEmail";
 import FormUpdatePassword from "@/app/components/form/FormUpdatePassword";
-import Button from "@/app/components/ui/Button";
+import NextLinkButton from "@/app/components/ui/button/NextLinkButton";
 
 export const metadata: Metadata = {
   title: "アカウントデータの変更",
@@ -34,11 +33,15 @@ const page = async () => {
           データ変更後は自動的に「ログアウト」が行われ、TOPページに移動します。
         </p>
       </div>
-      <Link href="/dashboard">
-        <Button color="blue" className="block mx-auto">
-          ダッシュボードへ戻る
-        </Button>
-      </Link>
+       <div className="flex items-center justify-center">
+        <NextLinkButton
+          href="/dashboard"
+          color="blue"
+          className="rounded"
+        >
+          ダッシュボードへ
+        </NextLinkButton>
+      </div>
       <h2 className="h2 text-center">メールアドレスの変更</h2>
       <p className="text-center">
         登録しているメールアドレスの変更をすることができます。

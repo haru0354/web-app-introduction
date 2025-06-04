@@ -1,8 +1,5 @@
-"use client";
-
 import { signOut } from "next-auth/react";
-
-import Button from "../ui/Button";
+import Button from "./Button";
 
 const LogoutButton = () => {
   const handleLogout = () => {
@@ -10,7 +7,7 @@ const LogoutButton = () => {
   };
 
   return (
-    <Button color="black" size="small" onClick={handleLogout}>
+    <Button type="button" color="black" size="small" onClick={handleLogout}>
       ログアウト
     </Button>
   );

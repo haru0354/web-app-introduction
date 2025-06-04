@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import { signIn } from "next-auth/react";
 
 import useToggleModal from "../../hooks/useToggleModal";
-import Button from "../ui/Button";
+import Button from "../ui/button/Button";
 import InputText from "../ui/InputText";
 
 const FormLogin = () => {
@@ -48,7 +48,7 @@ const FormLogin = () => {
 
   return (
     <form onSubmit={onSubmit} className="w-full mx-auto">
-      <p className="text-center font-semibold pb-2  mb-6 border-b border-dashed border-customBlack">
+      <p className="text-center font-semibold pb-2 mb-6 border-b border-dashed border-customBlack">
         ログイン
       </p>
       <InputText
@@ -68,12 +68,12 @@ const FormLogin = () => {
           <p>しばらくお待ちください。</p>
         </>
       )}
-      {error && <p className="text-red-500 text-center">{error}</p>}
+      {error && <p className="mt-4 text-center text-sm text-red-600">{error}</p>}
       <Button
         type="submit"
         color="blue"
         size="normal"
-        className="block mx-auto"
+        className="block mx-auto rounded"
       >
         ログイン
       </Button>

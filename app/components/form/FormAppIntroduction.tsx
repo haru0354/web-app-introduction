@@ -2,14 +2,14 @@
 
 import { useFormState } from "react-dom";
 import { useEffect } from "react";
-import Link from "next/link";
 
 import useToggleModal from "../../hooks/useToggleModal";
 import InputText from "../ui/InputText";
 import Textarea from "../ui/Textarea";
 import DynamicInputText from "../ui/DynamicInputText";
 import InputImage from "../ui/InputImage";
-import Button from "../ui/Button";
+import Button from "../ui/button/Button";
+import NextLinkButton from "../ui/button/NextLinkButton";
 
 import type { AppIntroductionFormState } from "@/types/formStateTypes";
 import type { AppIntroduction } from "@prisma/client";
@@ -30,7 +30,6 @@ type FormAppIntroductionProps = {
 const FormAppIntroduction: React.FC<FormAppIntroductionProps> = ({
   formAction,
   formName,
-  userId,
   appIntroductionData,
   appId,
   backButton = false,
@@ -73,89 +72,73 @@ const FormAppIntroduction: React.FC<FormAppIntroductionProps> = ({
         name="title"
         placeholder="アプリ名を入力してください。"
         defaultValue={appIntroductionData?.title}
+        error={state.errors?.title}
       />
-      {state.errors && state.errors.title && (
-        <p className="mb-4 text-red-500">{state.errors.title}</p>
-      )}
       <InputText
         label="アプリの種類"
         name="summary"
         placeholder="一言でどんなアプリか入力してください。"
         defaultValue={appIntroductionData?.summary}
+        error={state.errors?.summary}
       />
-      {state.errors && state.errors.summary && (
-        <p className="mb-4 text-red-500">{state.errors.summary}</p>
-      )}
       <InputText
         label="URL"
         name="url"
         placeholder="アプリのURLを入力してください。"
         defaultValue={appIntroductionData?.url}
+        error={state.errors?.url}
       />
-      {state.errors && state.errors.url && (
-        <p className="mb-4 text-red-500">{state.errors.url}</p>
-      )}
       <InputText
         label="使用技術"
         name="technology"
         placeholder="使用技術を入力してください。"
         defaultValue={appIntroductionData?.technology ?? undefined}
+        error={state.errors?.technology}
       />
-      {state.errors && state.errors.technology && (
-        <p className="mb-4 text-red-500">{state.errors.technology}</p>
-      )}
       <Textarea
         label="詳細"
         name="overview"
         placeholder="アプリの詳細を入力してください。"
         defaultValue={appIntroductionData?.overview}
+        error={state.errors?.overview}
       />
-      {state.errors && state.errors.overview && (
-        <p className="mb-4 text-red-500">{state.errors.overview}</p>
-      )}
       <InputText
         label="解決できる課題"
         name="solution"
         placeholder="アプリで解決できる課題を入力してください。"
         defaultValue={appIntroductionData?.solution}
+        error={state.errors?.solution}
       />
-      {state.errors && state.errors.solution && (
-        <p className="mb-4 text-red-500">{state.errors.solution}</p>
-      )}
-      <DynamicInputText defaultValue={appIntroductionData?.can} />
-      {state.errors && state.errors.can && (
-        <p className="mb-4 text-red-500">{state.errors.can}</p>
-      )}
+      <DynamicInputText
+        label="出来ることリスト"
+        defaultValue={appIntroductionData?.can}
+        error={state.errors?.can}
+      />
       <InputImage label="画像のアップロード" name="imageFile" />
       <InputText
         label="画像の説明"
         name="imageALT"
         placeholder="アップロードする画像の簡単な説明"
+        error={state.errors?.imageALT}
       />
-      {state.errors && state.errors.imageALT && (
-        <p className="mb-4 text-red-500">{state.errors.imageALT}</p>
-      )}
       {appId && <input type="hidden" name="appId" value={appId} />}
-      {state.errors && state.errors.imageALT && (
-        <p className="mb-4 text-red-500">{state.errors.image}</p>
-      )}
       {state.message && state.message !== "success" && (
-        <p className="mb-4 text-red-500">{state.message}</p>
+        <p className="mt-4 text-center text-sm text-red-600">{state.message}</p>
       )}
-      <Button color="blue" size="normal" className="block mx-auto">
+      <Button
+        type="submit"
+        color="blue"
+        size="normal"
+        className="block mx-auto rounded"
+      >
         保存
       </Button>
       {backButton && (
-        <Link href="/dashboard">
-          <Button
-            color="gray"
-            size="normal"
-            className="block mx-auto"
-            type="button"
-          >
+        <div className="flex items-center justify-center">
+          <NextLinkButton href="/dashboard" color="gray" className="rounded">
             キャンセル
-          </Button>
-        </Link>
+          </NextLinkButton>
+        </div>
       )}
     </form>
   );
