@@ -5,8 +5,8 @@ import { useEffect } from "react";
 import { signOut } from "next-auth/react";
 
 import { updatePassword } from "@/app/action/actionUser";
+import FormContainer from "../layouts/with-children/FormContainer";
 import InputText from "../ui/InputText";
-import Button from "../ui/button/Button";
 import useToggleModal from "../../hooks/useToggleModal";
 
 import type { UpdatePasswordFormState } from "@/types/formStateTypes";
@@ -39,10 +39,12 @@ const FormUpdatePassword: React.FC<FormUpdatePasswordProps> = ({ userId }) => {
   }, [state.message, closeModal]);
 
   return (
-    <form action={dispatch} className="w-full mx-auto">
-      <p className="text-center font-semibold pb-2 mb-6 border-b border-dashed border-customBlack">
-        パスワードの変更
-      </p>
+    <FormContainer
+      action={dispatch}
+      buttonName="編集"
+      formName="パスワードの変更"
+      message={state.message}
+    >
       <InputText
         type="password"
         label="現在登録中のパスワード"
@@ -64,18 +66,7 @@ const FormUpdatePassword: React.FC<FormUpdatePasswordProps> = ({ userId }) => {
         placeholder="確認の為、新しいパスワードを再度入力してください"
         error={state.errors?.confirmationPassword}
       />
-      {state.message && state.message !== "success" && (
-        <p className="mt-4 text-center text-sm text-red-600">{state.message}</p>
-      )}
-      <Button
-        type="submit"
-        color="blue"
-        size="normal"
-        className="block mx-auto rounded"
-      >
-        編集
-      </Button>
-    </form>
+    </FormContainer>
   );
 };
 

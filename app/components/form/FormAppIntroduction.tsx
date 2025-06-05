@@ -3,13 +3,12 @@
 import { useFormState } from "react-dom";
 import { useEffect } from "react";
 
+import FormContainer from "../layouts/with-children/FormContainer";
 import useToggleModal from "../../hooks/useToggleModal";
 import InputText from "../ui/InputText";
 import Textarea from "../ui/Textarea";
 import DynamicInputText from "../ui/DynamicInputText";
 import InputImage from "../ui/InputImage";
-import Button from "../ui/button/Button";
-import NextLinkButton from "../ui/button/NextLinkButton";
 
 import type { AppIntroductionFormState } from "@/types/formStateTypes";
 import type { AppIntroduction } from "@prisma/client";
@@ -63,10 +62,13 @@ const FormAppIntroduction: React.FC<FormAppIntroductionProps> = ({
   }
 
   return (
-    <form action={dispatch} className="w-full mx-auto">
-      <p className="text-center font-semibold pb-2  mb-6 border-b border-dashed border-customBlack">
-        {formName}
-      </p>
+    <FormContainer
+      action={dispatch}
+      buttonName="保存"
+      formName={formName}
+      backButton={backButton}
+      message={state.message}
+    >
       <InputText
         label="アプリ名"
         name="title"
@@ -122,25 +124,7 @@ const FormAppIntroduction: React.FC<FormAppIntroductionProps> = ({
         error={state.errors?.imageALT}
       />
       {appId && <input type="hidden" name="appId" value={appId} />}
-      {state.message && state.message !== "success" && (
-        <p className="mt-4 text-center text-sm text-red-600">{state.message}</p>
-      )}
-      <Button
-        type="submit"
-        color="blue"
-        size="normal"
-        className="block mx-auto rounded"
-      >
-        保存
-      </Button>
-      {backButton && (
-        <div className="flex items-center justify-center">
-          <NextLinkButton href="/dashboard" color="gray" className="rounded">
-            キャンセル
-          </NextLinkButton>
-        </div>
-      )}
-    </form>
+    </FormContainer>
   );
 };
 

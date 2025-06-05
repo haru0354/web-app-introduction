@@ -3,9 +3,10 @@ import NextLinkButton from "../../ui/button/NextLinkButton";
 
 type FormContainerProps = {
   children: React.ReactNode;
-  action: (payload: FormData) => void;
   formName: string;
   buttonName: string;
+  action?: (payload: FormData) => void;
+  onSubmit?: (e: React.FormEvent) => Promise<void>;
   buttonColor?: "blue" | "red" | "gray" | "white" | "black";
   message?: string | null;
   backButton?: boolean;
@@ -14,6 +15,7 @@ type FormContainerProps = {
 const FormContainer: React.FC<FormContainerProps> = ({
   children,
   action,
+  onSubmit,
   formName,
   buttonName,
   buttonColor = "blue",
@@ -21,7 +23,7 @@ const FormContainer: React.FC<FormContainerProps> = ({
   backButton,
 }) => {
   return (
-    <form action={action} className="w-full mx-auto">
+    <form action={action} onSubmit={onSubmit} className="w-full mx-auto">
       <p className="text-center font-semibold pb-2 mb-6 border-b border-dashed border-customBlack">
         {formName}
       </p>

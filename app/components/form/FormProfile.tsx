@@ -4,10 +4,10 @@ import { useFormState } from "react-dom";
 import { useEffect } from "react";
 
 import { editProfile } from "@/app/action/actionProfile";
+import FormContainer from "../layouts/with-children/FormContainer";
 import useToggleModal from "../../hooks/useToggleModal";
 import InputText from "../ui/InputText";
 import Textarea from "../ui/Textarea";
-import Button from "../ui/button/Button";
 
 import type { Profile } from "@prisma/client";
 import type { ProfileFormState } from "@/types/formStateTypes";
@@ -45,10 +45,12 @@ const FormProfile: React.FC<FormProfileProps> = ({ profile, userId }) => {
   }, [state.message, closeModal]);
 
   return (
-    <form action={dispatch} className="w-full mx-auto">
-      <p className="text-center font-semibold pb-2  mb-6 border-b border-dashed border-customBlack">
-        プロフィールの編集
-      </p>
+    <FormContainer
+      action={dispatch}
+      buttonName="編集"
+      formName="プロフィールの編集"
+      message={state.message}
+    >
       <Textarea
         label="自己紹介"
         name="selfIntroduction"
@@ -91,18 +93,7 @@ const FormProfile: React.FC<FormProfileProps> = ({ profile, userId }) => {
         defaultValue={profile.x ?? undefined}
         error={state.errors?.x}
       />
-      {state.message && state.message !== "success" && (
-        <p className="mt-4 text-center text-sm text-red-600">{state.message}</p>
-      )}
-      <Button
-        type="submit"
-        color="blue"
-        size="normal"
-        className="block mx-auto rounded"
-      >
-        編集
-      </Button>
-    </form>
+    </FormContainer>
   );
 };
 
