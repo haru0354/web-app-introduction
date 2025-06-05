@@ -7,11 +7,13 @@ import type { AppIntroduction } from "@prisma/client";
 
 type AppsListProps = {
   appIntroductions: AppIntroduction[];
+  oneColumn?: boolean;
   editButton?: boolean;
 };
 
 const AppsList: React.FC<AppsListProps> = ({
   appIntroductions,
+  oneColumn = false,
   editButton = false,
 }) => {
   if (!appIntroductions) {
@@ -19,7 +21,11 @@ const AppsList: React.FC<AppsListProps> = ({
   }
 
   return (
-    <div className="flex flex-wrap w-full">
+    <div
+      className={`grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 ${
+        oneColumn ? "lg:grid-cols-5" : "lg:grid-cols-4"
+      } gap-6 w-full`}
+    >
       {appIntroductions.map((appIntroduction) => {
         const firstImage = appIntroduction.images[0];
         const title =
@@ -31,21 +37,23 @@ const AppsList: React.FC<AppsListProps> = ({
             ? appIntroduction.summary.slice(0, 11) + "..."
             : appIntroduction.summary;
         return (
-          <div
-            key={appIntroduction.id}
-            className="flex flex-col items-center min-w-[200px] mx-2 my-6 text-center"
-          >
+          <div className="flex flex-col justify-between">
             <Link href={`/app/${appIntroduction.id}`}>
-              <Image
-                src={firstImage?.imageURL || "/test.JPG"}
-                width={200}
-                height={200}
-                alt={firstImage?.imageALT || "test"}
-                className="border border-gray-400 hover:-translate-y-2 transition"
-              />
+              <div
+                key={appIntroduction.id}
+                className="flex flex-col items-center text-center  hover:-translate-y-2 transition"
+              >
+                <Image
+                  src={firstImage?.imageURL || "/test.JPG"}
+                  width={200}
+                  height={200}
+                  alt={firstImage?.imageALT || "test"}
+                  className="border rounded border-gray-400"
+                />
+                <h2 className="font-semibold text-gray-600 mt-3">{title}</h2>「
+                {summary}」
+              </div>
             </Link>
-            <h2 className="font-semibold text-gray-600 mt-3">{title}</h2>「
-            {summary}」
             {editButton && (
               <div className="flex items-center justify-center">
                 <NextLinkButton
