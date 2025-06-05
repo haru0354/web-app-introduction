@@ -34,7 +34,7 @@ const Breadcrumbs = () => {
   const breadcrumb = getBreadcrumb(pathname);
 
   return (
-    <div className="max-w-[1140px] mx-auto text-sm my-2 md:my-0 px-4 md:px-6 ">
+    <div className="w-full text-sm my-2">
       <nav>
         <ol className="flex text-gray-500">
           <li>

@@ -7,16 +7,16 @@ type OneColumnProps = {
 
 const OneColumn: React.FC<OneColumnProps> = ({ children, center = false }) => {
   return (
-    <main
-      className={`flex-grow w-full p-2 md:py-8 bg-layout-bgColor ${
-        center && "flex items-center justify-center"
-      }`}
-    >
-      <Breadcrumbs />
-      <div
-        className={`w-full max-w-[1140px] mx-auto px-4 md:px-6 bg-white rounded`}
-      >
-        {children}
+    <main className="flex-1 flex flex-col items-center bg-layout-bgColor">
+      <div className="flex-1 w-full max-w-[1140px] mx-2 my-4 py-4 px-2 md:px-6 bg-white rounded flex flex-col">
+        <Breadcrumbs />
+        {center ? (
+          <div className="flex-1 flex items-center justify-center">
+            {children}
+          </div>
+        ) : (
+          <div>{children}</div>
+        )}
       </div>
     </main>
   );
