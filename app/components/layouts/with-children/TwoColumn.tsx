@@ -11,14 +11,14 @@ const TwoColumn: React.FC<TwoColumnProps> = ({
   blogPage = false,
 }) => {
   return (
-    <main className="w-full p-2 md:py-8 bg-layout-bgColor">
-      <Breadcrumbs />
-      <div className="flex-grow flex flex-col md:flex-row justify-between max-w-[1140px] mx-auto bg-white rounded">
+    <main className="flex-1 flex flex-col items-center bg-layout-bgColor">
+      <div className="flex flex-col md:flex-row justify-between w-full max-w-[1140px] mx-2 my-4  bg-white rounded">
         <div
-          className={`w-full max-w-[800px] px-4 md:px-6 ${
+          className={`w-full max-w-[800px] px-2 md:px-6 py-4 rounded ${
             blogPage ? "blog" : ""
           }`}
         >
+          <Breadcrumbs />
           {children}
         </div>
         <SideMenu />
