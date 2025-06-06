@@ -5,7 +5,7 @@ import { useFormState } from "react-dom";
 import { signOut } from "next-auth/react";
 
 import { deleteAccount } from "@/app/action/actionUser";
-import FormContainer from "../layouts/with-children/FormContainer";
+import FormContainer from "../layouts/FormContainer";
 import useToggleModal from "../../hooks/useToggleModal";
 import InputText from "../ui/InputText";
 

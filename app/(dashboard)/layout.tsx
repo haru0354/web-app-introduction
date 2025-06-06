@@ -1,5 +1,6 @@
 import { Metadata } from "next";
-import OneColumn from "../components/layouts/with-children/OneColumn";
+
+import OneColumn from "../components/layouts/column/OneColumn";
 
 export const metadata: Metadata = {
   robots: {

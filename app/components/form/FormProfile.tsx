@@ -4,7 +4,7 @@ import { useFormState } from "react-dom";
 import { useEffect } from "react";
 
 import { editProfile } from "@/app/action/actionProfile";
-import FormContainer from "../layouts/with-children/FormContainer";
+import FormContainer from "../layouts/FormContainer";
 import useToggleModal from "../../hooks/useToggleModal";
 import InputText from "../ui/InputText";
 import Textarea from "../ui/Textarea";

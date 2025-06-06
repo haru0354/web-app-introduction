@@ -1,4 +1,4 @@
-import TopPageSection from "../layouts/with-children/TopPageSection";
+import TopPageSection from "../layouts/TopPageSection";
 import NextLinkButton from "../ui/button/NextLinkButton";
 
 type CTASectionProps = {

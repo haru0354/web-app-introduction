@@ -1,5 +1,5 @@
-import TwoFlexBox from "../layouts/TwoFlexBox";
-import TopPageSection from "../layouts/with-children/TopPageSection";
+import TwoFlexBox from "../web-parts/contents-area/TwoFlexBox";
+import TopPageSection from "../layouts/TopPageSection";
 import NextLinkButton from "../ui/button/NextLinkButton";
 
 type AboutSectionProps = {

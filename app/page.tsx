@@ -1,7 +1,7 @@
 import { getAllAppIntroductions } from "./lib/service/appIntroductionService";
 import { shuffleArray } from "./lib/shuffleArray";
 
-import TopPageSection from "./components/layouts/with-children/TopPageSection";
+import TopPageSection from "./components/layouts/TopPageSection";
 import InfoCard from "./components/web-parts/contents-area/InfoCard";
 import Hero from "./components/section/Hero";
 import CTASection from "./components/section/CTASection";

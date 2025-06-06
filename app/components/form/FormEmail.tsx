@@ -5,7 +5,7 @@ import { useEffect } from "react";
 import { signOut } from "next-auth/react";
 
 import { updateEmail } from "@/app/action/actionUser";
-import FormContainer from "../layouts/with-children/FormContainer";
+import FormContainer from "../layouts/FormContainer";
 import useToggleModal from "../../hooks/useToggleModal";
 import InputText from "../ui/InputText";
 

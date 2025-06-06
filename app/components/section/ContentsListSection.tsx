@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 
-import TopPageSection from "../layouts/with-children/TopPageSection";
+import TopPageSection from "../layouts/TopPageSection";
 
 type ContentsListSectionProps = {
   contents: Contents[];
