@@ -37,12 +37,9 @@ const AppsList: React.FC<AppsListProps> = ({
             ? appIntroduction.summary.slice(0, 11) + "..."
             : appIntroduction.summary;
         return (
-          <div className="flex flex-col justify-between">
+          <div className="flex flex-col justify-between" key={appIntroduction.id}>
             <Link href={`/app/${appIntroduction.id}`}>
-              <div
-                key={appIntroduction.id}
-                className="flex flex-col items-center text-center  hover:-translate-y-2 transition"
-              >
+              <div className="flex flex-col items-center text-center  hover:-translate-y-2 transition">
                 <Image
                   src={firstImage?.imageURL || "/test.JPG"}
                   width={200}
