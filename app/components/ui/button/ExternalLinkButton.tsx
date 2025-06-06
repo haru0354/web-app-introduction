@@ -23,9 +23,9 @@ const ExternalLinkButton: React.FC<ExternalLinkButtonProps> = ({
   };
 
   const sizes = {
-    small: "min-w-[80px] p-1",
-    normal: "min-w-[170px] p-2",
-    big: "min-w-[240px] p-3",
+    small: "min-w-[80px] p-2",
+    normal: "min-w-[170px] px-4 py-2",
+    big: "min-w-[240px] px-4 py-3",
   };
 
   return (

@@ -4,8 +4,8 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { signIn } from "next-auth/react";
 
+import FormContainer from "../layouts/with-children/FormContainer";
 import useToggleModal from "../../hooks/useToggleModal";
-import Button from "../ui/button/Button";
 import InputText from "../ui/InputText";
 
 const FormLogin = () => {
@@ -47,11 +47,14 @@ const FormLogin = () => {
   };
 
   return (
-    <form onSubmit={onSubmit} className="w-full mx-auto">
-      <p className="text-center font-semibold pb-2 mb-6 border-b border-dashed border-customBlack">
-        ログイン
-      </p>
+    <FormContainer
+      onSubmit={onSubmit}
+      buttonName="ログイン"
+      formName="ログイン"
+      message={error}
+    >
       <InputText
+        type="email"
         label="メールアドレス"
         name="email"
         placeholder="メールアドレスを入力してください"
@@ -68,16 +71,7 @@ const FormLogin = () => {
           <p>しばらくお待ちください。</p>
         </>
       )}
-      {error && <p className="mt-4 text-center text-sm text-red-600">{error}</p>}
-      <Button
-        type="submit"
-        color="blue"
-        size="normal"
-        className="block mx-auto rounded"
-      >
-        ログイン
-      </Button>
-    </form>
+    </FormContainer>
   );
 };
 

@@ -25,6 +25,24 @@ export default async function Home() {
       imageSrc: "/blog-test.webp",
       imageAlt: "test",
     },
+    {
+      title: "テスト",
+      url: "/",
+      imageSrc: "/blog-test.webp",
+      imageAlt: "test",
+    },
+    {
+      title: "テスト",
+      url: "/",
+      imageSrc: "/blog-test.webp",
+      imageAlt: "test",
+    },
+    {
+      title: "テスト",
+      url: "/",
+      imageSrc: "/blog-test.webp",
+      imageAlt: "test",
+    },
   ];
 
   const categories = [

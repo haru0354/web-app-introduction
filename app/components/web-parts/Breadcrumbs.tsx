@@ -34,7 +34,7 @@ const Breadcrumbs = () => {
   const breadcrumb = getBreadcrumb(pathname);
 
   return (
-    <div className="max-w-[1140px] mx-auto text-sm my-2 md:my-0 px-4 md:px-6 ">
+    <div className="w-full text-sm my-2">
       <nav>
         <ol className="flex text-gray-500">
           <li>
@@ -45,12 +45,16 @@ const Breadcrumbs = () => {
               height={20}
               className="inline mr-2"
             />
-            <Link href="/">ホーム</Link>
+            <Link href="/" className="text-sky-600">
+              ホーム
+            </Link>
             <span className="mx-2"> &gt; </span>
           </li>
           {breadcrumb.label && (
             <li>
-              <Link href={breadcrumb.href}>{breadcrumb.label}</Link>
+              <Link href={breadcrumb.href} className="text-sky-600">
+                {breadcrumb.label}
+              </Link>
               <span className="mx-2"> &gt; </span>
             </li>
           )}

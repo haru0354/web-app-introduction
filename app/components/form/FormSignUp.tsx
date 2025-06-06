@@ -2,8 +2,8 @@
 
 import { useFormState } from "react-dom";
 
+import FormContainer from "../layouts/with-children/FormContainer";
 import InputText from "../ui/InputText";
-import Button from "../ui/button/Button";
 
 import type { SignUpFormState } from "@/types/formStateTypes";
 
@@ -29,10 +29,12 @@ const FormSignUp: React.FC<FormSignUpProps> = ({ formAction }) => {
   );
 
   return (
-    <form action={dispatch} className="w-full">
-      <p className="text-center font-semibold pb-2  mb-6 border-b border-dashed border-customBlack">
-        登録
-      </p>
+    <FormContainer
+      action={dispatch}
+      buttonName="登録"
+      formName="ユーザー登録"
+      message={state.message}
+    >
       <InputText
         label="メールアドレス"
         name="email"
@@ -46,16 +48,7 @@ const FormSignUp: React.FC<FormSignUpProps> = ({ formAction }) => {
         placeholder="パスワードを入力してください"
         error={state.errors?.password}
       />
-      {state.message && <p className="mt-4 text-center text-sm text-red-600">{state.message}</p>}
-      <Button
-        type="submit"
-        color="blue"
-        size="normal"
-        className="block mx-auto rounded"
-      >
-        登録
-      </Button>
-    </form>
+    </FormContainer>
   );
 };
 

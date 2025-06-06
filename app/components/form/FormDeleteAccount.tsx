@@ -5,9 +5,9 @@ import { useFormState } from "react-dom";
 import { signOut } from "next-auth/react";
 
 import { deleteAccount } from "@/app/action/actionUser";
+import FormContainer from "../layouts/with-children/FormContainer";
 import useToggleModal from "../../hooks/useToggleModal";
 import InputText from "../ui/InputText";
-import Button from "../ui/button/Button";
 
 import type { DeleteAccountFormState } from "@/types/formStateTypes";
 
@@ -38,10 +38,13 @@ const FormDeleteAccount: React.FC<FormDeleteAccountProps> = ({ userId }) => {
   }, [state.message, closeModal]);
 
   return (
-    <form action={dispatch} className="w-full mx-auto">
-      <p className="text-center font-semibold pb-2 mb-6 border-b border-dashed border-customBlack">
-        アカウントの削除
-      </p>
+    <FormContainer
+      action={dispatch}
+      buttonName="削除"
+      formName="アカウントの削除"
+      buttonColor="red"
+      message={state.message}
+    >
       <InputText
         type="password"
         label="パスワード"
@@ -56,18 +59,7 @@ const FormDeleteAccount: React.FC<FormDeleteAccountProps> = ({ userId }) => {
         placeholder="確認の為、再度パスワードを入力してください"
         error={state.errors?.confirmationPassword}
       />
-      {state.message && state.message !== "success" && (
-        <p className="mt-4 text-center text-sm text-red-600">{state.message}</p>
-      )}
-      <Button
-        type="submit"
-        color="red"
-        size="normal"
-        className="block mx-auto rounded"
-      >
-        削除
-      </Button>
-    </form>
+    </FormContainer>
   );
 };
 

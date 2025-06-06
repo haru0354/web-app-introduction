@@ -35,6 +35,7 @@ const page = async () => {
       <h2 className="h2">登録しているアプリ一覧</h2>
       <AppsList
         appIntroductions={userData.appIntroductions}
+        oneColumn={true}
         editButton={true}
       />
       <Modal buttonColor="blue" buttonText="アプリの登録">
