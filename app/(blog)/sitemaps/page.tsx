@@ -2,7 +2,7 @@ import { Metadata } from "next";
 import Link from "next/link";
 
 import { getAllAppIntroductions } from "@/app/lib/service/appIntroductionService";
-import BlogTopInfo from "@/app/components/layouts/BlogTopInfo";
+import BlogTopInfo from "@/app/components/web-parts/contents-area/BlogTopInfo";
 
 export const metadata: Metadata = {
   title: "サイトマップ",
