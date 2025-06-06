@@ -45,12 +45,16 @@ const Breadcrumbs = () => {
               height={20}
               className="inline mr-2"
             />
-            <Link href="/">ホーム</Link>
+            <Link href="/" className="text-sky-600">
+              ホーム
+            </Link>
             <span className="mx-2"> &gt; </span>
           </li>
           {breadcrumb.label && (
             <li>
-              <Link href={breadcrumb.href}>{breadcrumb.label}</Link>
+              <Link href={breadcrumb.href} className="text-sky-600">
+                {breadcrumb.label}
+              </Link>
               <span className="mx-2"> &gt; </span>
             </li>
           )}
