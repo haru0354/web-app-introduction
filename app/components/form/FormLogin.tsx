@@ -37,6 +37,7 @@ const FormLogin = () => {
         closeModal();
         console.log("ログインに成功しました。");
         router.push("/dashboard");
+        router.refresh();
       }
     } catch (error) {
       setError("ログイン中にエラーが発生しました。");
