@@ -31,13 +31,10 @@ const ContentsListSection: React.FC<ContentsListSectionProps> = ({
     <TopPageSection>
       <h2 className="text-center text-3xl font-bold my-8">{listTitle}</h2>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 mx-2">
-        {contents.map((content, index) => {
+        {contents.map((content) => {
           return (
-            <Link href={content.url}>
-              <div
-                key={index}
-                className="flex flex-col items-center justify-center text-center hover:-translate-y-2 transition"
-              >
+            <Link href={content.url} key={content.url}>
+              <div className="flex flex-col items-center justify-center text-center hover:-translate-y-2 transition">
                 <Image
                   src={content.imageSrc}
                   width={340}
