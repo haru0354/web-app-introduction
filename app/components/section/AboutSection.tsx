@@ -1,5 +1,7 @@
+import AuthContext from "@/app/context/AuthContext";
 import TwoFlexBox from "../web-parts/contents-area/TwoFlexBox";
 import TopPageSection from "../layouts/TopPageSection";
+import DashboardOrRegisterLink from "../ui/button/DashboardOrRegisterLink";
 import NextLinkButton from "../ui/button/NextLinkButton";
 
 type AboutSectionProps = {
@@ -10,6 +12,7 @@ type AboutSectionProps = {
   rightContents: string[];
   buttonText?: string;
   buttonLinkURL?: string;
+  authButton?: boolean;
 };
 
 const AboutSection: React.FC<AboutSectionProps> = ({
@@ -20,6 +23,7 @@ const AboutSection: React.FC<AboutSectionProps> = ({
   rightContents,
   buttonText,
   buttonLinkURL,
+  authButton = false,
 }) => {
   return (
     <TopPageSection bg="bg-blue-800">
@@ -43,6 +47,11 @@ const AboutSection: React.FC<AboutSectionProps> = ({
             {buttonText}
           </NextLinkButton>
         </div>
+      )}
+      {authButton && (
+        <AuthContext>
+          <DashboardOrRegisterLink buttonColor="white" buttonSize="big" />
+        </AuthContext>
       )}
     </TopPageSection>
   );

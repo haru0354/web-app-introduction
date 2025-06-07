@@ -84,8 +84,7 @@ export default async function Home() {
           "必要なのは簡単な登録作業のみ。",
           "下記ボタンよりご利用ください。",
         ]}
-        buttonText="登録"
-        buttonLinkURL="/signup"
+        authButton={true}
       />
       <ContentsListSection listTitle="新着記事" contents={articles} />
       <ContentsListSection listTitle="新着カテゴリ" contents={categories} />
@@ -105,8 +104,7 @@ export default async function Home() {
           "完全無料で使用することができ、自作アプリの宣言の場としての使用が可能です",
           "アプリの登録は下記ボタンよりアカウントの作成をしてください。",
         ]}
-        buttonText="登録"
-        linkURL="/signup"
+        authButton={true}
       />
     </main>
   );
