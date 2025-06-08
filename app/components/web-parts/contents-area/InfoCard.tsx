@@ -24,10 +24,10 @@ const InfoCard: React.FC<InfoCardProps> = ({
       </div>
       <div className="w-full md:w-[30%] flex items-center justify-center mt-8 md:mt-0">
         <Image
-          src={src ? src : "/test.JPG"}
+          src={src ? src : "/no-image-app.jpg"}
           width={250}
           height={150}
-          alt={alt ? alt : "画像が登録されていません"}
+          alt={alt ? alt : "no-image"}
         />
       </div>
     </div>

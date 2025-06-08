@@ -39,10 +39,10 @@ const NewAppsVerticalSection: React.FC<NewAppsVerticalSectionProps> = ({
               >
                 <div className="min-w-[200px] mx-2">
                   <Image
-                    src={firstImage?.imageURL || "/test.JPG"}
+                    src={firstImage?.imageURL || "/no-image-app.jpg"}
                     width={200}
                     height={200}
-                    alt={firstImage?.imageALT || "test"}
+                    alt={firstImage?.imageALT || "no-image"}
                     className="border border-gray-400"
                   />
                 </div>
