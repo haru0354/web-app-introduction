@@ -1,5 +1,5 @@
-import Button from "../../ui/button/Button";
-import NextLinkButton from "../../ui/button/NextLinkButton";
+import Button from "../ui/button/Button";
+import NextLinkButton from "../ui/button/NextLinkButton";
 
 type FormContainerProps = {
   children: React.ReactNode;

@@ -1,4 +1,4 @@
-import Breadcrumbs from "../../web-parts/Breadcrumbs";
+import Breadcrumbs from "../../web-parts/global/Breadcrumbs";
 
 type OneColumnProps = {
   children: React.ReactNode;

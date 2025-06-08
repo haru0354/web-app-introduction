@@ -1,3 +1,5 @@
+"use client"
+
 type ButtonProps = {
   children: React.ReactNode;
   color: "red" | "blue" | "gray" | "white" | "black";

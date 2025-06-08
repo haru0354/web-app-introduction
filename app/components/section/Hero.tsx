@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-import TopPageSection from "../layouts/with-children/TopPageSection";
+import TopPageSection from "../layouts/TopPageSection";
 
 const Hero = () => {
   return (

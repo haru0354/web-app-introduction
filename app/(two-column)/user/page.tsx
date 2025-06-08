@@ -28,7 +28,7 @@ const page = async () => {
           <Link href={`/user/${user.id}`} key={user.id}>
             <div className="flex flex-col items-center justify-center w-full max-w-[120px] text-center mx-4 hover:-translate-y-2 transition">
               <Image
-                src={user.image ? user.image : "/test.jpg"}
+                src={user.image ? user.image : "/no-image-app.jpg"}
                 width={120}
                 height={120}
                 alt="ユーザーの画像"

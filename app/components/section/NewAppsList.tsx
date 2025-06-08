@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
-import TopPageSection from "../layouts/with-children/TopPageSection";
+import TopPageSection from "../layouts/TopPageSection";
 
 import type { AppIntroduction } from "@prisma/client";
 
@@ -28,10 +28,10 @@ const NewAppsList: React.FC<NewAppsListProps> = ({ appIntroductions }) => {
             >
               <Link href={`/app/${appIntroduction.id}`}>
                 <Image
-                  src={firstImage?.imageURL || "/test.JPG"}
+                  src={firstImage?.imageURL || "/no-image-app.jpg"}
                   width={200}
                   height={200}
-                  alt={firstImage?.imageALT || "test"}
+                  alt={firstImage?.imageALT || "no-image"}
                   className="border border-gray-400 "
                 />
               </Link>

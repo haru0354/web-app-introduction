@@ -2,7 +2,7 @@
 
 import { useFormState } from "react-dom";
 
-import FormContainer from "../layouts/with-children/FormContainer";
+import FormContainer from "../layouts/FormContainer";
 import InputText from "../ui/InputText";
 
 import type { SignUpFormState } from "@/types/formStateTypes";

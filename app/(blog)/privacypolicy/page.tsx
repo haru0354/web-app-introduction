@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 
-import BlogTopInfo from "@/app/components/layouts/BlogTopInfo";
+import BlogTopInfo from "@/app/components/web-parts/contents-area/BlogTopInfo";
 
 export const metadata: Metadata = {
   title: "プライバシーポリシーと免責事項",

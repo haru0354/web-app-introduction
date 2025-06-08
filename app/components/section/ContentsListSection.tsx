@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 
-import TopPageSection from "../layouts/with-children/TopPageSection";
+import TopPageSection from "../layouts/TopPageSection";
 
 type ContentsListSectionProps = {
   contents: Contents[];
@@ -11,8 +11,8 @@ type ContentsListSectionProps = {
 type Contents = {
   title: string;
   url: string;
-  imageSrc: string;
-  imageAlt: string;
+  imageSrc?: string;
+  imageAlt?: string;
 };
 
 const ContentsListSection: React.FC<ContentsListSectionProps> = ({
@@ -31,18 +31,15 @@ const ContentsListSection: React.FC<ContentsListSectionProps> = ({
     <TopPageSection>
       <h2 className="text-center text-3xl font-bold my-8">{listTitle}</h2>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 mx-2">
-        {contents.map((content, index) => {
+        {contents.map((content) => {
           return (
-            <Link href={content.url}>
-              <div
-                key={index}
-                className="flex flex-col items-center justify-center text-center hover:-translate-y-2 transition"
-              >
+            <Link href={content.url} key={content.url}>
+              <div className="flex flex-col items-center justify-center text-center hover:-translate-y-2 transition">
                 <Image
-                  src={content.imageSrc}
+                  src={content.imageSrc || "/no-image.jpg"}
                   width={340}
                   height={230}
-                  alt={content.imageAlt}
+                  alt={content.imageAlt || "no-image"}
                   className="border border-gray-400"
                 />
                 <h3 className="my-3 font-semibold text-gray-600 ">

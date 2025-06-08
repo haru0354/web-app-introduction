@@ -32,11 +32,11 @@ const NextLinkButton: React.FC<NextLinkButtonProps> = ({
 
   return (
     <Link
-        className={`my-4 text-center font-bold transition-colors duration-300
+      href={href}
+      className={`my-4 text-center font-bold transition-colors duration-300
         ${colors[color]}
         ${sizes[size]}
-          ${className}`}
-      href={href}
+        ${className}`}
     >
       {children}
     </Link>

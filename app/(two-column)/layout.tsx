@@ -1,4 +1,4 @@
-import TwoColumn from "../components/layouts/with-children/TwoColumn";
+import TwoColumn from "../components/layouts/column/TwoColumn";
 
 export default function RootLayout({
   children,

@@ -1,4 +1,4 @@
-import OneColumn from "../components/layouts/with-children/OneColumn";
+import OneColumn from "../components/layouts/column/OneColumn";
 
 export default function RootLayout({
   children,

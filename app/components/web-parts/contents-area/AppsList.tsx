@@ -41,10 +41,10 @@ const AppsList: React.FC<AppsListProps> = ({
             <Link href={`/app/${appIntroduction.id}`}>
               <div className="flex flex-col items-center text-center  hover:-translate-y-2 transition">
                 <Image
-                  src={firstImage?.imageURL || "/test.JPG"}
+                  src={firstImage?.imageURL || "/no-image-app.jpg"}
                   width={200}
                   height={200}
-                  alt={firstImage?.imageALT || "test"}
+                  alt={firstImage?.imageALT || "no-image"}
                   className="border rounded border-gray-400"
                 />
                 <h2 className="font-semibold text-gray-600 mt-3">{title}</h2>「

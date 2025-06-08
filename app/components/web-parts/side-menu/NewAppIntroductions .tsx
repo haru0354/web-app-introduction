@@ -17,7 +17,7 @@ const NewAppIntroductions = async () => {
       {threeIntroductions.map((appIntroduction) => {
         const imageUrl = appIntroduction.images.length > 0 && appIntroduction.images[0].imageURL
           ? `/${appIntroduction.images[0].imageURL}`
-          : "/no-image.jpg";
+          : "/no-image-app.jpg";
 
         const imageAlt = appIntroduction.images.length > 0 && appIntroduction.images[0].imageALT
           ? appIntroduction.images[0].imageALT
