@@ -22,23 +22,17 @@ export default async function Home() {
     {
       title: "テスト",
       url: "/",
-      imageSrc: "/blog-test.webp",
-      imageAlt: "test",
     },
     {
       title: "テスト（サイトマップ）",
       url: "/sitemaps",
-      imageSrc: "/blog-test.webp",
-      imageAlt: "test",
     },
   ];
 
   const categories = [
     {
       title: "テスト",
-      url: "/",
-      imageSrc: "/blog-test.webp",
-      imageAlt: "test",
+      url: "/privacypolicy,"
     },
   ];
 

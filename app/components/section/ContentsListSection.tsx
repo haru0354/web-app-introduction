@@ -11,8 +11,8 @@ type ContentsListSectionProps = {
 type Contents = {
   title: string;
   url: string;
-  imageSrc: string;
-  imageAlt: string;
+  imageSrc?: string;
+  imageAlt?: string;
 };
 
 const ContentsListSection: React.FC<ContentsListSectionProps> = ({
@@ -36,10 +36,10 @@ const ContentsListSection: React.FC<ContentsListSectionProps> = ({
             <Link href={content.url} key={content.url}>
               <div className="flex flex-col items-center justify-center text-center hover:-translate-y-2 transition">
                 <Image
-                  src={content.imageSrc}
+                  src={content.imageSrc || "/no-image.jpg"}
                   width={340}
                   height={230}
-                  alt={content.imageAlt}
+                  alt={content.imageAlt || "no-image"}
                   className="border border-gray-400"
                 />
                 <h3 className="my-3 font-semibold text-gray-600 ">
