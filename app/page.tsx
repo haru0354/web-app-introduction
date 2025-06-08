@@ -26,20 +26,8 @@ export default async function Home() {
       imageAlt: "test",
     },
     {
-      title: "テスト",
-      url: "/",
-      imageSrc: "/blog-test.webp",
-      imageAlt: "test",
-    },
-    {
-      title: "テスト",
-      url: "/",
-      imageSrc: "/blog-test.webp",
-      imageAlt: "test",
-    },
-    {
-      title: "テスト",
-      url: "/",
+      title: "テスト（サイトマップ）",
+      url: "/sitemaps",
       imageSrc: "/blog-test.webp",
       imageAlt: "test",
     },

@@ -1,18 +1,14 @@
 "use client";
 
 import { useState } from "react";
-import { useRouter } from "next/navigation";
 import { signIn } from "next-auth/react";
 
 import FormContainer from "../layouts/FormContainer";
-import useToggleModal from "../../hooks/useToggleModal";
 import InputText from "../ui/InputText";
 
 const FormLogin = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const router = useRouter();
-  const { closeModal } = useToggleModal();
 
   const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -24,20 +20,12 @@ const FormLogin = () => {
       const email = formData.get("email") as string;
       const password = formData.get("password") as string;
 
-      const result = await signIn("appIntroduction", {
+      await signIn("appIntroduction", {
         email,
         password,
-        redirect: false,
+        callbackUrl: "/dashboard",
+        redirect: true,
       });
-
-      if (result?.error) {
-        setError(result.error);
-        console.log("ログインに失敗しました。", result.error);
-      } else if (result?.ok) {
-        closeModal();
-        console.log("ログインに成功しました。");
-        router.push("/dashboard");
-      }
     } catch (error) {
       setError("ログイン中にエラーが発生しました。");
       console.error("ログイン中にエラーが発生しました：", error);
